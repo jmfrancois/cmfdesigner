@@ -1,0 +1,7 @@
+{
+  "preset": "talend",
+  "cmf": false,
+  "webpack": {
+    "api-url": "http://localhost:3030"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "props": {
+    "SelectionList#apps": {
+      "saga": {
+        "id": "loadResource",
+        "args": [{
+          "id": "apps",
+          "url": "/api/apps",
+          "method": "get"
+          }
+        ]
+      },
+      "title": "Apps",
+      "itemsExpression": {
+        "id": "cmf.collections.get",
+        "args": ["apps.apps", []]
+      }
+    },
+    "SelectionList#components": {
+      "saga": {
+        "id": "loadResource",
+        "args": [{
+          "id": "apps",
+          "url": "/api/components",
+          "method": "get"
+          }
+        ]
+      },
+      "title": "Components",
+      "itemsExpression": {
+        "id": "cmf.collections.get",
+        "args": ["components.components", []]
+      }
+    }
+  }
+}

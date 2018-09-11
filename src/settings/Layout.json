@@ -1,0 +1,7 @@
+{
+  "props": {
+    "Layout#apps": {
+      "mode": "OneColumn"
+    }
+  }
+}

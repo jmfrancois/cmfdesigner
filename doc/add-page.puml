@@ -1,0 +1,12 @@
+@startuml
+Dev -> Designer: Open /home/dev/talend
+Designer --> Dev: List all apps
+Dev -> Designer: Select app
+Dev -> Designer: Click on 'add Page'
+Designer -> Dev: Form
+Dev -> Designer: parent page, component, componentId, route
+Designer -> FS: Update router.json
+Designer -> Dev: Form ConfigureComponent
+Dev -> Designer: submit configuration
+Designer -> FS: Update `${component}`.json
+@enduml

@@ -1,0 +1,10 @@
+{
+  "props": {
+    "App#default": {
+      "left": [
+        { "component": "SelectionList", "componentId": "apps" },
+        { "component": "SelectionList", "componentId": "components" }
+      ]
+    }
+  }
+}

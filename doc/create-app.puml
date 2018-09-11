@@ -1,0 +1,12 @@
+@startuml
+Dev -> Designer: Open /home/dev/talend
+Designer --> Dev: List all apps
+Dev -> Designer: Click 'Add app' button
+Designer --> Dev: Form: name
+Dev -> Designer: fill name and submit
+Designer -> Yo: talend:react-cmf
+Yo -> FS: create files
+FS -> Yo
+Yo -> Designer: end
+Designer -> Designer: Open app designer
+@enduml
