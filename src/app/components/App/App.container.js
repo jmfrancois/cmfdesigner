@@ -12,10 +12,10 @@ function App(props) {
 	return (
 		<div className="container">
 			<div className="row">
-				<div className="col-4">
+				<div className="col-md-4">
 					{inject(props.left)}
 				</div>
-				<div className="col-8">
+				<div className="col-md-8">
 					{inject(props.center)}
 				</div>
 			</div>

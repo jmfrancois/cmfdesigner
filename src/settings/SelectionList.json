@@ -14,13 +14,14 @@
       "itemsExpression": {
         "id": "cmf.collections.get",
         "args": ["apps.apps", []]
-      }
+      },
+      "onClickActionCreator": "onClickSelectionListItem"
     },
     "SelectionList#components": {
       "saga": {
         "id": "loadResource",
         "args": [{
-          "id": "apps",
+          "id": "components",
           "url": "/api/components",
           "method": "get"
           }
