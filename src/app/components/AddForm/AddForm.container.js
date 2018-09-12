@@ -1,6 +1,5 @@
 import React from 'react';
 import omit from 'lodash/omit';
-import { Map } from 'immutable';
 import { cmfConnect } from '@talend/react-cmf';
 import Form from '@talend/react-forms';
 
@@ -28,9 +27,8 @@ class AddForm extends React.Component {
 		const props = Object.assign({}, omit(this.props, cmfConnect.INJECTED_PROPS));
 		return (
 			<div>
-				<h1>Add Component form</h1>
-				<p>To add a component the backend use the following command</p>
-				<pre>yo talend:react-component</pre>
+				<h1>{props.title || 'Add Form'}</h1>
+				<p>{props.description}</p>
 				<Form {...props} onSubmit={this.onSubmit} />
 			</div>
 		);

@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import AddComponentForm from './AddComponentForm.component';
+import Null from './Null.component';
 
-describe('AddComponentForm', () => {
+describe('Null', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<AddComponentForm />
+			<Null />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

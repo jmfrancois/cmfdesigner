@@ -1,14 +1,13 @@
-import { call, put, takeEvery } from 'redux-saga/lib/effects';
+import { call, select, put, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
-import AddComponentForm from '../components/AddComponentForm';
-import SelectionList from '../components/SelectionList';
+import components from '../components';
 import { loadResource } from './resource';
 
 function* onSelect(action) {
 	if (action.componentId === 'apps') {
 		// load components
 		yield call(loadResource, {
-			url: `/api/apps/${action.id}/components`,
+			url: `/api/components?path=${action.id}`,
 			id: 'components',
 		});
 	}
@@ -26,12 +25,17 @@ function* onAddButtonClicked(action) {
 	}
 }
 function* onAddFormSubmit(action) {
-	yield call(cmf.sagas.http.post, '/api/components', action.data);
+	const state = yield select();
+	const path = components.SelectionList.getState(state, 'apps').get('active');
+	if (!path) {
+		debugger;
+	}
+	yield call(cmf.sagas.http.post, '/api/components', { $$path: path, ...action.data });
 }
 
 // eslint-disable-next-line import/prefer-default-export
 export function* handleComponents() {
-	yield takeEvery(SelectionList.ACTION_TYPE_SELECT_ITEM, onSelect);
-	yield takeEvery(SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
-	yield takeEvery(AddComponentForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);
+	yield takeEvery(components.SelectionList.ACTION_TYPE_SELECT_ITEM, onSelect);
+	yield takeEvery(components.SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
+	yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);
 }

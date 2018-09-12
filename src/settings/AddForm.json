@@ -1,6 +1,6 @@
 {
   "props": {
-    "AddForm#apps": {
+    "AddForm#app": {
       "renderIfExpression": {
         "id": "cmf.router.matchPath",
         "args": [
@@ -10,6 +10,7 @@
           }
         ]
       },
+      "title": "Add App Form",
       "data": {
         "jsonSchema": {
           "title": "Add component form",
@@ -36,6 +37,85 @@
           }
         ],
         "properties": {}
+      }
+    },
+    "AddForm#component": {
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+            {
+                "path": "/addComponent",
+                "isExact": true
+            }
+        ]
+      },
+      "title": "Add Component Form",
+      "data": {
+        "jsonSchema": {
+          "title": "Add component form",
+          "type": "object",
+          "required": ["name"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "isFull": {
+              "type": "boolean",
+              "title": "isFull"
+            },
+            "type": {
+              "type": "string",
+              "title": "type",
+              "enum": ["es6.class", "es6.arrow", "stateless", "connect"]
+            },
+            "css": {
+              "type": "boolean",
+              "title": "css"
+            },
+            "path": {
+              "type": "string",
+              "title": "Path"
+            }
+          }
+        },
+        "uiSchema": [
+          {
+            "key": "name"
+          },
+          {
+            "key": "isFull"
+          },
+          {
+            "key": "type",
+            "widget": "datalist",
+            "titleMap": [
+              {
+                "name": "ES6 class aka stateful",
+                "value": "es6.class"
+              },
+              {
+                "name": "ES6 arrow aka stateless",
+                "value": "es6.arrow"
+              },
+              {
+                "name": "function aka stateless",
+                "value": "stateless"
+              },
+              {
+                "name": "CMFConnect",
+                "value": "connect"
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "id": "default",
+          "isFull": false,
+          "type": "es6.class",
+          "css": false,
+          "path": "src/app/components"
+        }
       }
     }
   }

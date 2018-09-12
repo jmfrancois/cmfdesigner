@@ -1,3 +1,4 @@
 export * from './components';
+export * from './handleProps';
 export * from './resource';
-export { handleApps } from './handleApps';
+export * from './handleApps';

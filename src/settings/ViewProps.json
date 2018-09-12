@@ -1,15 +1,16 @@
 {
   "props": {
-    "AddComponentForm#default": {
+    "ViewProps#default": {
       "renderIfExpression": {
         "id": "cmf.router.matchPath",
         "args": [
             {
-                "path": "/addComponent",
+                "path": "/props/view",
                 "isExact": true
             }
         ]
-      }
+      },
+      "itemExpression": "getProps"
     }
   }
 }

@@ -1,12 +1,14 @@
 import App from './App';
-import AddComponentForm from './AddComponentForm';
 import AddForm from './AddForm';
 import SelectionList from './SelectionList';
+import Null from './Null';
+import ViewProps from './ViewProps';
 
 export default {
-	AddComponentForm,
 	AddForm,
 	App,
+	Null,
 	SelectionList,
+	ViewProps,
 };
 

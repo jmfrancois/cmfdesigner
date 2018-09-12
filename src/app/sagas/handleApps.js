@@ -14,7 +14,7 @@ function* onAddBtn(action) {
 }
 
 function* onSubmit(action) {
-	if (action.componentId === 'apps') {
+	if (action.componentId === 'app') {
 		const data = JSON.parse(localStorage[LOCAL_STORAGE_KEY_APPS] || '{}');
 		data[action.data.path] = action.data.name;
 		localStorage.setItem(LOCAL_STORAGE_KEY_APPS, JSON.stringify(data));

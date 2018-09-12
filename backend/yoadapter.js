@@ -48,14 +48,7 @@ Adapter.prototype.prompt = function prompt(questions, callback) {
 };
 
 Adapter.prototype.diff = function (actual, expected) {
-	debugger; this;
-	process.send({
-		event: 'generator:diff',
-		data: {
-			actual,
-			expected,
-		},
-	});
+	this.res.json({ actual, expected });
 };
 
 Adapter.prototype.log = log();

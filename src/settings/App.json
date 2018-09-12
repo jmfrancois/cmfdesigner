@@ -3,11 +3,13 @@
     "App#default": {
       "left": [
         { "component": "SelectionList", "componentId": "apps" },
-        { "component": "SelectionList", "componentId": "components" }
+        { "component": "SelectionList", "componentId": "components" },
+        { "component": "SelectionList", "componentId": "props" }
       ],
       "center": [
-        { "component": "AddForm", "componentId": "apps" },
-        { "component": "AddComponentForm" }
+        { "component": "AddForm", "componentId": "app" },
+        { "component": "AddForm", "componentId": "component" },
+        { "component": "ViewProps" }
       ]
     }
   }

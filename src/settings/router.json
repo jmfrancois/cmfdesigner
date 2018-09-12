@@ -3,6 +3,10 @@
     "path": "/",
     "component": "App",
     "childRoutes": [
+      {
+        "path": "*",
+        "component": "Null"
+      }
     ]
   }
 }

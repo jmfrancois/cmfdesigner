@@ -12,11 +12,10 @@ export function getApps() {
 		const apps = JSON.parse(cacheKey);
 		cache.key = cacheKey;
 		cache.value = Immutable.fromJS(Object.keys(apps).map(path => ({
-			path,
+			id: path,
 			name: apps[path],
 		})));
 		return cache.value;
 	}
 	return new Immutable.List();
 }
-
