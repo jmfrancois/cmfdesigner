@@ -2,14 +2,15 @@
   "props": {
     "App#default": {
       "left": [
-        { "component": "SelectionList", "componentId": "apps" },
+        { "component": "AppSwitcher" },
         { "component": "SelectionList", "componentId": "components" },
         { "component": "SelectionList", "componentId": "props" }
       ],
       "center": [
         { "component": "AddForm", "componentId": "app" },
         { "component": "AddForm", "componentId": "component" },
-        { "component": "ViewProps" }
+        { "component": "ViewProps" },
+        { "component": "ViewComponent" }
       ]
     }
   }

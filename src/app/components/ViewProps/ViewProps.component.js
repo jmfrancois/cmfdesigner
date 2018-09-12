@@ -22,6 +22,8 @@ function renderValue(value) {
 	}
 	return value;
 }
+
+
 function ViewProps(props) {
 	if (!props.item) {
 		return null;
@@ -30,9 +32,16 @@ function ViewProps(props) {
 	if (item.value === undefined) {
 		return null;
 	}
+	const metadata = item.name.split('#');
 	return (
 		<div>
 			<h1>{item.name}</h1>
+			{metadata.length !== 2 && (
+				<div className="alert alert-warning">
+					<p>You should use the following syntax in the props id:</p>
+					<pre>ComponentName#componentId</pre>
+				</div>
+			)}
 			<ul>
 				{Object.keys(item.value).map((key, index) => (
 					<li key={index}>{key}: {renderValue(item.value[key])}</li>

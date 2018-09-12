@@ -5,7 +5,7 @@
         "id": "cmf.router.matchPath",
         "args": [
           {
-            "path": "/addApp",
+            "path": "/apps/add",
             "isExact": true
           }
         ]
@@ -44,7 +44,7 @@
         "id": "cmf.router.matchPath",
         "args": [
             {
-                "path": "/addComponent",
+                "path": "/components/add",
                 "isExact": true
             }
         ]

@@ -3,7 +3,7 @@
  * Being the first import is important, so that it is the default style
  * and other style can override it
  */
-// import '@talend/bootstrap-theme/src/theme/theme.scss';
+import '@talend/bootstrap-theme/src/theme/theme.scss';
 import cmf from '@talend/react-cmf';
 // import { registerAllContainers } from '@talend/react-containers/lib/register';
 import actions from './actions';
@@ -14,7 +14,6 @@ import * as sagas from './sagas';
 /**
  * This will register all containers in the CMF registry
  */
-// registerAllContainers();
 
 /**
  * Initialize CMF

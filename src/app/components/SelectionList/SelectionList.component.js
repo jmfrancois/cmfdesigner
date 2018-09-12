@@ -44,13 +44,13 @@ class SelectionList extends React.Component {
 				</button>
 				<div className="list-group">
 					{this.props.items.map((item, index) => (
-						<a
+						<button
 							key={index}
 							className={getClassName(item, this.props.state.get('active'))}
 							onClick={event => this.onClick(event, item)}
 						>
 							{item.get('name')}
-						</a>
+						</button>
 					))}
 				</div>
 			</div>

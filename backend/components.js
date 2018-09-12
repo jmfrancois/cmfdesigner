@@ -1,5 +1,6 @@
 // const cmd = require('node-cmd');
 const yeoman = require('yeoman-environment');
+const rimraf = require('rimraf');
 const Adapter = require('./yoadapter');
 const pathLib = require('path');
 const getFolders = require('./fs').getFolders;
@@ -29,9 +30,20 @@ function postComponent(req, res) {
 	});
 }
 
+function deleteComponent(req, res) {
+	const path = pathLib.join(req.query.path, req.params.id);
+	console.log('delete ', path);
+	res.json({});
+	// rimraf(req.query.path, (foo, bar) => {
+	// 	console.log('delete component', foo, bar);
+	// 	res.json({ foo, bar });
+	// });
+}
+
 function setup(app) {
 	app.get('/api/components', getComponents);
 	app.post('/api/components', postComponent);
+	app.delete('/api/components/:id', deleteComponent);
 }
 
 module.exports = {
