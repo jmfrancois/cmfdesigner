@@ -1,5 +1,7 @@
 # CMF designer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jmfrancois/cmfdesigner.svg)](https://greenkeeper.io/)
+
 This is a designer to create react-cmf app.
 It has to be installed on the dev session (FS access required)
 
