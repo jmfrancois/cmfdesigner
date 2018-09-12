@@ -10,7 +10,7 @@ function getApps(req, res) {
 }
 
 function setup(app) {
-	app.get('/api/apps', getApps);
+	// app.get('/api/apps', getApps);
 }
 
 module.exports = {

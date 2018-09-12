@@ -1,16 +1,15 @@
 function getPages(req, res) {
 	res.json({
-		pages: [],
+		pages: [{
+			component: 'Foo',
+			componentId: 'default',
+			path: '/foo',
+		}],
 	});
 }
 
-function postPages(req, res) {
-	res.json({});
-}
-
 function setup(app) {
-	app.get('/api/pages', getPages);
-	app.post('/api/pages', postPages);
+	app.get('/api/apps/:appId/pages', getPages);
 }
 
 module.exports = {

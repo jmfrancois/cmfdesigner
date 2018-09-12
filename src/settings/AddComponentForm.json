@@ -1,0 +1,15 @@
+{
+  "props": {
+    "AddComponentForm#default": {
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+            {
+                "path": "/addComponent",
+                "isExact": true
+            }
+        ]
+      }
+    }
+  }
+}

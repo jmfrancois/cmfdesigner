@@ -1,32 +1,13 @@
 {
   "props": {
     "SelectionList#apps": {
-      "saga": {
-        "id": "loadResource",
-        "args": [{
-          "id": "apps",
-          "url": "/api/apps",
-          "method": "get"
-          }
-        ]
-      },
+      "saga": "handleApps",
       "title": "Apps",
-      "itemsExpression": {
-        "id": "cmf.collections.get",
-        "args": ["apps.apps", []]
-      },
+      "itemsExpression": "getApps",
       "onClickActionCreator": "onClickSelectionListItem"
     },
     "SelectionList#components": {
-      "saga": {
-        "id": "loadResource",
-        "args": [{
-          "id": "components",
-          "url": "/api/components",
-          "method": "get"
-          }
-        ]
-      },
+      "saga": "handleComponents",
       "title": "Components",
       "itemsExpression": {
         "id": "cmf.collections.get",

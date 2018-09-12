@@ -4,6 +4,10 @@
       "left": [
         { "component": "SelectionList", "componentId": "apps" },
         { "component": "SelectionList", "componentId": "components" }
+      ],
+      "center": [
+        { "component": "AddForm", "componentId": "apps" },
+        { "component": "AddComponentForm" }
       ]
     }
   }

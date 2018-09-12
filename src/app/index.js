@@ -8,7 +8,7 @@ import cmf from '@talend/react-cmf';
 // import { registerAllContainers } from '@talend/react-containers/lib/register';
 import actions from './actions';
 import components from './components';
-import reducer from './reducers';
+import * as expressions from './expressions';
 import * as sagas from './sagas';
 
 /**
@@ -27,7 +27,7 @@ import * as sagas from './sagas';
  */
 cmf.bootstrap({
 	components,
-	reducer,
+	expressions,
 	sagas,
 	settingsURL: '/settings.json',
 	actionCreators: actions,

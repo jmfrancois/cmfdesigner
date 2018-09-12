@@ -7,7 +7,7 @@ function getCollection(id) {
 	return state => state.cmf.collections.get(id);
 }
 
-export function* loadResource(action, resource) {
+export function* loadResource(resource) {
 	if (!cache[resource.id]) {
 		const collection = yield select(getCollection(resource.id));
 		if (!collection) {
@@ -20,4 +20,8 @@ export function* loadResource(action, resource) {
 			cache[resource.id] = true;
 		}
 	}
+}
+
+export function* loadResourceOnDidMount(action, resource) {
+	yield loadResource(resource);
 }

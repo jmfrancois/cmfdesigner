@@ -1,0 +1,42 @@
+{
+  "props": {
+    "AddForm#apps": {
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+          {
+            "path": "/addApp",
+            "isExact": true
+          }
+        ]
+      },
+      "data": {
+        "jsonSchema": {
+          "title": "Add component form",
+          "type": "object",
+          "required": ["path", "name"],
+          "properties": {
+            "path": {
+              "type": "string",
+              "title": "Path"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name"
+            }
+          }
+        },
+        "uiSchema": [
+          {
+            "key": "path",
+            "hint": "Folder which contains the webapp"
+          },
+          {
+            "key": "name"
+          }
+        ],
+        "properties": {}
+      }
+    }
+  }
+}

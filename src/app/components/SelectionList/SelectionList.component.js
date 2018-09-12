@@ -12,22 +12,36 @@ function getClassName(item, activeId) {
 }
 
 class SelectionList extends React.Component {
+
 	constructor(props) {
 		super(props);
 		this.onClick = this.onClick.bind(this);
+		this.onAddClick = this.onAddClick.bind(this);
 	}
 
 	onClick(event, item) {
-		this.props.setState({ active: item.get('id')});
+		const id = item.get('id');
+		this.props.setState({ active: id });
+		this.props.dispatch({
+			type: SelectionList.ACTION_TYPE_SELECT_ITEM,
+			componentId: this.props.componentId,
+			id,
+		});
+	}
+	onAddClick() {
+		this.props.dispatch({
+			type: SelectionList.ACTION_TYPE_ADD_ITEM,
+			componentId: this.props.componentId,
+		});
 	}
 
 	render() {
-		if (this.props.items.size === 0) {
-			return null;
-		}
 		return (
 			<div>
 				<h2>{this.props.title}</h2>
+				<button className="btn btn-primary" onClick={this.onAddClick}>
+					Add
+				</button>
 				<div className="list-group">
 					{this.props.items.map((item, index) => (
 						<a
@@ -54,7 +68,8 @@ SelectionList.propTypes = {
 SelectionList.defaultProps = {
 	items: [],
 };
-
+SelectionList.ACTION_TYPE_SELECT_ITEM = 'SelectionList#selectItem';
+SelectionList.ACTION_TYPE_ADD_ITEM = 'SelectionList#addItem';
 SelectionList.actions = actions;
 
 export default cmfConnect({
