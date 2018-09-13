@@ -25,17 +25,21 @@ function postComponent(req, res) {
 	//
 	const path = req.body.$$path;
 	const env = yeoman.createEnv([], {}, new Adapter(req, res));
-	env.lookup(function () {
+	env.lookup(() => {
 		env.run('talend:react-component');
 	});
 }
 
 function deleteComponent(req, res) {
-	const path = pathLib.join(req.query.path, 'src/apps/components', req.params.id);
+	const path = pathLib.join(req.query.path, 'src/app/components', req.params.id);
 	console.log('delete ', path);
-	rimraf(path, (foo, bar) => {
-		console.log('delete component', foo, bar);
-		res.json({ foo, bar });
+	rimraf(path, error => {
+		if (error) {
+			console.error(error);
+			res.status(500).json({ error });
+			return;
+		}
+		res.json({});
 	});
 }
 

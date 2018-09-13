@@ -4,3 +4,4 @@
  */
 
 export const LOCAL_STORAGE_KEY_APPS = 'cmfdesigner.apps';
+export const APPS_LOADED = 'APPS_LOADED';

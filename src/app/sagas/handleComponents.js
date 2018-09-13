@@ -1,8 +1,9 @@
-import { call, select, put, takeEvery } from 'redux-saga/lib/effects';
+import { call, put, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
 import components from '../components';
 import { loadResource } from './resource';
 import getPath from './getPath';
+import { APPS_LOADED } from '../constants';
 
 function* onSelectDirectory(action) {
 	yield call(loadResource, {
@@ -25,7 +26,7 @@ function* onAddButtonClicked(action) {
 function* onAddFormSubmit(action) {
 	const path = yield getPath();
 	if (!path) {
-		debugger;
+		// debugger;
 	}
 	yield call(cmf.sagas.http.post, '/api/components', { $$path: path, ...action.data });
 }
@@ -44,7 +45,7 @@ function* onSelectComponent(action) {
 function* onDeleteBtn(action) {
 	const path = yield getPath();
 	if (!path) {
-		debugger;
+		// debugger;
 	}
 	yield call(cmf.sagas.http.delete, `/api/components/${action.id}?path=${path}`);
 }
@@ -52,6 +53,7 @@ function* onDeleteBtn(action) {
 // eslint-disable-next-line import/prefer-default-export
 export function* handleComponents() {
 	yield takeEvery(components.AppSwitcher.ACTION_TYPE_SET_CWD, onSelectDirectory);
+	yield takeEvery(APPS_LOADED, onSelectDirectory);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_SELECT_ITEM, onSelectComponent);
 	yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);

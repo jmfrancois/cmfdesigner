@@ -11,7 +11,7 @@ class AppSwitcher extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { editMode: true };
+		this.state = { editMode: false };
 		this.onChange = this.onChange.bind(this);
 		this.onEditBtn = this.onEditBtn.bind(this);
 		this.onGenerateAppBtn = this.onGenerateAppBtn.bind(this);
@@ -43,13 +43,13 @@ class AppSwitcher extends React.Component {
 	}
 
 	render() {
-		if (this.state.editMode) {
+		if (!this.props.app || this.state.editMode) {
 			return (
 				<form onSubmit={this.onSubmit}>
 					<h2>App</h2>
 					<div className="form-group">
 						<label>Current working directory</label>
-						<input name="path" type="text" className="form-control" onChange={this.onChange} />
+						<input name="path" type="text" className="form-control" onChange={this.onChange} value={this.state.path} />
 					</div>
 					<button className="btn btn-primary pull-right">Submit</button>
 				</form>
@@ -58,7 +58,7 @@ class AppSwitcher extends React.Component {
 		return (
 			<div>
 				<h2>App</h2>
-				<p>CWD: <strong>{this.props.state.get('path')}</strong></p>
+				<p>CWD: <strong>{this.props.app.get('path')}</strong></p>
 				<div className="btn-group">
 					<button type="button" className="btn btn-default" onClick={this.onEditBtn}>Edit</button>
 					<button type="button" className="btn btn-primary" onClick={this.onGenerateAppBtn}>Generate CMF Webapp Here</button>
@@ -69,7 +69,7 @@ class AppSwitcher extends React.Component {
 }
 
 AppSwitcher.ACTION_TYPE_ADD_APP = 'APP_SWITCHER_ADD_APP';
-AppSwitcher.ACTION_TYPE_SET_CWD = 'APP_SWITCHER__SET_CWD';
+AppSwitcher.ACTION_TYPE_SET_CWD = 'APP_SWITCHER_SET_CWD';
 
 export default cmfConnect({
 	defaultState: new Immutable.Map(),

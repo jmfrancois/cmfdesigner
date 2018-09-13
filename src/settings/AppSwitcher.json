@@ -1,0 +1,8 @@
+{
+  "props": {
+    "AppSwitcher#default": {
+      "saga": "handleApps",
+      "appExpression": "getApp"
+    }
+  }
+}

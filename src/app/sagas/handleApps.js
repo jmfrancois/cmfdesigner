@@ -1,6 +1,18 @@
-import { put, takeEvery } from 'redux-saga/lib/effects';
+import { call, put, select, takeEvery } from 'redux-saga/lib/effects';
+import cmf from '@talend/react-cmf';
 import components from '../components';
-import { LOCAL_STORAGE_KEY_APPS } from '../constants';
+import { loadResource } from './resource';
+// import { LOCAL_STORAGE_KEY_APPS } from '../constants';
+import { APPS_LOADED } from '../constants';
+
+function* initApps() {
+	yield call(loadResource, {
+		url: '/api/apps',
+		id: 'apps',
+	});
+	const apps = yield select(state => state.cmf.collections.get('apps'));
+	yield put({ type: APPS_LOADED, path: apps.get('path'), id: 'apps' });
+}
 
 function* onAddBtn() {
 	yield put({
@@ -11,16 +23,14 @@ function* onAddBtn() {
 	});
 }
 
-function* onSubmit(action) {
-	if (action.componentId === 'app') {
-		const data = JSON.parse(localStorage[LOCAL_STORAGE_KEY_APPS] || '{}');
-		data[action.data.path] = action.data.name;
-		localStorage.setItem(LOCAL_STORAGE_KEY_APPS, JSON.stringify(data));
-	}
+function* onSetCWD(action) {
+	yield call(cmf.sagas.http.post, '/api/apps', { path: action.path });
+	yield call(initApps);
 }
 
 // eslint-disable-next-line import/prefer-default-export
 export function* handleApps() {
-	yield takeEvery(components.AppSwitcher.APP_SWITCHER_ADD_APP, onAddBtn);
-	yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onSubmit);
+	yield call(initApps);
+	yield takeEvery(components.AppSwitcher.ACTION_TYPE_ADD_APP, onAddBtn);
+	yield takeEvery(components.AppSwitcher.ACTION_TYPE_SET_CWD, onSetCWD);
 }
