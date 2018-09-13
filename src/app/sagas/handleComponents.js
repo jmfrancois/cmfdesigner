@@ -2,6 +2,7 @@ import { call, select, put, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
 import components from '../components';
 import { loadResource } from './resource';
+import getPath from './getPath';
 
 function* onSelectDirectory(action) {
 	yield call(loadResource, {
@@ -22,8 +23,7 @@ function* onAddButtonClicked(action) {
 	}
 }
 function* onAddFormSubmit(action) {
-	const state = yield select();
-	const path = components.AppSwitcher.getState(state).get('path');
+	const path = yield getPath();
 	if (!path) {
 		debugger;
 	}
@@ -41,10 +41,19 @@ function* onSelectComponent(action) {
 	}
 }
 
+function* onDeleteBtn(action) {
+	const path = yield getPath();
+	if (!path) {
+		debugger;
+	}
+	yield call(cmf.sagas.http.delete, `/api/components/${action.id}?path=${path}`);
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export function* handleComponents() {
 	yield takeEvery(components.AppSwitcher.ACTION_TYPE_SET_CWD, onSelectDirectory);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_SELECT_ITEM, onSelectComponent);
 	yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);
+	yield takeEvery(components.ViewComponent.ACTION_TYPE_DELETE_BTN, onDeleteBtn);
 }

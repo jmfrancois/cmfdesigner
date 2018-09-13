@@ -31,13 +31,12 @@ function postComponent(req, res) {
 }
 
 function deleteComponent(req, res) {
-	const path = pathLib.join(req.query.path, req.params.id);
+	const path = pathLib.join(req.query.path, 'src/apps/components', req.params.id);
 	console.log('delete ', path);
-	res.json({});
-	// rimraf(req.query.path, (foo, bar) => {
-	// 	console.log('delete component', foo, bar);
-	// 	res.json({ foo, bar });
-	// });
+	rimraf(path, (foo, bar) => {
+		console.log('delete component', foo, bar);
+		res.json({ foo, bar });
+	});
 }
 
 function setup(app) {

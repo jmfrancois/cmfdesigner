@@ -1,6 +1,7 @@
 {
   "props": {
     "ViewComponent#default": {
+      "itemExpression": "getComponent",
       "renderIfExpression": {
         "id": "cmf.router.matchPath",
         "args": [
