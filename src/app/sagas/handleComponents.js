@@ -5,11 +5,21 @@ import { loadResource } from './resource';
 import getPath from './getPath';
 import { APPS_LOADED } from '../constants';
 
-function* onSelectDirectory(action) {
+function* loadComponents(action) {
+	let safePath;
+	if (!action) {
+		safePath = yield call(getPath);
+	} else {
+		safePath = action.path;
+	}
 	yield call(loadResource, {
-		url: `/api/components?path=${action.path}`,
+		url: `/api/components?path=${safePath}`,
 		id: 'components',
 	});
+}
+
+function* onSelectDirectory(action) {
+	yield call(loadComponents, action);
 }
 
 function* onAddButtonClicked(action) {
@@ -29,6 +39,7 @@ function* onAddFormSubmit(action) {
 		// debugger;
 	}
 	yield call(cmf.sagas.http.post, '/api/components', { $$path: path, ...action.data });
+	yield call(loadComponents);
 }
 
 function* onSelectComponent(action) {
@@ -53,7 +64,7 @@ function* onDeleteBtn(action) {
 // eslint-disable-next-line import/prefer-default-export
 export function* handleComponents() {
 	yield takeEvery(components.AppSwitcher.ACTION_TYPE_SET_CWD, onSelectDirectory);
-	yield takeEvery(APPS_LOADED, onSelectDirectory);
+	yield takeEvery(APPS_LOADED, loadComponents);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_SELECT_ITEM, onSelectComponent);
 	yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);

@@ -4,6 +4,9 @@ import { cmfConnect } from '@talend/react-cmf';
 
 function renderValue(value) {
 	if (Array.isArray(value)) {
+		if (value.length === 0) {
+			return '[]';
+		}
 		return (
 			<ul>
 				{value.map((v, i) => <li key={i}>{i}: {renderValue(v)}</li>)}
@@ -35,6 +38,15 @@ function ViewProps(props) {
 	const metadata = item.name.split('#');
 	return (
 		<div>
+			<button
+				className="btn btn-danger pull-right"
+				onClick={() => props.dispatch({
+					type: ViewProps.ACTION_TYPE_DELETE,
+					id: item.get('id'),
+				})}
+			>
+				Delete
+			</button>
 			<h1>{item.name}</h1>
 			{metadata.length !== 2 && (
 				<div className="alert alert-warning">
@@ -53,6 +65,7 @@ function ViewProps(props) {
 
 ViewProps.propTypes = {
 	name: PropTypes.string,
+	...cmfConnect.propTypes,
 };
 
 export default cmfConnect({})(ViewProps);
