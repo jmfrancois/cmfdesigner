@@ -2,7 +2,7 @@ const pathLib = require('path');
 const fs = require('./fs');
 
 function getProps(req, res) {
-	const path = pathLib.join(req.query.path, 'src/settings/');
+	const path = pathLib.join(fs.getCWD(req), 'src/settings/');
 	res.json({ data: fs.readAllJSON(path) });
 }
 

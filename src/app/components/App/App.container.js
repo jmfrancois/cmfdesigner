@@ -12,10 +12,10 @@ function App(props) {
 	return (
 		<div className="container">
 			<div className="row">
-				<div className="col-md-4" style={{ height: '100vh', overflow: 'auto' }}>
+				<div className="col-xs-6 col-md-5 col-lg-4" style={{ height: '100vh', overflow: 'auto' }}>
 					{inject(props.left)}
 				</div>
-				<div className="col-md-8">
+				<div className="col-xs-6 col-md-7 col-lg-8">
 					{inject(props.center)}
 				</div>
 			</div>

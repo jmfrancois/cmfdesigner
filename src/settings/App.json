@@ -1,6 +1,7 @@
 {
   "props": {
     "App#default": {
+      "saga": "handleApps",
       "left": [
         { "component": "AppSwitcher" },
         { "component": "SelectionList", "componentId": "components" },
@@ -10,7 +11,8 @@
         { "component": "AddForm", "componentId": "app" },
         { "component": "AddForm", "componentId": "component" },
         { "component": "ViewProps" },
-        { "component": "ViewComponent" }
+        { "component": "ViewComponent" },
+        { "component": "IconsProvider" }
       ]
     }
   }

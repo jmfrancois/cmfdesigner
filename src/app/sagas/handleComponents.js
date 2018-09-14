@@ -5,15 +5,9 @@ import { loadResource } from './resource';
 import getPath from './getPath';
 import { APPS_LOADED } from '../constants';
 
-function* loadComponents(action) {
-	let safePath;
-	if (!action) {
-		safePath = yield call(getPath);
-	} else {
-		safePath = action.path;
-	}
+function* loadComponents() {
 	yield call(loadResource, {
-		url: `/api/components?path=${safePath}`,
+		url: '/api/components',
 		id: 'components',
 	});
 }
@@ -34,12 +28,10 @@ function* onAddButtonClicked(action) {
 	}
 }
 function* onAddFormSubmit(action) {
-	const path = yield getPath();
-	if (!path) {
-		// debugger;
+	if (action.componentId === 'components') {
+		yield call(cmf.sagas.http.post, '/api/components', action.data);
+		yield call(loadComponents);
 	}
-	yield call(cmf.sagas.http.post, '/api/components', { $$path: path, ...action.data });
-	yield call(loadComponents);
 }
 
 function* onSelectComponent(action) {

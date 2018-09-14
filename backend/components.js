@@ -3,11 +3,10 @@ const yeoman = require('yeoman-environment');
 const rimraf = require('rimraf');
 const Adapter = require('./yoadapter');
 const pathLib = require('path');
-const getFolders = require('./fs').getFolders;
+const fs = require('./fs');
 
 function getComponents(req, res) {
-	console.log(req.query);
-	res.json({ components: getFolders(pathLib.join(req.query.path, 'src/app/components'))
+	res.json({ components: fs.getFolders(pathLib.join(fs.getCWD(req), 'src/app/components'))
 		.map(folder => ({ id: folder, name: folder }))
 	});
 }
@@ -23,15 +22,15 @@ function postComponent(req, res) {
     //     }
 	// );
 	//
-	const path = req.body.$$path;
-	const env = yeoman.createEnv([], {}, new Adapter(req, res));
+	const cwd = fs.getCWD(req);
+	const env = yeoman.createEnv([], { cwd }, new Adapter(req, res));
 	env.lookup(() => {
 		env.run('talend:react-component');
 	});
 }
 
 function deleteComponent(req, res) {
-	const path = pathLib.join(req.query.path, 'src/app/components', req.params.id);
+	const path = pathLib.join(fs.getCWD(req), 'src/app/components', req.params.id);
 	console.log('delete ', path);
 	rimraf(path, error => {
 		if (error) {

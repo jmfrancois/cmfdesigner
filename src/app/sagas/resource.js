@@ -8,20 +8,28 @@ function getCollection(id) {
 }
 
 export function* loadResource(resource) {
-	if (!cache[resource.id]) {
-		const collection = yield select(getCollection(resource.id));
-		if (!collection) {
-			const { data, response } = yield call(api.sagas.http[resource.method || 'get'], resource.url);
-			if (response.ok) {
-				yield put(api.actions.collections.addOrReplace(resource.id, data));
-			}
-			cache[resource.id] = true;
-		} else {
-			cache[resource.id] = true;
+	// if (!cache[resource.id]) {
+	const collection = yield select(getCollection(resource.id));
+	if (!collection) {
+		const { data, response } = yield call(api.sagas.http[resource.method || 'get'], resource.url);
+		if (response.ok) {
+			yield put(api.actions.collections.addOrReplace(resource.id, data));
 		}
+		cache[resource.id] = true;
+	} else {
+		cache[resource.id] = true;
 	}
+	// }
 }
 
 export function* loadResourceOnDidMount(action, resource) {
 	yield loadResource(resource);
+}
+
+export function* deleteResource(id) {
+	const collection = yield select(state => state.cmf.collections.get(id));
+	if (collection) {
+		delete cache[id];
+		yield put(api.actions.collections.remove(id));
+	}
 }

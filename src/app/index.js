@@ -4,12 +4,24 @@
  * and other style can override it
  */
 import '@talend/bootstrap-theme/src/theme/theme.scss';
-import cmf from '@talend/react-cmf';
-// import { registerAllContainers } from '@talend/react-containers/lib/register';
+import cmf, { cmfConnect } from '@talend/react-cmf';
+import * as talendComponents from '@talend/react-components';
 import actions from './actions';
-import components from './components';
+import appComponents from './components';
 import * as expressions from './expressions';
 import * as sagas from './sagas';
+
+const onlyComponents = Object.keys(talendComponents)
+	.filter(key => typeof talendComponents[key] === 'function')
+	.reduce((acc, key) => ({
+		...acc,
+		[key]: cmfConnect({})(talendComponents[key]),
+	}), {});
+
+const components = {
+	...onlyComponents,
+	...appComponents,
+};
 
 /**
  * This will register all containers in the CMF registry

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Immutable from 'immutable';
-import { cmfConnect } from '@talend/react-cmf';
+import { cmfConnect, Inject } from '@talend/react-cmf';
 
 class AppSwitcher extends React.Component {
 	static propTypes = {
@@ -21,7 +21,6 @@ class AppSwitcher extends React.Component {
 	onSubmit(event) {
 		event.preventDefault();
 		this.setState({ editMode: false });
-		this.props.setState({ path: this.state.path });
 		this.props.dispatch({
 			type: AppSwitcher.ACTION_TYPE_SET_CWD,
 			path: this.state.path,
@@ -43,7 +42,8 @@ class AppSwitcher extends React.Component {
 	}
 
 	render() {
-		if (!this.props.app || this.state.editMode) {
+		const cwd = this.props.app && this.props.app.get('path');
+		if (!cwd || this.state.editMode) {
 			return (
 				<form onSubmit={this.onSubmit}>
 					<h2>App</h2>
@@ -57,11 +57,17 @@ class AppSwitcher extends React.Component {
 		}
 		return (
 			<div>
-				<h2>App</h2>
-				<p>CWD: <strong>{this.props.app.get('path')}</strong></p>
-				<div className="btn-group">
-					<button type="button" className="btn btn-default" onClick={this.onEditBtn}>Edit</button>
-					<button type="button" className="btn btn-primary" onClick={this.onGenerateAppBtn}>Generate CMF Webapp Here</button>
+				<h2>Working directory</h2>
+				<strong>{cwd}</strong>
+				<div>
+					<div className="btn-group">
+						<button type="button" className="btn btn-default btn-xs" onClick={this.onEditBtn}>
+							<Inject component="Icon" name="talend-pencil" />
+						</button>
+						<button type="button" className="btn btn-primary btn-xs" onClick={this.onGenerateAppBtn}>
+							<Inject component="Icon" name="talend-plus" />
+						</button>
+					</div>
 				</div>
 			</div>
 		);
@@ -71,6 +77,4 @@ class AppSwitcher extends React.Component {
 AppSwitcher.ACTION_TYPE_ADD_APP = 'APP_SWITCHER_ADD_APP';
 AppSwitcher.ACTION_TYPE_SET_CWD = 'APP_SWITCHER_SET_CWD';
 
-export default cmfConnect({
-	defaultState: new Immutable.Map(),
-})(AppSwitcher);
+export default cmfConnect({})(AppSwitcher);

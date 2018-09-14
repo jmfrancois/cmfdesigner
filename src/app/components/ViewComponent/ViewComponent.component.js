@@ -14,15 +14,6 @@ function ViewComponent(props) {
 				Delete
 			</button>
 			<h1>{props.item.get('name')}</h1>
-			<ul>
-				<li>If used in router display routes where it s used</li>
-				<li>Link to existing settings</li>
-				<li>Link to other components that use it (global analysis)</li>
-				<li>Browse the code (cheap but nice for review project)</li>
-				<li>lint</li>
-				<li>dependencies used inside it</li>
-				<li>display tips or technics associated to this kind of components</li>
-			</ul>
 		</div>
 	);
 }

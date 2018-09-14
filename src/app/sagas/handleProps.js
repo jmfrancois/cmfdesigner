@@ -25,9 +25,9 @@ function* onAddButtonClicked(action) {
 	}
 }
 
-function* onSelectDirectory(action) {
+function* onSelectDirectory() {
 	yield call(loadResource, {
-		url: `/api/props?path=${action.path}`,
+		url: '/api/props',
 		id: 'props',
 	});
 }

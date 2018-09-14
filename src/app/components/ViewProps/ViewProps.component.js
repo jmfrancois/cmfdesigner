@@ -38,7 +38,7 @@ function ViewProps(props) {
 	const metadata = item.name.split('#');
 	return (
 		<div>
-			<button
+			{/* <button
 				className="btn btn-danger pull-right"
 				onClick={() => props.dispatch({
 					type: ViewProps.ACTION_TYPE_DELETE,
@@ -46,7 +46,7 @@ function ViewProps(props) {
 				})}
 			>
 				Delete
-			</button>
+			</button> */}
 			<h1>{item.name}</h1>
 			{metadata.length !== 2 && (
 				<div className="alert alert-warning">
