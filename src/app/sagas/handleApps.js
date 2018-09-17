@@ -26,18 +26,8 @@ function* onAddBtn() {
 function* onAddFormSubmit(action) {
 	if (action.componentId === 'app') {
 		yield call(cmf.sagas.http.post, '/api/apps', action.data);
+		yield call(initApps);
 	}
-}
-
-function* onSetCWD(action) {
-	console.log('put apps');
-	yield call(cmf.sagas.http.put, '/api/apps', { path: action.path });
-	console.log('delete components');
-	yield call(deleteResource, 'components');
-	console.log('delete props');
-	yield call(deleteResource, 'props');
-	console.log('initApps');
-	yield call(initApps);
 }
 
 // eslint-disable-next-line import/prefer-default-export
@@ -45,5 +35,4 @@ export function* handleApps() {
 	yield call(initApps);
 	yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);
 	yield takeEvery(components.AppSwitcher.ACTION_TYPE_ADD_APP, onAddBtn);
-	yield takeEvery(components.AppSwitcher.ACTION_TYPE_SET_CWD, onSetCWD);
 }

@@ -25,7 +25,7 @@ function* onAddButtonClicked(action) {
 	}
 }
 
-function* onSelectDirectory() {
+function* loadProps() {
 	yield call(loadResource, {
 		url: '/api/props',
 		id: 'props',
@@ -34,9 +34,7 @@ function* onSelectDirectory() {
 
 // eslint-disable-next-line import/prefer-default-export
 export function* handleProps() {
-	yield takeEvery(APPS_LOADED, onSelectDirectory);
-	yield takeEvery(components.AppSwitcher.ACTION_TYPE_SET_CWD, onSelectDirectory);
+	yield takeEvery(APPS_LOADED, loadProps);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_SELECT_ITEM, onSelectProps);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
-	// yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);
 }

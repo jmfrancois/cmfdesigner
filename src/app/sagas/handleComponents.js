@@ -51,6 +51,11 @@ function* onDeleteBtn(action) {
 		// debugger;
 	}
 	yield call(cmf.sagas.http.delete, `/api/components/${action.id}?path=${path}`);
+	yield call(loadComponents);
+	yield put({
+		type: 'EFFECT_DELETE_COMPONENT_NEXT_ROUTE',
+		cmf: { routerReplace: '/' },
+	});
 }
 
 // eslint-disable-next-line import/prefer-default-export
