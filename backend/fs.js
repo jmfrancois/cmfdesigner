@@ -1,6 +1,10 @@
 const fs = require('fs');
 const pathLib = require('path');
 
+function exists(path) {
+	return fs.existsSync(path);
+}
+
 function getCWD(req) {
 	return req.app.locals.apps && req.app.locals.apps.path;
 }
@@ -19,7 +23,7 @@ function readAllJSON(path) {
 			const settings = JSON.parse(fs.readFileSync(pathLib.join(path, name)));
 			if (settings.props) {
 				Object.keys(settings.props).forEach(key => {
-					result.push({ id: key, name: key, value: settings.props[key] });
+					result.push({ path: pathLib.join(path, name), filename: name, id: key, name: key, value: settings.props[key] });
 				});
 			}
 		}
@@ -28,6 +32,7 @@ function readAllJSON(path) {
 }
 
 module.exports = {
+	exists,
 	getCWD,
 	getFolders,
 	readAllJSON,

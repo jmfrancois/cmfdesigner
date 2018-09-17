@@ -48,6 +48,13 @@ function ViewProps(props) {
 				Delete
 			</button> */}
 			<h1>{item.name}</h1>
+			<a
+				href={`filename://${item.path}`}
+				onClick={event => {
+					event.preventDefault();
+					props.dispatch({ type: ViewProps.ACTION_TYPE_CLICK_OPEN, item });
+				}}
+			>Open {item.filename}</a>
 			{metadata.length !== 2 && (
 				<div className="alert alert-warning">
 					<p>You should use the following syntax in the props id:</p>
@@ -68,5 +75,5 @@ ViewProps.propTypes = {
 	...cmfConnect.propTypes,
 };
 ViewProps.displayName = 'ViewProps';
-
+ViewProps.ACTION_TYPE_CLICK_OPEN = 'USER_CLICK_OPEN_PROPS';
 export default cmfConnect({})(ViewProps);

@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/lib/effects';
-// import cmf from '@talend/react-cmf';
+import cmf from '@talend/react-cmf';
 import components from '../components';
 import { loadResource } from './resource';
 import { APPS_LOADED } from '../constants';
@@ -32,9 +32,14 @@ function* loadProps() {
 	});
 }
 
+function* openProps(action) {
+	yield call(cmf.sagas.http.post, '/api/props/open', action.item);
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export function* handleProps() {
 	yield takeEvery(APPS_LOADED, loadProps);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_SELECT_ITEM, onSelectProps);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
+	yield takeEvery(components.ViewProps.ACTION_TYPE_CLICK_OPEN, openProps);
 }
