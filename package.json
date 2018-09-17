@@ -31,6 +31,7 @@
     "@talend/scripts": "0.3.1"
   },
   "dependencies": {
+    "@babel/parser": "^7.0.0",
     "@talend/bootstrap-theme": "0.207.0",
     "@talend/icons": "0.207.0",
     "@talend/react-cmf": "0.207.0",
