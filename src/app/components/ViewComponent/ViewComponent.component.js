@@ -1,5 +1,6 @@
 import React from 'react';
 import { cmfConnect } from '@talend/react-cmf';
+import Immutable from 'immutable';
 
 function ViewComponent(props) {
 	return (
@@ -22,5 +23,8 @@ ViewComponent.propTypes = {
 	...cmfConnect.propTypes,
 };
 ViewComponent.ACTION_TYPE_DELETE_BTN = 'VIEW_COMPONENT_DELETE_BTN_CLICKED';
-
+ViewComponent.displayName = 'ViewComponent';
+ViewComponent.defaultProps = {
+	item: new Immutable.Map(),
+};
 export default cmfConnect({})(ViewComponent);

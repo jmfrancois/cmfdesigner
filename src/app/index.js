@@ -24,10 +24,6 @@ const components = {
 };
 
 /**
- * This will register all containers in the CMF registry
- */
-
-/**
  * Initialize CMF
  * This will:
  * - Register your components in the CMF registry

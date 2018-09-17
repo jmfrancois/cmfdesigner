@@ -1,4 +1,3 @@
-// const cmd = require('node-cmd');
 const yeoman = require('yeoman-environment');
 const rimraf = require('rimraf');
 const Adapter = require('./yoadapter');
@@ -12,19 +11,10 @@ function getComponents(req, res) {
 }
 
 function postComponent(req, res) {
-	// TODO: call yo talend:react-cmf
-	// TODO: update db
-	// cmd.get(
-    //     'pwd',
-    //     function onCommand(err, data, stderr){
-	// 		console.log('the current working dir is : ', data);
-	// 		res.json({ data });
-    //     }
-	// );
-	//
 	const cwd = fs.getCWD(req);
 	const env = yeoman.createEnv([], { cwd }, new Adapter(req, res));
 	env.lookup(() => {
+		console.log('yo talend:react-component');
 		env.run('talend:react-component');
 	});
 }

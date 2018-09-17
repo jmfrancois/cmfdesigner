@@ -15,12 +15,8 @@
         "jsonSchema": {
           "title": "Add component form",
           "type": "object",
-          "required": ["path", "name"],
+          "required": ["name"],
           "properties": {
-            "path": {
-              "type": "string",
-              "title": "Path"
-            },
             "name": {
               "type": "string",
               "title": "Name"
@@ -28,10 +24,6 @@
           }
         },
         "uiSchema": [
-          {
-            "key": "path",
-            "hint": "Folder which contains the webapp"
-          },
           {
             "key": "name"
           }

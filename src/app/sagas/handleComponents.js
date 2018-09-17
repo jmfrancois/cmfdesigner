@@ -28,7 +28,7 @@ function* onAddButtonClicked(action) {
 	}
 }
 function* onAddFormSubmit(action) {
-	if (action.componentId === 'components') {
+	if (action.componentId === 'component') {
 		yield call(cmf.sagas.http.post, '/api/components', action.data);
 		yield call(loadComponents);
 	}

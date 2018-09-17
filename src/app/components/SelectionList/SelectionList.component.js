@@ -87,6 +87,7 @@ SelectionList.propTypes = {
 SelectionList.defaultProps = {
 	items: [],
 };
+SelectionList.displayName = 'SelectionList';
 SelectionList.ACTION_TYPE_SELECT_ITEM = 'SelectionList#selectItem';
 SelectionList.ACTION_TYPE_ADD_ITEM = 'SelectionList#addItem';
 SelectionList.actions = actions;

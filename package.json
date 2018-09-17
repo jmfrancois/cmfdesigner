@@ -2,7 +2,10 @@
   "name": "cmf-designer",
   "version": "1.0.0",
   "description": "",
-  "main": "app/index.js",
+  "main": "backend/index.js",
+  "bin": {
+    "cmf-designer": "./bin/www"
+  },
   "scripts": {
     "start": "talend-scripts start",
     "prepublish": "talend-scripts build",
@@ -36,6 +39,7 @@
     "classnames": "^2.2.5",
     "enzyme": "^3.1.0",
     "express-session": "^1.15.6",
+    "generator-talend": "0.207.0",
     "i18next": "^9.0.0",
     "immutable": "^3.8.1",
     "invariant": "^2.2.2",
@@ -60,6 +64,6 @@
     "reselect": "^2.5.4",
     "rimraf": "^2.6.2",
     "uuid": "^3.0.1",
-    "yeoman-environment": "^2.3.3"
+    "yeoman-environment": "^1.6.6"
   }
 }

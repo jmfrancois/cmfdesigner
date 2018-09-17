@@ -1,7 +1,7 @@
 import Immutable from 'immutable';
 import components from '../components';
 
-export function getComponent({ context }) {
+export default function getComponent({ context }) {
 	const state = context.store.getState();
 	const id = components.SelectionList.getState(state, 'components').get('active');
 	const props = state.cmf.collections.getIn(['components', 'components']);

@@ -67,5 +67,6 @@ ViewProps.propTypes = {
 	name: PropTypes.string,
 	...cmfConnect.propTypes,
 };
+ViewProps.displayName = 'ViewProps';
 
 export default cmfConnect({})(ViewProps);

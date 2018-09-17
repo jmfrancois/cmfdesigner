@@ -2,7 +2,8 @@
   "props": {
     "AppSwitcher#default": {
       "saga": "handleApps",
-      "appExpression": "getApp"
+      "cwdExpression": "getCWD",
+      "isWebappExpression": "isWebapp"
     }
   }
 }
