@@ -8,7 +8,7 @@ It has to be installed on the dev session (FS access required)
 You should install it globally
 
 ```
-npm i -g cmf-designer
+npm i -g @talend/cmf-designer
 ```
 
 Then you can start it

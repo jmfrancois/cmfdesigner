@@ -1,7 +1,10 @@
 {
-  "name": "cmf-designer",
-  "version": "1.0.0",
+  "name": "@talend/cmf-designer",
+  "version": "0.0.2",
   "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "backend/index.js",
   "bin": {
     "cmf-designer": "./bin/www"
