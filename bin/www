@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+const app = require('../backend');
+const opn = require('opn');
+const port = process.env.PORT || 3000
+app.set('port', port);
+
+const server = app.listen(port, function() {
+  console.log('Express server listening on port ' + server.address().port);
+  opn(`http://localhost:${port}`);
+});
