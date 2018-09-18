@@ -7,7 +7,6 @@ const components = require('./components');
 const props = require('./props');
 /* eslint-disable no-console */
 
-
 console.log(`Current directory: ${process.cwd()}`);
 console.log(`Current dirname: ${__dirname}`);
 
@@ -16,7 +15,7 @@ app.locals.apps = {
 	path: process.cwd(),
 };
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../../dist')));
 apps.setup(app);
 components.setup(app);
 pages.setup(app);

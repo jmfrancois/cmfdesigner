@@ -1,4 +1,5 @@
 const log = require('yeoman-environment/lib/util/log');
+/* eslint-disable no-console */
 
 function Adapter(req, res) {
 	this.req = req;

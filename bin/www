@@ -1,10 +1,22 @@
 #!/usr/bin/env node
-const app = require('../backend');
 const opn = require('opn');
-const port = process.env.PORT || 3000
-app.set('port', port);
+const app = require('../src/backend');
+/* eslint-disable no-console */
 
-const server = app.listen(port, function() {
-  console.log('Express server listening on port ' + server.address().port);
-  opn(`http://localhost:${port}`);
+let port = process.env.PORT || 3030;
+
+function onListen() {
+	console.log(`Express server listening on port ${port}`);
+	opn(`http://localhost:${port}`);
+}
+
+const server = app.listen(port, onListen);
+server.on('error', event => {
+	if (event.code === 'EADDRINUSE') {
+		console.log(`Address in use (:${port}), retrying with ${port + 1}`);
+		setTimeout(() => {
+			server.close();
+			server.listen(port += 1);
+		}, 1000);
+	}
 });
