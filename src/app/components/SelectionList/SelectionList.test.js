@@ -6,7 +6,7 @@ import SelectionList from './SelectionList.component';
 describe('SelectionList', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<SelectionList />
+			<SelectionList.WrappedComponent />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

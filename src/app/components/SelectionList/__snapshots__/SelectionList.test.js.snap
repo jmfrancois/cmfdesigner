@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectionList should render 1`] = `
+<div>
+  <h2>
+    <button
+      className="btn btn-default btn-xs"
+      onClick={[Function]}
+    >
+      <Inject
+        component="Icon"
+        componentId="selection-list-opened"
+      />
+    </button>
+    <span />
+    <button
+      className="btn btn-primary btn-xs"
+      onClick={[Function]}
+    >
+      <Inject
+        component="Icon"
+        componentId="selection-list-add"
+      />
+    </button>
+  </h2>
+  <div
+    className="list-group"
+  >
+    
+  </div>
+</div>
+`;

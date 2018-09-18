@@ -6,7 +6,7 @@ import ViewProps from './ViewProps.component';
 describe('ViewProps', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<ViewProps />
+			<ViewProps.WrappedComponent />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

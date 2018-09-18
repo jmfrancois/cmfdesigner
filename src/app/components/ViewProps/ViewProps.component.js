@@ -71,7 +71,10 @@ function ViewProps(props) {
 }
 
 ViewProps.propTypes = {
-	name: PropTypes.string,
+	item: PropTypes.shape({
+		toJS: PropTypes.func,
+		get: PropTypes.func,
+	}),
 	...cmfConnect.propTypes,
 };
 ViewProps.displayName = 'ViewProps';

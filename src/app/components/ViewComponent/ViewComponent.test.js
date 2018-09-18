@@ -6,7 +6,7 @@ import ViewComponent from './ViewComponent.component';
 describe('ViewComponent', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<ViewComponent />
+			<ViewComponent.WrappedComponent />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

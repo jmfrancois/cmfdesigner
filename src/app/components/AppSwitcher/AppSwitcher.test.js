@@ -6,7 +6,7 @@ import AppSwitcher from './AppSwitcher.component';
 describe('AppSwitcher', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<AppSwitcher />
+			<AppSwitcher.WrappedComponent cwd="/Users/foo/github/test" />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});
