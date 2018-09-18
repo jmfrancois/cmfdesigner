@@ -1,5 +1,6 @@
 const fs = require('fs');
 const pathLib = require('path');
+/* eslint-disable no-console */
 
 function exists(path) {
 	return fs.existsSync(path);
@@ -23,7 +24,13 @@ function readAllJSON(path) {
 			const settings = JSON.parse(fs.readFileSync(pathLib.join(path, name)));
 			if (settings.props) {
 				Object.keys(settings.props).forEach(key => {
-					result.push({ path: pathLib.join(path, name), filename: name, id: key, name: key, value: settings.props[key] });
+					result.push({
+						path: pathLib.join(path, name),
+						filename: name,
+						id: key,
+						name: key,
+						value: settings.props[key],
+					});
 				});
 			}
 		}
