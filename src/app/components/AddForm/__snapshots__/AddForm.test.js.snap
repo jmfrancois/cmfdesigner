@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container AddForm should render 1`] = `
+Object {
+  "children": Array [
+    <h1>
+      Add Form
+</h1>,
+    <p />,
+    <FormSwitcher
+      onSubmit={[Function]}
+/>,
+  ],
+}
+`;
