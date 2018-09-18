@@ -6,6 +6,7 @@
 import '@talend/bootstrap-theme/src/theme/theme.scss';
 import cmf, { cmfConnect } from '@talend/react-cmf';
 import * as talendComponents from '@talend/react-components';
+import { ObjectViewer } from '@talend/react-containers';
 import actions from './actions';
 import appComponents from './components';
 import * as expressions from './expressions';
@@ -21,6 +22,7 @@ const onlyComponents = Object.keys(talendComponents)
 const components = {
 	...onlyComponents,
 	...appComponents,
+	ObjectViewer,
 };
 
 /**

@@ -1,79 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cmfConnect } from '@talend/react-cmf';
-
-function renderValue(value) {
-	if (Array.isArray(value)) {
-		if (value.length === 0) {
-			return '[]';
-		}
-		return (
-			<ul>
-				{value.map((v, i) => <li key={i}>{i}: {renderValue(v)}</li>)}
-			</ul>
-		);
-	} if (typeof value === 'object') {
-		return (
-			<ul>
-				{Object.keys(value).map((v, i) => <li key={i}>{v}: {renderValue(value[v])}</li>)}
-			</ul>
-		);
-	} if (typeof value === 'string') {
-		return value;
-	} if (typeof value === 'boolean') {
-		return value ? 'true' : 'false';
-	}
-	return value;
-}
+import { cmfConnect, Inject } from '@talend/react-cmf';
 
 
 function ViewProps(props) {
 	if (!props.item) {
 		return null;
 	}
-	const item = props.item.toJS();
-	if (item.value === undefined) {
+	if (props.item.value === undefined) {
 		return null;
 	}
-	const metadata = item.name.split('#');
+	const metadata = props.item.name.split('#');
 	return (
 		<div>
-			{/* <button
-				className="btn btn-danger pull-right"
-				onClick={() => props.dispatch({
-					type: ViewProps.ACTION_TYPE_DELETE,
-					id: item.get('id'),
-				})}
-			>
-				Delete
-			</button> */}
-			<h1>{item.name}</h1>
+			<h1>{props.item.name}</h1>
 			<a
-				href={`filename://${item.path}`}
+				href={`filename://${props.item.path}`}
 				onClick={event => {
 					event.preventDefault();
-					props.dispatch({ type: ViewProps.ACTION_TYPE_CLICK_OPEN, item });
+					props.dispatch({ type: ViewProps.ACTION_TYPE_CLICK_OPEN, item: props.item });
 				}}
-			>Open {item.filename}</a>
+			>Open {props.item.filename}</a>
 			{metadata.length !== 2 && (
 				<div className="alert alert-warning">
 					<p>You should use the following syntax in the props id:</p>
 					<pre>ComponentName#componentId</pre>
 				</div>
 			)}
-			<ul>
-				{Object.keys(item.value).map((key, index) => (
-					<li key={index}>{key}: {renderValue(item.value[key])}</li>
-				))}
-			</ul>
+			<Inject component="ObjectViewer" componentId="view-props" data={props.item} />
 		</div>
 	);
 }
 
 ViewProps.propTypes = {
 	item: PropTypes.shape({
-		toJS: PropTypes.func,
-		get: PropTypes.func,
+		name: PropTypes.string,
+		value: PropTypes.object,
+		filename: PropTypes.string,
+		path: PropTypes.string,
 	}),
 	...cmfConnect.propTypes,
 };
