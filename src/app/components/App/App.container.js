@@ -4,11 +4,6 @@ import { cmfConnect } from '@talend/react-cmf';
 import inject from '../../inject';
 
 function App(props) {
-	/**
-	 * Instanciate all global components here
-	 * Ex : we register @talend/react-components <IconsProvider />
-	 * so that all icons are available in each view
-	 */
 	return (
 		<div className="container">
 			<div className="row">
