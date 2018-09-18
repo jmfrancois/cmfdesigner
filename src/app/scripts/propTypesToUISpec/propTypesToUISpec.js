@@ -1,7 +1,8 @@
 const fs = require('fs');
 const recast = require('recast');
 const parser = require("recast/parsers/babylon");
-
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-console */
 
 function getPropTypesId(ast) {
 	console.log('getPropTypesId');
@@ -29,7 +30,6 @@ function getAssigment(ast) {
 		.filter(line => line.expression.left)
 		.filter(line => line.expression.left.property.name === 'propTypes')
 		.reduce((acc, current) => {
-			console.log({ acc, current });
 			return {
 				...acc,
 				[current.expression.left.object.name]: current.expression.right,  // MyFunction
@@ -37,8 +37,23 @@ function getAssigment(ast) {
 		}, {});
 }
 
-const AST_TO_JSONSCHEMA_TYPE = {
+const PROP_TYPE_TO_JSONSCHEMA_TYPE = {
 	string: 'string',
+	number: 'number',
+	bool: 'boolean',
+	array: 'array',
+	object: 'object',
+	oneOf: 'string',
+	arrayOf: 'array',
+	objectOf: 'object',
+	shape: 'object',
+	// not supported
+	func: undefined,
+	instanceOf: undefined,
+	symbol: undefined,
+	element: undefined,
+	node: undefined,
+	oneOfType: undefined,
 };
 
 function getJSONSchemaType(ast, propTypeId) {
@@ -46,34 +61,39 @@ function getJSONSchemaType(ast, propTypeId) {
 	if (
 		ast.value.type === 'MemberExpression' &&
 		ast.value.object.name === propTypeId &&
-		AST_TO_JSONSCHEMA_TYPE[ast.value.property.name]
+		PROP_TYPE_TO_JSONSCHEMA_TYPE[ast.value.property.name]
 	) {
-		return AST_TO_JSONSCHEMA_TYPE[ast.value.property.name];
+		return PROP_TYPE_TO_JSONSCHEMA_TYPE[ast.value.property.name];
 	}
-	console.log('propTypes type not found:', ast.value.property.name);
+	if (ast.value.type === 'MemberExpression') {
+		console.warn('propTypes type not found:', ast.value.property.name);
+	}
 	return 'string';
 }
 
-function astToUISpec(ast, propTypeId) {
-	const defaultUISpec = {
-		jsonSchema: {
-			type: 'object',
+function astToUISpec(propTypesExpression, propTypeId) {
+	return Object.keys(propTypesExpression).reduce((acc, componentName) => {
+		acc[componentName] = propTypesExpression[componentName].properties.reduce((buff, property) => {
+			if (property.type === 'ObjectProperty') {
+				const key = property.key.name;
+				const type = getJSONSchemaType(property, propTypeId);
+				if (type) {
+					buff.jsonSchema.properties[key] = { type };
+					buff.uiSchema.push({ key });
+				}
+			}
+			return buff;
+		}, {
+			jsonSchema: {
+				type: 'object',
+				properties: {},
+				required: [],
+			},
+			uiSchema: [],
 			properties: {},
-			required: [],
-		},
-		uiSchema: [],
-		properties: {},
-	};
-	ast.properties.reduce((acc, current) => {
-		if (current.type === 'Property') {
-			acc.jsonSchema.properties[current.key.name] = {
-				type: getJSONSchemaType(current),
-			};
-			acc.uiSpec.push({
-				key: current.key.name,
-			});
-		}
-	}, defaultUISpec);
+		});
+		return acc;
+	}, {});
 }
 
 /**
@@ -82,20 +102,14 @@ function astToUISpec(ast, propTypeId) {
  * If propTypes found it will generate the UISpec of it
  */
 
-function parse(options) {
+module.exports = function parse(options) {
 	console.log('read file', options.path);
 	const code = fs.readFileSync(options.path);
-	console.log('parse it')
+	console.log('parse it');
 	const ast = recast.parse(code, { parser });
 	const propTypeId = getPropTypesId(ast);
 	console.log('propTypeId', propTypeId);
 	const propTypesExpression = getAssigment(ast, propTypeId);
 	const uiSpec = astToUISpec(propTypesExpression, propTypeId);
-	console.log(uiSpec);
-}
-
-const cwd = process.cwd();
-console.log(cwd, __dirname);
-if (__dirname === cwd) {
-	parse({ path: '../src/app/components/ViewProps/ViewProps.component.js' });
+	console.log(JSON.stringify(uiSpec, null, 2));
 }
