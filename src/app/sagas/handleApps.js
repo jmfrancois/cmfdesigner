@@ -1,8 +1,7 @@
 import { call, put, select, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
 import components from '../components';
-import { loadResource, deleteResource } from './resource';
-// import { LOCAL_STORAGE_KEY_APPS } from '../constants';
+import { loadResource } from './resource';
 import { APPS_LOADED } from '../constants';
 
 function* initApps() {

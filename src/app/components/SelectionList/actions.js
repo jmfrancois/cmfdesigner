@@ -1,4 +1,4 @@
-export function onClickSelectionListItem(event, data) {
+function onClickSelectionListItem(event, data) {
 	if (event.persist) {
 		event.persist();
 	}
@@ -9,3 +9,6 @@ export function onClickSelectionListItem(event, data) {
 	};
 }
 
+export default {
+	onClickSelectionListItem,
+};

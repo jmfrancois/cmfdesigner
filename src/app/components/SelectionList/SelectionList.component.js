@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { cmfConnect, Inject } from '@talend/react-cmf';
 import Immutable from 'immutable';
-import * as actions from './actions';
 
 function getClassName(item, activeId) {
 	return classNames('list-group-item', {
@@ -90,7 +89,6 @@ SelectionList.defaultProps = {
 SelectionList.displayName = 'SelectionList';
 SelectionList.ACTION_TYPE_SELECT_ITEM = 'SelectionList#selectItem';
 SelectionList.ACTION_TYPE_ADD_ITEM = 'SelectionList#addItem';
-SelectionList.actions = actions;
 
 export default cmfConnect({
 	defaultState: new Immutable.Map(),

@@ -3,13 +3,7 @@ import omit from 'lodash/omit';
 import { cmfConnect } from '@talend/react-cmf';
 import Form from '@talend/react-forms';
 
-
 class AddForm extends React.Component {
-	static displayName = 'AddForm';
-	static propTypes = {
-		...cmfConnect.propTypes,
-	};
-
 	constructor(props) {
 		super(props);
 		this.onSubmit = this.onSubmit.bind(this);
@@ -36,4 +30,9 @@ class AddForm extends React.Component {
 }
 
 AddForm.ACTION_TYPE_SUBMIT = 'ADD_FORM_SUBMIT';
+AddForm.displayName = 'AddForm';
+AddForm.propTypes = {
+	...cmfConnect.propTypes,
+};
+
 export default cmfConnect({})(AddForm);
