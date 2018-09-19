@@ -27,9 +27,11 @@
   "author": "Talend Frontend <frontend@talend.com>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@talend/scripts": "0.3.1"
+    "@talend/scripts": "0.3.1",
+    "jest-in-case": "^1.0.2"
   },
   "dependencies": {
+    "@babel/parser": "^7.0.0",
     "@talend/bootstrap-theme": "0.207.0",
     "@talend/icons": "0.207.0",
     "@talend/react-cmf": "0.207.0",
