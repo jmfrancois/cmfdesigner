@@ -15,8 +15,7 @@ class AppSwitcher extends React.Component {
 	}
 
 	render() {
-		const cwd = this.props.cwd;
-		if (!cwd) {
+		if (!this.props.cwd) {
 			return (
 				<div className="alert alert-danger">
 					<p>Bad setup you don t have a working directory from the backend</p>
@@ -28,7 +27,7 @@ class AppSwitcher extends React.Component {
 				<h2>Working directory</h2>
 				<strong>{this.props.cwd}</strong>
 				<div>
-					{!this.props.isWebapp && (
+					{this.props.isWebapp ? null : (
 						<button type="button" className="btn btn-primary" onClick={this.onGenerateAppBtn}>
 							<Inject component="Icon" name="talend-plus" />
 							Generate CMF Webapp

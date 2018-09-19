@@ -6,7 +6,7 @@ const fs = require('./fs');
 /* eslint-disable no-console */
 
 function getComponents(req, res) {
-	res.json({ components: fs.getFolders(pathLib.join(fs.getCWD(req), 'src/app/components'))
+	res.json({ data: fs.getFolders(pathLib.join(fs.getCWD(req), 'src/app/components'))
 		.map(folder => ({ id: folder, name: folder })),
 	});
 }

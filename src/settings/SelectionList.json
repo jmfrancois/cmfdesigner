@@ -1,26 +1,14 @@
 {
   "props": {
-    "SelectionList#apps": {
-      "saga": "handleApps",
-      "title": "Apps",
-      "itemsExpression": "getApps",
-      "onClickActionCreator": "onClickSelectionListItem"
-    },
     "SelectionList#components": {
       "saga": "handleComponents",
       "title": "Components",
-      "itemsExpression": {
-        "id": "cmf.collections.get",
-        "args": ["components.components", []]
-      }
+      "itemsExpression": "getComponents"
     },
     "SelectionList#props": {
       "saga": "handleProps",
       "title": "Props",
-      "itemsExpression": {
-        "id": "cmf.collections.get",
-        "args": ["props.data", []]
-      }
+      "itemsExpression": "getProps"
     }
   }
 }

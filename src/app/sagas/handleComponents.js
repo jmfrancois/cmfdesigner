@@ -18,7 +18,6 @@ function* onSelectDirectory(action) {
 
 function* onAddButtonClicked(action) {
 	if (action.componentId === 'components') {
-		// load components
 		yield put({
 			type: 'ADD_COMPONENT_ROUTE_EFFECT',
 			cmf: {
@@ -47,9 +46,6 @@ function* onSelectComponent(action) {
 
 function* onDeleteBtn(action) {
 	const path = yield getPath();
-	if (!path) {
-		// debugger;
-	}
 	yield call(cmf.sagas.http.delete, `/api/components/${action.id}?path=${path}`);
 	yield call(loadComponents);
 	yield put({
@@ -60,8 +56,8 @@ function* onDeleteBtn(action) {
 
 // eslint-disable-next-line import/prefer-default-export
 export function* handleComponents() {
-	yield takeEvery(components.AppSwitcher.ACTION_TYPE_SET_CWD, onSelectDirectory);
 	yield takeEvery(APPS_LOADED, loadComponents);
+	yield takeEvery(components.AppSwitcher.ACTION_TYPE_SET_CWD, onSelectDirectory);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_SELECT_ITEM, onSelectComponent);
 	yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);
