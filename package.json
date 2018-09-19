@@ -5,7 +5,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "backend/index.js",
   "bin": {
     "cmf-designer": "./bin/www"
   },
