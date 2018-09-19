@@ -2,6 +2,7 @@ import React from 'react';
 import omit from 'lodash/omit';
 import { cmfConnect } from '@talend/react-cmf';
 import Form from '@talend/react-forms';
+import theme from './AddForm.scss';
 
 class AddForm extends React.Component {
 	constructor(props) {
@@ -20,7 +21,7 @@ class AddForm extends React.Component {
 	render() {
 		const props = Object.assign({}, omit(this.props, cmfConnect.INJECTED_PROPS));
 		return (
-			<div>
+			<div className={theme.container}>
 				<h1>{props.title || 'Add Form'}</h1>
 				<p>{props.description}</p>
 				<Form {...props} onSubmit={this.onSubmit} />

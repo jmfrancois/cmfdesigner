@@ -7,6 +7,8 @@ import '@talend/bootstrap-theme/src/theme/theme.scss';
 import cmf, { cmfConnect } from '@talend/react-cmf';
 import * as talendComponents from '@talend/react-components';
 import { ObjectViewer } from '@talend/react-containers';
+
+import './index.scss';
 import actions from './actions';
 import appComponents from './components';
 import * as expressions from './expressions';
@@ -38,6 +40,7 @@ cmf.bootstrap({
 	components,
 	expressions,
 	sagas,
+	saga: sagas.default,
 	settingsURL: '/settings.json',
 	actionCreators: actions,
 });

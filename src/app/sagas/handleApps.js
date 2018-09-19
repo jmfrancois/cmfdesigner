@@ -33,5 +33,5 @@ function* onAddFormSubmit(action) {
 export function* handleApps() {
 	yield call(initApps);
 	yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);
-	yield takeEvery(components.AppSwitcher.ACTION_TYPE_ADD_APP, onAddBtn);
+	yield takeEvery(components.WorkingDirectory.ACTION_TYPE_ADD_APP, onAddBtn);
 }

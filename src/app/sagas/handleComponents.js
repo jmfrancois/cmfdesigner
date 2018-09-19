@@ -12,10 +12,6 @@ function* loadComponents() {
 	});
 }
 
-function* onSelectDirectory(action) {
-	yield call(loadComponents, action);
-}
-
 function* onAddButtonClicked(action) {
 	if (action.componentId === 'components') {
 		// load components
@@ -60,7 +56,6 @@ function* onDeleteBtn(action) {
 
 // eslint-disable-next-line import/prefer-default-export
 export function* handleComponents() {
-	yield takeEvery(components.AppSwitcher.ACTION_TYPE_SET_CWD, onSelectDirectory);
 	yield takeEvery(APPS_LOADED, loadComponents);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_SELECT_ITEM, onSelectComponent);

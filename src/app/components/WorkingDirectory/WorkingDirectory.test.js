@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import AppSwitcher from './AppSwitcher.component';
+import WorkingDirectory from './WorkingDirectory.component';
 
-describe('AppSwitcher', () => {
+describe('WorkingDirectory', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<AppSwitcher.WrappedComponent cwd="/Users/foo/github/test" />
+			<WorkingDirectory />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

@@ -1,7 +1,20 @@
 {
   "props": {
-    "Layout#apps": {
-      "mode": "OneColumn"
+    "Layout#default": {
+      "mode": "TwoColumns",
+      "header": "HeaderBar",
+      "one": [
+        { "component": "SelectionList", "componentId": "components" },
+        { "component": "SelectionList", "componentId": "props" }
+      ],
+      "content": [
+        { "component": "WorkingDirectory" },
+        { "component": "AddForm", "componentId": "app" },
+        { "component": "AddForm", "componentId": "component" },
+        { "component": "ViewProps" },
+        { "component": "ViewComponent" },
+        { "component": "IconsProvider" }
+      ]
     }
   }
 }

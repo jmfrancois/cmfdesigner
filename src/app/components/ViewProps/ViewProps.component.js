@@ -27,7 +27,7 @@ function ViewProps(props) {
 					<pre>ComponentName#componentId</pre>
 				</div>
 			)}
-			<Inject component="ObjectViewer" componentId="view-props" data={props.item} />
+			<Inject component="ObjectViewer" componentId="view-props" id="view-props" data={props.item} />
 		</div>
 	);
 }

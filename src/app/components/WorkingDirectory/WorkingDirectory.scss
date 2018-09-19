@@ -1,0 +1,22 @@
+.container {
+    // display: flex;
+    :global(.alert) {
+        margin: auto;
+        width: 50%;
+        text-align: center;
+    }
+}
+
+.title {
+    display: inline-block;
+    font-size: medium;
+    margin: $padding-smaller $padding-small;
+    padding: 0;
+    &:after {
+        content: ':'
+    }
+}
+.cwd {
+    margin: $padding-smaller 0;
+    padding: 0;
+}

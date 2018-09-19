@@ -7,6 +7,9 @@
       },
       "brand": {
         "label": "CMF Designer"
+      },
+      "info": {
+        "label": "/Users/jmfrancois/github/talend/cmf-generator/cmf-designer"
       }
     }
   }

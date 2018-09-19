@@ -1,6 +1,6 @@
 {
   "props": {
-    "AppSwitcher#default": {
+    "WorkingDirectory#default": {
       "cwdExpression": "getCWD",
       "isWebappExpression": "isWebapp"
     }

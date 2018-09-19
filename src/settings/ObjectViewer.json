@@ -1,0 +1,9 @@
+{
+  "props": {
+    "ObjectViewer#view-props": {
+      "initialState": {
+        "opened": ["$"]
+      }
+    }
+  }
+}

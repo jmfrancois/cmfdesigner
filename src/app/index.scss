@@ -1,0 +1,9 @@
+/* override SidePanel style to let have multiple items in left */
+:global(.tc-layout-two-columns-left) {
+    margin-right: $padding-large;
+	overflow-y: scroll;
+	padding: 10px;
+    & > * {
+        height: initial !important;
+    }
+}
