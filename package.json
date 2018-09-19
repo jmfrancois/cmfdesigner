@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "talend-scripts start",
-    "prepublish": "talend-scripts build",
+    "prepublish": "cmf-settings && talend-scripts build",
     "lint:es": "talend-scripts lint:es",
     "test": "talend-scripts test",
     "test:watch": "talend-scripts test --watch",
