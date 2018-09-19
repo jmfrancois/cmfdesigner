@@ -1,0 +1,15 @@
+.header {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: $padding-normal 0;
+
+	h2 {
+		margin: 0;
+	}
+
+	.add {
+		position: absolute;
+		right: 0;
+	}
+}

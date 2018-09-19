@@ -4,14 +4,9 @@ import classNames from 'classnames';
 import { cmfConnect, Inject } from '@talend/react-cmf';
 import Immutable from 'immutable';
 
-function getClassName(item, activeId) {
-	return classNames('list-group-item', {
-		active: activeId === item.get('id'),
-	});
-}
+import theme from './SelectionList.scss';
 
 class SelectionList extends React.Component {
-
 	constructor(props) {
 		super(props);
 		this.state = { opened: true };
@@ -42,28 +37,27 @@ class SelectionList extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<h2>
-					<button
-						className="btn btn-default btn-xs"
-						onClick={this.onClickToggle}
-					>
-						<Inject component="Icon" componentId={this.state.opened ? 'selection-list-opened' : 'selection-list-closed'} />
+			<React.Fragment>
+				<div className={theme.header}>
+					<button className="btn btn-link" onClick={this.onClickToggle}>
+						<Inject
+							component="Icon"
+							componentId={this.state.opened ? 'selection-list-opened' : 'selection-list-closed'}
+						/>
 					</button>
-					<span>{this.props.title}</span>
-					<button
-						className="btn btn-primary btn-xs"
-						onClick={this.onAddClick}
-					>
+					<h2>{this.props.title}</h2>
+					<button className={classNames('btn btn-primary', theme.add)} onClick={this.onAddClick}>
 						<Inject component="Icon" componentId="selection-list-add" />
 					</button>
-				</h2>
+				</div>
 				{this.state.opened && (
 					<div className="list-group">
 						{this.props.items.map((item, index) => (
 							<button
 								key={index}
-								className={getClassName(item, this.props.state.get('active'))}
+								className={classNames('list-group-item', {
+									active: this.props.state.get('active') === item.get('id'),
+								})}
 								onClick={event => this.onClick(event, item)}
 							>
 								{item.get('name')}
@@ -71,7 +65,7 @@ class SelectionList extends React.Component {
 						))}
 					</div>
 				)}
-			</div>
+			</React.Fragment>
 		);
 	}
 }
