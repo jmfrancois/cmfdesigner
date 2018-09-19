@@ -6,7 +6,7 @@ import WorkingDirectory from './WorkingDirectory.component';
 describe('WorkingDirectory', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<WorkingDirectory />
+			<WorkingDirectory.WrappedComponent />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

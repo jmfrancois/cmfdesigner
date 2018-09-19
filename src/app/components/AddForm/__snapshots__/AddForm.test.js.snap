@@ -11,5 +11,6 @@ Object {
       onSubmit={[Function]}
 />,
   ],
+  "className": "theme-container",
 }
 `;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WorkingDirectory should render 1`] = `
+<div
+  className="alert alert-danger"
+>
+  <p>
+    Bad setup you don t have a working directory from the backend
+  </p>
+</div>
+`;
