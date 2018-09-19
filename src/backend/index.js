@@ -5,6 +5,9 @@ const apps = require('./apps');
 const pages = require('./pages');
 const components = require('./components');
 const props = require('./props');
+const update = require('./update');
+
+update.warnIfNotLast();
 /* eslint-disable no-console */
 
 console.log(`Current directory: ${process.cwd()}`);
@@ -20,5 +23,6 @@ apps.setup(app);
 components.setup(app);
 pages.setup(app);
 props.setup(app);
+update.setup(app);
 
 module.exports = app;
