@@ -14,7 +14,7 @@ function ViewComponent(props) {
 			>
 				Delete
 			</button>
-			<h1>{props.item.name}</h1>
+			<h1>Component: {props.item.name}</h1>
 			<Inject component="Files" componentId="component" />
 		</div>
 	);

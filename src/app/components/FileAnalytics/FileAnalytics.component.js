@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PanelDependencies from '../PanelDependencies';
+import PanelExports from '../PanelExports';
+import theme from './FileAnalytics.scss';
 
 function getPath(path, cwd) {
 	if (path && cwd) {
@@ -10,12 +13,13 @@ function getPath(path, cwd) {
 
 function FileAnalytics(props) {
 	return (
-		<li key={props.path}>
-			{getPath(props.path, props.cwd)}
-			<ul>
+		<div>
+			<h2 className={theme.title}>{getPath(props.path, props.cwd)}</h2>
+			<div className={theme.content}>
+				<PanelDependencies dependencies={props.dependencies} />
 				{props.components.map((component, index) => (
-					<li key={index}>
-						{component.name}
+					<div>
+						<h3 key={index}>Component: {component.name}</h3>
 						<ul>
 							<li>Type: {component.type}</li>
 							{component.propTypes && <li>has PropTypes</li>}
@@ -33,10 +37,11 @@ function FileAnalytics(props) {
 								<p>No PropTypes: It's always better to add propTypes</p>
 							</div>
 						)}
-					</li>
+					</div>
 				))}
-			</ul>
-		</li>
+				<PanelExports dependencies={props.dependencies} />
+			</div>
+		</div>
 	);
 }
 
@@ -44,9 +49,11 @@ FileAnalytics.propTypes = {
 	path: PropTypes.string,
 	cwd: PropTypes.string,
 	components: PropTypes.arrayOf(PropTypes.object),
+	dependencies: PropTypes.arrayOf(PropTypes.object),
 };
 FileAnalytics.defaultProps = {
 	components: [],
+	dependencies: [],
 };
 
 export default FileAnalytics;

@@ -7,9 +7,7 @@ function Files(props) {
 	return (
 		<div>
 			<h2>{props.title}</h2>
-			<ul>
-				{props.files.map(file => <FileAnalytics {...file} key={file.path} cwd={props.cwd} />)}
-			</ul>
+			{props.files.map(file => <FileAnalytics {...file} key={file.path} cwd={props.cwd} />)}
 		</div>
 	);
 }

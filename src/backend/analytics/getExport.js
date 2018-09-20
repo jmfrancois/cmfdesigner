@@ -41,12 +41,12 @@ module.exports = function getExport(ast) {
 	const data = {
 		functions: ast.program.body.filter(line => line.type === 'FunctionDeclaration').map(fn => fn.id.name),
 		classes: ast.program.body.filter(line => line.type === 'ClassDeclaration').map(fn => fn.id.name),
-		vars: ast.program.body.filter(line => line.type === 'VariableDeclaration').reduce((acc, current) => {
-			return acc.concat(current.declarations.map(declaration => declaration.id.name));
-		}, []),
-		imports: ast.program.body.filter(line => line.type === 'ImportDeclaration').reduce((acc, current) => {
-			return acc.concat(current.specifiers.map(specifier => specifier.local.name));
-		}, []),
+		vars: ast.program.body.filter(line => line.type === 'VariableDeclaration').reduce(
+			(acc, current) => acc.concat(current.declarations.map(declaration => declaration.id.name)), []
+		),
+		imports: ast.program.body.filter(line => line.type === 'ImportDeclaration').reduce(
+			(acc, current) => acc.concat(current.specifiers.map(specifier => specifier.local.name)), []
+		),
 	};
 
 	const defaultExport = ast.program.body.filter(line => line.type === 'ExportDefaultDeclaration');

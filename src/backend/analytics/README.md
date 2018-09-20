@@ -1,38 +1,27 @@
-# Analytics scripts
+# Analytics
 
-The goal is to analyse the FS from a path to find the following informations:
+The goal is to analyse the FS from a path to find informations.
 
-* current component exposed
-* is cmfConnect
-* is connect
-* is es6
-* is arrow funct
 
 ```javascript
 [
     {
-        id: undefined,  // ok for default export
-        type: 'index',
         path: 'src/app/component/MyComponent/index.js',
-        withPropTypes: false,
-        export: 'default'
-        dependencies: []
-        localDependencies: ['src/app/component/MyComponent.connect.js']
+        type: 'index',
+        export: [{ default: true, id: 'MyComponent', type: 'import' }]
+        dependencies: [ './MyComponent.connect.js']
     },
     {
-        id: undefined,  // ok for default export
-        type: 'cmfConnect',
         path: 'src/app/component/MyComponent/MyComponent.connect.js'
+        type: 'cmfConnect',
         withPropTypes: false,
         export: 'default'
         dependencies: ['@talend/react-cmf']
-        localDependencies: ['src/app/component/MyComponent.component.js']
     },
     {
-        id: 'MyComponent',
+        path: 'src/app/component/MyComponent/MyComponent.component.js'
         type: 'function',
         withPropTypes: true,
-        path: 'src/app/component/MyComponent/MyComponent.component.js'
         export: 'default',
         dependencies: ['React', 'prop-types'],
     },

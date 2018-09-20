@@ -72,7 +72,7 @@ function findFunction(ast) {
 	return components;
 }
 
-function findArrow(ast) {
+function findArrow() {
 	const components = [];
 	// const vars = ast.program.body.filter(line => line.type === 'FunctionDeclaration');
 	return components;

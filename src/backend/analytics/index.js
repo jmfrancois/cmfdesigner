@@ -13,7 +13,7 @@ function getInfo(filePath) {
 	return {
 		path: filePath,
 		export: getExport(parsed.ast),
-		...getDependencies(parsed.ast),
+		...getDependencies(parsed.ast, filePath),
 		components: getComponents(parsed.ast),
 	};
 }

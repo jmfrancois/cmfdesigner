@@ -3,8 +3,5 @@
 exports[`Files should render 1`] = `
 <div>
   <h2 />
-  <ul>
-    
-  </ul>
 </div>
 `;
