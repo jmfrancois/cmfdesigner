@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const analytics = require('./analytics');
 const apps = require('./apps');
 const pages = require('./pages');
 const components = require('./components');
@@ -19,6 +20,7 @@ app.locals.apps = {
 };
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../dist')));
+analytics.setup(app);
 apps.setup(app);
 components.setup(app);
 pages.setup(app);

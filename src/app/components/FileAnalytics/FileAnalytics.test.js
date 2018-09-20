@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import WorkingDirectory from './WorkingDirectory.component';
+import FileAnalytics from './FileAnalytics.component';
 
-describe('WorkingDirectory', () => {
+describe('FileAnalytics', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<WorkingDirectory.WrappedComponent />
+			<FileAnalytics />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

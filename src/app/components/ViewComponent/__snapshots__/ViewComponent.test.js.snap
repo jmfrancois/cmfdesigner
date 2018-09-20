@@ -9,5 +9,9 @@ exports[`ViewComponent should render 1`] = `
     Delete
   </button>
   <h1 />
+  <Inject
+    component="Files"
+    componentId="component"
+  />
 </div>
 `;

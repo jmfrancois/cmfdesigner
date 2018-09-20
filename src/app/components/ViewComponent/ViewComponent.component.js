@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cmfConnect } from '@talend/react-cmf';
+import { Inject, cmfConnect } from '@talend/react-cmf';
 
 function ViewComponent(props) {
 	return (
@@ -15,6 +15,7 @@ function ViewComponent(props) {
 				Delete
 			</button>
 			<h1>{props.item.name}</h1>
+			<Inject component="Files" componentId="component" />
 		</div>
 	);
 }

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileAnalytics should render 1`] = `
+<li>
+  <ul>
+    
+  </ul>
+</li>
+`;
