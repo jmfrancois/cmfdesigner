@@ -2,20 +2,23 @@
 
 exports[`SelectionList should render 1`] = `
 <div>
-  <h2>
-    <button
-      className="btn btn-default btn-xs"
+  <h2
+    className="theme-title"
+  >
+    <a
+      href="#open"
       onClick={[Function]}
     >
       <Inject
         component="Icon"
         componentId="selection-list-opened"
       />
-    </button>
-    <span />
+      <span />
+    </a>
     <button
       className="btn btn-primary btn-xs"
       onClick={[Function]}
+      title="Add undefined"
     >
       <Inject
         component="Icon"
