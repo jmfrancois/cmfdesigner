@@ -51,4 +51,6 @@ PanelDependencies.propTypes = {
 PanelDependencies.defaultProps = {
 	dependencies: [],
 };
+PanelDependencies.displayName = 'PanelDependencies';
+
 export default PanelDependencies;

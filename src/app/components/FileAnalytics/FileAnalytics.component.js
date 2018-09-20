@@ -55,5 +55,6 @@ FileAnalytics.defaultProps = {
 	components: [],
 	dependencies: [],
 };
+FileAnalytics.displayName = 'FileAnalytics';
 
 export default FileAnalytics;
