@@ -1,15 +1,6 @@
 {
   "props": {
     "AddForm#app": {
-      "renderIfExpression": {
-        "id": "cmf.router.matchPath",
-        "args": [
-          {
-            "path": "/apps/add",
-            "isExact": true
-          }
-        ]
-      },
       "title": "Add App Form",
       "data": {
         "jsonSchema": {
@@ -32,15 +23,6 @@
       }
     },
     "AddForm#component": {
-      "renderIfExpression": {
-        "id": "cmf.router.matchPath",
-        "args": [
-            {
-                "path": "/components/add",
-                "isExact": true
-            }
-        ]
-      },
       "title": "Add Component Form",
       "data": {
         "jsonSchema": {

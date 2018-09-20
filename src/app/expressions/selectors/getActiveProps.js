@@ -1,6 +1,5 @@
 import memoizeOne from 'memoize-one';
 import getProps from './getProps';
-import SelectionList from '../../components/SelectionList';
 
 function getActive(props, id) {
 	if (id) {
@@ -12,11 +11,10 @@ function getActive(props, id) {
 	return undefined;
 }
 
-const memoizedActiveComponent = memoizeOne(getActive);
+const memoizedActiveProps = memoizeOne(getActive);
 
 export default function getActiveProps(args) {
 	const props = getProps(args);
-	const state = args.context.store.getState();
-	const id = SelectionList.getState(state, 'props').get('active');
-	return memoizedActiveComponent(props, id);
+	const id = args.payload.match.params.id.replace('-', '#');
+	return memoizedActiveProps(props, id);
 }

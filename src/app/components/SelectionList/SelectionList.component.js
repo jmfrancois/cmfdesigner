@@ -16,12 +16,11 @@ class SelectionList extends React.Component {
 	}
 
 	onClickToggle() {
-		this.setState(s => ({ opened: !s.opened }));
+		this.setState(({ opened }) => ({ opened: !opened }));
 	}
 
 	onClick(event, item) {
 		const id = item.get('id');
-		this.props.setState({ active: id });
 		this.props.dispatch({
 			type: SelectionList.ACTION_TYPE_SELECT_ITEM,
 			componentId: this.props.componentId,
@@ -55,9 +54,7 @@ class SelectionList extends React.Component {
 						{this.props.items.map((item, index) => (
 							<button
 								key={index}
-								className={classNames('list-group-item', {
-									active: this.props.state.get('active') === item.get('id'),
-								})}
+								className="list-group-item"
 								onClick={event => this.onClick(event, item)}
 							>
 								{item.get('name')}

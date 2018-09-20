@@ -1,16 +1,7 @@
 {
   "props": {
     "ViewComponent#default": {
-      "itemExpression": "getActiveComponent",
-      "renderIfExpression": {
-        "id": "cmf.router.matchPath",
-        "args": [
-            {
-                "path": "/components/view",
-                "isExact": true
-            }
-        ]
-      }
+      "itemExpression": "getActiveComponent"
     }
   }
 }

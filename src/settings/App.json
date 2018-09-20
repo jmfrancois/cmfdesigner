@@ -8,11 +8,10 @@
         { "component": "SelectionList", "componentId": "props" }
       ],
       "center": [
-        { "component": "AddForm", "componentId": "app" },
-        { "component": "AddForm", "componentId": "component" },
-        { "component": "ViewProps" },
-        { "component": "ViewComponent" },
-        { "component": "IconsProvider" }
+        { "component": "AddForm", "componentId": "props", "router": { "path": "/props/add", "isExact": true } },
+        { "component": "AddForm", "componentId": "component", "router": { "path": "/components/add", "isExact": true } },
+        { "component": "ViewProps", "router": { "path": "/props/view/:id", "isExact": true } },
+        { "component": "ViewComponent", "router": { "path": "/components/view/:id", "isExact": true } }
       ]
     }
   }

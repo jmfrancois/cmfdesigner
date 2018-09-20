@@ -1,15 +1,6 @@
 {
   "props": {
     "ViewProps#default": {
-      "renderIfExpression": {
-        "id": "cmf.router.matchPath",
-        "args": [
-            {
-                "path": "/props/view",
-                "isExact": true
-            }
-        ]
-      },
       "itemExpression": "getActiveProps"
     }
   }

@@ -43,7 +43,7 @@ AppSwitcher.ACTION_TYPE_ADD_APP = 'APP_SWITCHER_ADD_APP';
 AppSwitcher.ACTION_TYPE_SET_CWD = 'APP_SWITCHER_SET_CWD';
 AppSwitcher.displayName = 'AppSwitcher';
 AppSwitcher.propTypes = {
-	cwd: PropTypes.string.isRequired,
+	cwd: PropTypes.string,
 	isWebapp: PropTypes.bool,
 	...cmfConnect.propTypes,
 };

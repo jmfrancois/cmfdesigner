@@ -1,5 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
+import { push } from 'connected-react-router';
+
 import components from '../components';
 import { loadResource } from './resource';
 import getPath from './getPath';
@@ -18,12 +20,7 @@ function* onSelectDirectory(action) {
 
 function* onAddButtonClicked(action) {
 	if (action.componentId === 'components') {
-		yield put({
-			type: 'ADD_COMPONENT_ROUTE_EFFECT',
-			cmf: {
-				routerPush: '/components/add',
-			},
-		});
+		yield put(push('/components/add'));
 	}
 }
 function* onAddFormSubmit(action) {
@@ -35,12 +32,7 @@ function* onAddFormSubmit(action) {
 
 function* onSelectComponent(action) {
 	if (action.componentId === 'components') {
-		yield put({
-			type: 'SELECT_PROPS_ROUTE_EFFECT',
-			cmf: {
-				routerPush: '/components/view',
-			},
-		});
+		yield put(push(`/components/view/${action.id}`));
 	}
 }
 
@@ -48,10 +40,7 @@ function* onDeleteBtn(action) {
 	const path = yield getPath();
 	yield call(cmf.sagas.http.delete, `/api/components/${action.id}?path=${path}`);
 	yield call(loadComponents);
-	yield put({
-		type: 'EFFECT_DELETE_COMPONENT_NEXT_ROUTE',
-		cmf: { routerReplace: '/' },
-	});
+	yield put(push('/'));
 }
 
 // eslint-disable-next-line import/prefer-default-export

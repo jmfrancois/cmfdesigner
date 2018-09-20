@@ -1,4 +1,3 @@
-
 export { default as getActiveComponent } from './selectors/getActiveComponent';
 export { default as getActiveProps } from './selectors/getActiveProps';
 export { default as getApp } from './selectors/getApp';
