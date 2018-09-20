@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileAnalytics should render 1`] = `
+<div>
+  <h2
+    className="theme-title"
+  />
+  <div
+    className="theme-content"
+  >
+    <PanelDependencies
+      dependencies={Array []}
+    />
+    <PanelExports
+      dependencies={Array []}
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,18 @@
+.title {
+    font-size: medium;
+    color: $dark-silver;
+}
+
+.content {
+    margin-left: $padding-normal;
+    padding-left: $padding-normal;
+    border-left: 1px solid $dark-silver;
+
+    h3 {
+        font-size: medium;
+        :global(.tc-svg-icon) {
+            width: $svg-xs-size;
+            height: $svg-xs-size;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.title {
+    font-size: medium;
+    :global(.tc-svg-icon) {
+        width: $svg-xs-size;
+        height: $svg-xs-size;
+    }
+    :global(.btn) {
+        float: right;
+    }
+}

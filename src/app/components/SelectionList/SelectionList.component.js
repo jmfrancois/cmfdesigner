@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { cmfConnect, Inject } from '@talend/react-cmf';
 import Immutable from 'immutable';
+import theme from './SelectionList.scss';
 
 function getClassName(item, activeId) {
 	return classNames('list-group-item', {
@@ -20,7 +21,8 @@ class SelectionList extends React.Component {
 		this.onClickToggle = this.onClickToggle.bind(this);
 	}
 
-	onClickToggle() {
+	onClickToggle(event) {
+		event.preventDefault();
 		this.setState(s => ({ opened: !s.opened }));
 	}
 
@@ -43,16 +45,17 @@ class SelectionList extends React.Component {
 	render() {
 		return (
 			<div>
-				<h2>
-					<button
-						className="btn btn-default btn-xs"
+				<h2 className={theme.title}>
+					<a
+						href="#open"
 						onClick={this.onClickToggle}
 					>
 						<Inject component="Icon" componentId={this.state.opened ? 'selection-list-opened' : 'selection-list-closed'} />
-					</button>
-					<span>{this.props.title}</span>
+						<span>{this.props.title}</span>
+					</a>
 					<button
 						className="btn btn-primary btn-xs"
+						title={`Add ${this.props.title}`}
 						onClick={this.onAddClick}
 					>
 						<Inject component="Icon" componentId="selection-list-add" />

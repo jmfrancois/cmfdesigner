@@ -8,6 +8,12 @@ exports[`ViewComponent should render 1`] = `
   >
     Delete
   </button>
-  <h1 />
+  <h1>
+    Component: 
+  </h1>
+  <Inject
+    component="Files"
+    componentId="component"
+  />
 </div>
 `;
