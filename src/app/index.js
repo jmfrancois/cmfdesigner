@@ -7,12 +7,12 @@ import '@talend/bootstrap-theme/src/theme/theme.scss';
 import cmf, { cmfConnect } from '@talend/react-cmf';
 import * as talendComponents from '@talend/react-components';
 import { ObjectViewer } from '@talend/react-containers';
-import router from '@talend/react-cmf-router';
+// import router from '@talend/react-cmf-router';
+import router from './router';
 import actions from './actions';
 import appComponents from './components';
 import * as expressions from './expressions';
 import * as sagas from './sagas';
-// import router from './router';
 
 const onlyComponents = Object.keys(talendComponents)
 	.filter(key => typeof talendComponents[key] === 'function')

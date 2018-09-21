@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
-import { routerActions } from '@talend/react-cmf-router';
+// import { routerActions } from '@talend/react-cmf-router';
+import { routerActions } from '../router';
 
 import components from '../components';
 import { loadResource } from './resource';
