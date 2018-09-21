@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
-import { push } from 'connected-react-router';
+import { routerActions } from '@talend/react-cmf-router';
 
 import components from '../components';
 import { loadResource } from './resource';
@@ -8,12 +8,12 @@ import { APPS_LOADED } from '../constants';
 
 function* onSelectProps(action) {
 	if (action.componentId === 'props') {
-		yield put(push(`/props/view/${action.id.replace('#', '-')}`));
+		yield put(routerActions.push(`/props/view/${action.id.replace('#', '-')}`));
 	}
 }
 function* onAddButtonClicked(action) {
 	if (action.componentId === 'props') {
-		yield put(push('/props/add'));
+		yield put(routerActions.push('/props/add'));
 	}
 }
 

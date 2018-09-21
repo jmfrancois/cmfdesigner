@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
-import { push } from 'connected-react-router';
+import { routerActions } from '@talend/react-cmf-router';
 
 import components from '../components';
 import { loadResource } from './resource';
@@ -20,7 +20,7 @@ function* onSelectDirectory(action) {
 
 function* onAddButtonClicked(action) {
 	if (action.componentId === 'components') {
-		yield put(push('/components/add'));
+		yield put(routerActions.push('/components/add'));
 	}
 }
 function* onAddFormSubmit(action) {
@@ -32,7 +32,7 @@ function* onAddFormSubmit(action) {
 
 function* onSelectComponent(action) {
 	if (action.componentId === 'components') {
-		yield put(push(`/components/view/${action.id}`));
+		yield put(routerActions.push(`/components/view/${action.id}`));
 	}
 }
 
@@ -40,7 +40,7 @@ function* onDeleteBtn(action) {
 	const path = yield getPath();
 	yield call(cmf.sagas.http.delete, `/api/components/${action.id}?path=${path}`);
 	yield call(loadComponents);
-	yield put(push('/'));
+	yield put(routerActions.push('/'));
 }
 
 // eslint-disable-next-line import/prefer-default-export

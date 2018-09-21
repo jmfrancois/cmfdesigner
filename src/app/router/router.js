@@ -2,6 +2,7 @@ import React from 'react';
 import createHashHistory from 'history/createHashHistory';
 import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-react-router';
 import { Inject } from '@talend/react-cmf';
+import get from 'lodash/get';
 
 function getHistory() {
 	return createHashHistory();
@@ -19,7 +20,7 @@ function getStoreHistory(history) {
 	return history;
 }
 
-function getProvider(history) {
+function rootComponent(history) {
 	return (
 		<ConnectedRouter history={history}>
 			<Inject component="App" componentId="default" />
@@ -27,10 +28,15 @@ function getProvider(history) {
 	);
 }
 
+function getCurrentPathname(state) {
+	return get(state, 'router.location.pathname');
+}
+
 export default {
+	getCurrentPathname,
 	getHistory,
-	getProvider,
 	getReduxMiddleware,
-	insertReducerFactory,
 	getStoreHistory,
+	insertReducerFactory,
+	rootComponent,
 };

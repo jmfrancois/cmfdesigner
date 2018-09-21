@@ -7,22 +7,12 @@ import '@talend/bootstrap-theme/src/theme/theme.scss';
 import cmf, { cmfConnect } from '@talend/react-cmf';
 import * as talendComponents from '@talend/react-components';
 import { ObjectViewer } from '@talend/react-containers';
-// import omit from 'lodash/omit';
+import router from '@talend/react-cmf-router';
 import actions from './actions';
 import appComponents from './components';
 import * as expressions from './expressions';
 import * as sagas from './sagas';
-import router from './router';
-
-// function mergeProps(stateProps, dispatchProps, ownProps) {
-// 	const props = {
-// 		...ownProps,
-// 		...dispatchProps,
-// 		...stateProps,
-// 	};
-//
-// 	return omit(props, cmfConnect.INJECTED_PROPS);
-// }
+// import router from './router';
 
 const onlyComponents = Object.keys(talendComponents)
 	.filter(key => typeof talendComponents[key] === 'function')
