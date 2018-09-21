@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cmfConnect, Inject } from '@talend/react-cmf';
+import { cmfConnect } from '@talend/react-cmf';
+import { Icon } from '@talend/react-components';
 
 class AppSwitcher extends React.Component {
 	constructor(props) {
@@ -29,7 +30,7 @@ class AppSwitcher extends React.Component {
 				<div>
 					{this.props.isWebapp ? null : (
 						<button type="button" className="btn btn-primary" onClick={this.onGenerateAppBtn}>
-							<Inject component="Icon" name="talend-plus" />
+							<Icon name="talend-plus" />
 							Generate CMF Webapp
 						</button>
 					)}

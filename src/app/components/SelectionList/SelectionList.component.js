@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import classNames from 'classnames';
-import { cmfConnect, Inject } from '@talend/react-cmf';
+import { cmfConnect } from '@talend/react-cmf';
+import { Icon } from '@talend/react-components';
 import Immutable from 'immutable';
 
 import theme from './SelectionList.scss';
@@ -39,14 +41,14 @@ class SelectionList extends React.Component {
 			<React.Fragment>
 				<div className={theme.header}>
 					<button className="btn btn-link" onClick={this.onClickToggle}>
-						<Inject
-							component="Icon"
-							componentId={this.state.opened ? 'selection-list-opened' : 'selection-list-closed'}
+						<Icon
+							name="talend-chevron-left"
+							transform={this.state.opened ? 'rotate-270' : 'rotate-180'}
 						/>
 					</button>
 					<h2>{this.props.title}</h2>
 					<button className={classNames('btn btn-primary', theme.add)} onClick={this.onAddClick}>
-						<Inject component="Icon" componentId="selection-list-add" />
+						<Icon name="talend-plus" />
 					</button>
 				</div>
 				{this.state.opened && (
@@ -69,7 +71,7 @@ class SelectionList extends React.Component {
 
 SelectionList.propTypes = {
 	title: PropTypes.string,
-	items: PropTypes.array,
+	items: PropTypes.oneOfType([PropTypes.array, ImmutablePropTypes.list]),
 	onClick: PropTypes.func,
 	activeId: PropTypes.string,
 	...cmfConnect.propTypes,
