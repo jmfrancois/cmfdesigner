@@ -3,6 +3,14 @@
     "Files#component": {
       "filesExpression": "getComponentFiles",
       "cwdExpression": "getCWD"
+    },
+    "Files#expression": {
+      "filesExpression": "getExpressionFiles",
+      "cwdExpression": "getCWD"
+    },
+    "Files#saga": {
+      "filesExpression": "getSagaFiles",
+      "cwdExpression": "getCWD"
     }
   }
 }

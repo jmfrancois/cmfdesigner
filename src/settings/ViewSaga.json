@@ -1,0 +1,16 @@
+{
+  "props": {
+    "ViewSaga#default": {
+      "itemExpression": "getSaga",
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+            {
+                "path": "/sagas/view",
+                "isExact": true
+            }
+        ]
+      }
+    }
+  }
+}

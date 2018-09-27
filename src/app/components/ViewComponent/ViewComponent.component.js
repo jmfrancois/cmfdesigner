@@ -15,7 +15,24 @@ function ViewComponent(props) {
 				Delete
 			</button>
 			<h1>Component: {props.item.name}</h1>
-			<Inject component="Files" componentId="component" />
+			<ul>
+				<li>Type: {props.item.type}</li>
+				{props.item.propTypes && <li>has PropTypes</li>}
+				{props.item.displayName && <li>displayName: {props.item.displayName}</li>}
+			</ul>
+			{!props.item.displayName && (
+				<div className="alert alert-danger">
+					<p>No DisplayName: In the context of CMF it s a requirement to add
+						displayName to your component
+					</p>
+				</div>
+			)}
+			{!props.item.propTypes && (
+				<div className="alert alert-warning">
+					<p>No PropTypes: It's always better to add propTypes</p>
+				</div>
+			)}
+			<Inject component="FileAnalytics" path={props.item.path} />
 		</div>
 	);
 }

@@ -1,0 +1,16 @@
+{
+  "props": {
+    "ViewExpression#default": {
+      "itemExpression": "getExpression",
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+            {
+                "path": "/expressions/view",
+                "isExact": true
+            }
+        ]
+      }
+    }
+  }
+}

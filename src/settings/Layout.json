@@ -5,6 +5,8 @@
       "header": "HeaderBar",
       "one": [
         { "component": "SelectionList", "componentId": "components" },
+        { "component": "SelectionList", "componentId": "expressions" },
+        { "component": "SelectionList", "componentId": "sagas" },
         { "component": "SelectionList", "componentId": "props" }
       ],
       "content": [
@@ -13,6 +15,8 @@
         { "component": "AddForm", "componentId": "component" },
         { "component": "ViewProps" },
         { "component": "ViewComponent" },
+        { "component": "ViewExpression" },
+        { "component": "ViewSaga" },
         { "component": "IconsProvider" }
       ]
     }

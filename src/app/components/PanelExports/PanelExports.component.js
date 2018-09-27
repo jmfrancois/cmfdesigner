@@ -31,7 +31,7 @@ class PanelExports extends React.Component {
 					<ul>
 						{this.props.dependencies.map((dep, index) => (
 							<li key={index}>
-								import {!dep.default && '{'} {dep.name} {!dep.default && '}'} from '{dep.source}';
+								export [{dep.type}{dep.generator && '*'}] {dep.name} params: ({(dep.params || []).map(param => <span>{param.type}</span>)})
 							</li>
 						))}
 					</ul>

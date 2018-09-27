@@ -1,9 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
+const getBootstrap = require('./getBootstrap');
 const getDependencies = require('./getDependencies');
 const getExport = require('./getExport');
 const getComponents = require('./getComponents');
+const getExpressions = require('./getExpressions');
 const parse = require('./parse');
 
 /* eslint-disable no-console */
@@ -12,9 +14,11 @@ function getInfo(filePath) {
 	const parsed = parse({ path: filePath });
 	return {
 		path: filePath,
-		export: getExport(parsed.ast),
+		export: getExport(parsed.ast, filePath),
 		...getDependencies(parsed.ast, filePath),
 		components: getComponents(parsed.ast),
+		bootstrap: getBootstrap(parsed.ast, filePath),
+		expressions: getExpressions(parsed.ast, filePath),
 	};
 }
 
@@ -40,7 +44,11 @@ function analyse(options) {
 
 function setup(app) {
 	app.get('/api/analytics', (req, res) => {
-		res.json(analyse({ path: path.join(req.app.locals.apps.path, 'src/app') }));
+		res.json(app.locals.analytics);
+	});
+	app.post('/api/analytics', (req, res) => {
+		app.locals.analytics = analyse({ path: path.join(req.app.locals.apps.path, 'src/app') });
+		res.json(app.locals.analytics);
 	});
 }
 
