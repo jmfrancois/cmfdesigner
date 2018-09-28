@@ -6,7 +6,7 @@ import FileAnalytics from './FileAnalytics.component';
 describe('FileAnalytics', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<FileAnalytics />
+			<FileAnalytics.WrappedComponent />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

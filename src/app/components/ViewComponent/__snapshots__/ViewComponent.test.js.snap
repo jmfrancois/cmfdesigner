@@ -11,9 +11,28 @@ exports[`ViewComponent should render 1`] = `
   <h1>
     Component: 
   </h1>
+  <ul>
+    <li>
+      Type: 
+    </li>
+  </ul>
+  <div
+    className="alert alert-danger"
+  >
+    <p>
+      No DisplayName: In the context of CMF it s a requirement to add displayName to your component
+    </p>
+  </div>
+  <div
+    className="alert alert-warning"
+  >
+    <p>
+      No PropTypes: It's always better to add propTypes
+    </p>
+  </div>
   <Inject
-    component="Files"
-    componentId="component"
+    component="FileAnalytics"
+    path={undefined}
   />
 </div>
 `;

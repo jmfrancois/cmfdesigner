@@ -1,8 +1,13 @@
 .title {
     font-size: medium;
     color: $dark-silver;
+    display: inline-block;
 }
 
+.opn {
+    display: inline-block;
+    margin-left: $padding-normal;
+}
 .content {
     margin-left: $padding-normal;
     padding-left: $padding-normal;

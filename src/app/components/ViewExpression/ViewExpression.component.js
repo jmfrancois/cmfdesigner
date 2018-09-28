@@ -26,4 +26,9 @@ ViewExpression.propTypes = {
 		path: PropTypes.string,
 	}),
 };
+ViewExpression.defaultProps = {
+	item: { params: [] },
+};
+ViewExpression.displayName = 'ViewExpression';
+
 export default cmfConnect({})(ViewExpression);

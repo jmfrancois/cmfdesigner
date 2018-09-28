@@ -6,7 +6,7 @@ import ViewExpression from './ViewExpression.component';
 describe('ViewExpression', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<ViewExpression />
+			<ViewExpression.WrappedComponent />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

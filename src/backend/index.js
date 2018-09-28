@@ -8,6 +8,7 @@ const components = require('./components');
 const expressions = require('./expressions');
 const props = require('./props');
 const sagas = require('./sagas');
+const open = require('./open');
 const update = require('./update');
 
 update.warnIfNotLast();
@@ -40,5 +41,6 @@ pages.setup(app);
 props.setup(app);
 update.setup(app);
 sagas.setup(app);
+open.setup(app);
 
 module.exports = app;

@@ -6,7 +6,7 @@ import ViewSaga from './ViewSaga.component';
 describe('ViewSaga', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<ViewSaga />
+			<ViewSaga.WrappedComponent />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

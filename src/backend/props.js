@@ -9,8 +9,8 @@ function getProps(req, res) {
 
 function openProps(req, res) {
 	const path = pathLib.join(fs.getCWD(req), 'src/settings/', req.body.filename);
-	if (fs.exists(path)) {
-		opn(path);
+	if (fs.existsSync(path)) {
+		opn(path, { wait: false });
 		res.json({});
 	} else {
 		res.status(500).json({

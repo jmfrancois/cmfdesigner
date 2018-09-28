@@ -25,5 +25,7 @@ ViewSaga.propTypes = {
 		path: PropTypes.string,
 	}),
 };
-
+ViewSaga.defaultProps = {
+	item: { params: [] },
+};
 export default cmfConnect({})(ViewSaga);
