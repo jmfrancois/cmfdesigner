@@ -14,13 +14,6 @@ function ViewProps(props) {
 	return (
 		<div>
 			<h1>{props.item.name}</h1>
-			<a
-				href={`filename://${props.item.path}`}
-				onClick={event => {
-					event.preventDefault();
-					props.dispatch({ type: ViewProps.ACTION_TYPE_CLICK_OPEN, item: props.item });
-				}}
-			>Open {props.item.filename}</a>
 			{metadata.length !== 2 && (
 				<div className="alert alert-warning">
 					<p>You should use the following syntax in the props id:</p>
@@ -28,6 +21,7 @@ function ViewProps(props) {
 				</div>
 			)}
 			<Inject component="ObjectViewer" componentId="view-props" id="view-props" data={props.item.value} />
+			<Inject component="FileAnalytics" path={props.item.path} />
 		</div>
 	);
 }
