@@ -1,11 +1,8 @@
 const get = require('lodash/get');
+const getFunctionParams = require('./getFunctionParams');
 
 function isIn(items, id) {
 	return items.find(item => item.id === id) !== undefined;
-}
-
-function getFnParamName(param) {
-	return param.name || get(param, 'left.name') || get(param, 'properties[0].key.name') || get(param, 'argument.name');
 }
 
 function getFunctionInfo(items, id) {
@@ -13,23 +10,17 @@ function getFunctionInfo(items, id) {
 	return {
 		generator: fn.generator,
 		async: fn.async,
-		params: (fn.params || []).map(param => ({
-			type: param.type,
-			name: getFnParamName,
-		})),
+		params: getFunctionParams(fn),
 	};
 }
 
-function getExportInfo(exportAST, data, filePath) {
+function getExportInfo(exportAST, data) {
 	const info = {};
 	if (exportAST.declaration === null) {
 		// export { default as getApp } from './getApp';
 		info.path = exportAST.source.value;
 	} else {
 		const declaration = exportAST.declaration;
-		if (!declaration) {
-			console.log('no declaration in ', filePath, exportAST);
-		}
 		info.name = declaration.name;
 		info.declarationType = declaration.type;
 		switch (declaration.type) {
@@ -54,10 +45,7 @@ function getExportInfo(exportAST, data, filePath) {
 				info.type = 'function';
 				info.generator = declaration.generator;
 				info.async = declaration.async;
-				info.params = (declaration.params || []).map(param => ({
-					type: param.type,
-					name: getFnParamName,
-				}));
+				info.params = getFunctionParams(declaration);
 				info.name = get(declaration, 'id.name', 'anonymous');
 				break;
 			default:

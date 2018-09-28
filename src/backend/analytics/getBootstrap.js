@@ -5,7 +5,7 @@
  * import { name } from './file';
  */
 function findInImport(ast, name) {
-	const imports = ast.program.body.filter(line => line.type === 'ImportDeclaration')
+	const imports = ast.program.body.filter(line => line.type === 'ImportDeclaration');
 	if (imports.length) {
 		return imports.reduce((acc, imp) => {
 			const specifier = imp.specifiers.find(spec => spec.local.name === name);
@@ -53,6 +53,7 @@ function getExpressions(ast, config) {
 			// written `expressions: foo`
 			return find(ast, expressions.value.name);
 		} else if (expressions.value.type === 'ObjectExpression') {
+			// eslint-disable-next-line no-console
 			console.log('not yet supported');
 		}
 	}
@@ -65,12 +66,12 @@ function getBootstrap(ast, filePath) {
 	let cmfName;
 	const log = (...args) => {
 		if (filePath === 'src/app/index.js') {
+			// eslint-disable-next-line no-console
 			console.log(...args);
 		}
 	};
 	if (cmfImport.length === 1) {
 		cmfImport[0].specifiers.forEach(specifier => {
-
 			if (specifier.type === 'ImportDefaultSpecifier') {
 				log('found', specifier.local.name);
 				cmfName = specifier.local.name;

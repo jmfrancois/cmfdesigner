@@ -7,6 +7,7 @@ import PanelExports from './PanelExports';
 import ViewComponent from './ViewComponent';
 import ViewProps from './ViewProps';
 import ViewExpression from './ViewExpression';
+import ViewFunctionParam from './ViewFunctionParam';
 import ViewSaga from './ViewSaga';
 import WorkingDirectory from './WorkingDirectory';
 
@@ -19,6 +20,7 @@ export default {
 	SelectionList,
 	ViewComponent,
 	ViewExpression,
+	ViewFunctionParam,
 	ViewSaga,
 	ViewProps,
 	WorkingDirectory,

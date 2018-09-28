@@ -5,7 +5,6 @@ const getBootstrap = require('./getBootstrap');
 const getDependencies = require('./getDependencies');
 const getExport = require('./getExport');
 const getComponents = require('./getComponents');
-const getExpressions = require('./getExpressions');
 const parse = require('./parse');
 
 /* eslint-disable no-console */
@@ -18,7 +17,6 @@ function getInfo(filePath) {
 		...getDependencies(parsed.ast, filePath),
 		components: getComponents(parsed.ast),
 		bootstrap: getBootstrap(parsed.ast, filePath),
-		expressions: getExpressions(parsed.ast, filePath),
 	};
 }
 
@@ -47,6 +45,7 @@ function setup(app) {
 		res.json(app.locals.analytics);
 	});
 	app.post('/api/analytics', (req, res) => {
+		// eslint-disable-next-line no-param-reassign
 		app.locals.analytics = analyse({ path: path.join(req.app.locals.apps.path, 'src/app') });
 		res.json(app.locals.analytics);
 	});

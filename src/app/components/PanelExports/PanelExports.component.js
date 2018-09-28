@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Inject } from '@talend/react-cmf';
+import ViewFunctionParam from '../ViewFunctionParam';
 
 class PanelExports extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { opened: false };
+		this.state = { opened: true };
 		this.onClick = this.onClick.bind(this);
 	}
 
@@ -31,7 +32,7 @@ class PanelExports extends React.Component {
 					<ul>
 						{this.props.dependencies.map((dep, index) => (
 							<li key={index}>
-								export [{dep.type}{dep.generator && '*'}] {dep.name} params: ({(dep.params || []).map(param => <span>{param.type}</span>)})
+								export [{dep.type}{dep.generator && '*'}] {dep.name} params: <ViewFunctionParam params={dep.params} />
 							</li>
 						))}
 					</ul>
