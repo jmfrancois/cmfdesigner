@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import FileAnalytics from './FileAnalytics.component';
+import ViewExpression from './ViewExpression.component';
 
-describe('FileAnalytics', () => {
+describe('ViewExpression', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<FileAnalytics.WrappedComponent />
+			<ViewExpression.WrappedComponent />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

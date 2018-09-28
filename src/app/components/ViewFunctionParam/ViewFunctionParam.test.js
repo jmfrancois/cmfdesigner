@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Files from './Files.component';
+import ViewFunctionParam from './ViewFunctionParam.component';
 
-describe('Files', () => {
+describe('ViewFunctionParam', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<Files.WrappedComponent />
+			<ViewFunctionParam />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

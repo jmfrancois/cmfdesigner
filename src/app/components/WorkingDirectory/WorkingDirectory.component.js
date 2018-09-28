@@ -22,7 +22,7 @@ function WorkingDirectory(props) {
 					<button
 						type="button"
 						className={`btn btn-primary ${theme.isNotWebapp}`}
-						onClick={props.dispatch({
+						onClick={() => props.dispatch({
 							type: WorkingDirectory.ACTION_TYPE_ADD_APP,
 							componentId: props.componentId,
 						})}

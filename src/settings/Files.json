@@ -1,8 +1,0 @@
-{
-  "props": {
-    "Files#component": {
-      "filesExpression": "getComponentFiles",
-      "cwdExpression": "getCWD"
-    }
-  }
-}

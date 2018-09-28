@@ -1,0 +1,13 @@
+{
+  "props": {
+    "ActionButton#refresh": {
+      "label": "refresh",
+      "icon": "talend-refresh",
+      "onClickDispatch": {
+        "type": "APP_REFRESH_DATA"
+      },
+      "initialState": {},
+      "spreadCMFState": true
+    }
+  }
+}

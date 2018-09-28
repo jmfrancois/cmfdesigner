@@ -6,9 +6,22 @@ const fs = require('./fs');
 /* eslint-disable no-console */
 
 function getComponents(req, res) {
-	res.json({ components: fs.getFolders(pathLib.join(fs.getCWD(req), 'src/app/components'))
-		.map(folder => ({ id: folder, name: folder })),
-	});
+	res.json(
+		req.app.locals.analytics.reduce((acc, item) => {
+			if (item.components.length > 0) {
+				return item.components.reduce((subacc, component) => {
+					subacc.push({
+						...component,
+						id: item.path,
+						path: item.path,
+						analytics: item,
+					});
+					return subacc;
+				}, acc);
+			}
+			return acc;
+		}, [])
+	);
 }
 
 function postComponent(req, res) {

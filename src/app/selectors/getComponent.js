@@ -4,7 +4,7 @@ const cache = {};
 
 export default function getComponent(state) {
 	const id = components.SelectionList.getState(state, 'components').get('active');
-	const props = state.cmf.collections.getIn(['components', 'components']);
+	const props = state.cmf.collections.getIn(['components']);
 	if (id && cache.key === id && cache.value) {
 		return cache.value;
 	} else if (id) {

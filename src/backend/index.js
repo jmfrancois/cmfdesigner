@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const analytics = require('./analytics');
 const apps = require('./apps');
-const pages = require('./pages');
 const components = require('./components');
+const expressions = require('./expressions');
 const props = require('./props');
+const sagas = require('./sagas');
+const open = require('./open');
 const update = require('./update');
 
 update.warnIfNotLast();
@@ -18,13 +20,25 @@ const app = express();
 app.locals.apps = {
 	path: process.cwd(),
 };
+app.use((req, res, next) => {
+	if (!app.locals.analytics) {
+		console.log('start analytics ...');
+		app.locals.analytics = analytics.analyse({
+			path: path.join(app.locals.apps.path, 'src/app'),
+		});
+		console.log('analytics done');
+	}
+	next();
+});
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../dist')));
 analytics.setup(app);
 apps.setup(app);
 components.setup(app);
-pages.setup(app);
+expressions.setup(app);
 props.setup(app);
 update.setup(app);
+sagas.setup(app);
+open.setup(app);
 
 module.exports = app;

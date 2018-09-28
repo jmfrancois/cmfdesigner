@@ -5,6 +5,16 @@ exports[`FileAnalytics should render 1`] = `
   <h2
     className="theme-title"
   />
+  <button
+    className="theme-opn btn btn-default btn-inverse btn-xs"
+    onClick={[Function]}
+  >
+    <Inject
+      component="Icon"
+      name="talend-link"
+    />
+    open
+  </button>
   <div
     className="theme-content"
   >

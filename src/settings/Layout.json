@@ -4,7 +4,10 @@
       "mode": "TwoColumns",
       "header": "HeaderBar",
       "one": [
+        { "component": "ActionButton", "componentId": "refresh" },
         { "component": "SelectionList", "componentId": "components" },
+        { "component": "SelectionList", "componentId": "expressions" },
+        { "component": "SelectionList", "componentId": "sagas" },
         { "component": "SelectionList", "componentId": "props" }
       ],
       "content": [
@@ -13,6 +16,8 @@
         { "component": "AddForm", "componentId": "component" },
         { "component": "ViewProps" },
         { "component": "ViewComponent" },
+        { "component": "ViewExpression" },
+        { "component": "ViewSaga" },
         { "component": "IconsProvider" }
       ]
     }
