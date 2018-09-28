@@ -30,12 +30,12 @@
     "@talend/scripts": "0.3.1"
   },
   "dependencies": {
-    "@talend/bootstrap-theme": "0.207.0",
-    "@talend/icons": "0.207.0",
-    "@talend/react-cmf": "0.207.0",
-    "@talend/react-components": "0.207.0",
-    "@talend/react-containers": "0.207.0",
-    "@talend/react-forms": "0.207.0",
+    "@talend/bootstrap-theme": "0.210.0",
+    "@talend/icons": "0.210.0",
+    "@talend/react-cmf": "0.210.0",
+    "@talend/react-components": "0.210.0",
+    "@talend/react-containers": "0.210.0",
+    "@talend/react-forms": "0.210.0",
     "body-parser": "^1.18.3",
     "bootstrap-sass": "3.3.7",
     "bson-objectid": "^1.1.5",
@@ -47,7 +47,6 @@
     "i18next": "^9.0.0",
     "immutable": "^3.8.1",
     "invariant": "^2.2.2",
-    "json-logic-js": "^1.2.2",
     "lodash": "^4.17.4",
     "opn": "^5.3.0",
     "prop-types": "^15.5.10",
@@ -69,7 +68,6 @@
     "redux-saga": "^0.15.4",
     "redux-thunk": "^2.2.0",
     "reselect": "^2.5.4",
-    "rimraf": "^2.6.2",
     "uuid": "^3.0.1",
     "yeoman-environment": "^1.6.6"
   }
