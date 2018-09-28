@@ -1,6 +1,6 @@
 {
   "name": "@talend/cmf-designer",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -30,12 +30,19 @@
     "@talend/scripts": "0.3.1"
   },
   "dependencies": {
+    "@babel/parser": "^7.1.0",
     "@talend/bootstrap-theme": "0.210.0",
     "@talend/icons": "0.210.0",
     "@talend/react-cmf": "0.210.0",
     "@talend/react-components": "0.210.0",
     "@talend/react-containers": "0.210.0",
     "@talend/react-forms": "0.210.0",
+    "@talend/bootstrap-theme": "0.207.0",
+    "@talend/icons": "0.207.0",
+    "@talend/react-cmf": "0.207.0",
+    "@talend/react-components": "0.207.0",
+    "@talend/react-containers": "0.207.0",
+    "@talend/react-forms": "0.207.0",
     "body-parser": "^1.18.3",
     "bootstrap-sass": "3.3.7",
     "bson-objectid": "^1.1.5",
