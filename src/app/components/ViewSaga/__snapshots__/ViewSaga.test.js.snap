@@ -6,7 +6,9 @@ exports[`ViewSaga should render 1`] = `
     Saga: 
   </h1>
   <div>
-    <ul />
+    <ul>
+      
+    </ul>
   </div>
   <Inject
     component="FileAnalytics"

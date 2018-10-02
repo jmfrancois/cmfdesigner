@@ -12,7 +12,7 @@ function getComponents(req, res) {
 				return item.components.reduce((subacc, component) => {
 					subacc.push({
 						...component,
-						id: item.path,
+						id: `${item.path}#${component.name}`,
 						path: item.path,
 						analytics: item,
 					});

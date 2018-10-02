@@ -6,7 +6,9 @@ exports[`ViewExpression should render 1`] = `
     Expression: 
   </h1>
   <div>
-    <ul />
+    <ul>
+      
+    </ul>
   </div>
   <Inject
     component="FileAnalytics"

@@ -23,11 +23,12 @@ function getClassMetdata(ast, classAST) {
 		.filter(item => item.type === 'ClassProperty')
 		.filter(item => item.static);
 	statics.forEach(s => {
-		if (get(s, 'key.name') === 'propTypes') {
+		const key = get(s, 'key.name');
+		if (key === 'propTypes') {
 			metadata.propTypes = true;
-		} else if (s.value.type === 'Literal') {
+		} else if (key && s.value) {
 			// this case include displayName
-			metadata[s.key.name] = s.value.value;
+			metadata[key] = get(s, 'value.value', { type: s.value.type });
 		}
 	});
 	return metadata;

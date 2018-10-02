@@ -18,9 +18,19 @@ function getExpressions(req, res) {
 					if (exp.type === 'function') {
 						subacc.push({
 							...exp,
-							id: item.path,
+							id: `${item.path}#${item.name}`,
 							path: item.path,
 						});
+					} else if (exp.type === 'object') {
+						Object.keys(exp.properties).forEach(key => {
+							subacc.push({
+								id: `${item.path}#${key}`,
+								path: item.path,
+								...exp.properties[key],
+							});
+						});
+					} else {
+						console.log('expression not processed', exp.type);
 					}
 					return subacc;
 				}, acc);

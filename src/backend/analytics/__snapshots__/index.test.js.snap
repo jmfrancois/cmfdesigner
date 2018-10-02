@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`analyse should support components 1`] = `
+Array [
+  Object {
+    "displayName": "StateFullInternalComponent",
+    "name": "StateFullInternalComponent",
+    "propTypes": true,
+    "type": "class",
+  },
+  Object {
+    "displayName": "PureFnInternalComponent",
+    "name": "PureFnInternalComponent",
+    "propTypes": true,
+    "type": "function",
+  },
+]
+`;
+
+exports[`analyse should support exports 1`] = `
+Array [
+  Object {
+    "default": false,
+    "path": "./local",
+    "specifiers": Array [
+      Object {
+        "declarationType": "Identifier",
+        "name": "local",
+      },
+    ],
+  },
+  Object {
+    "async": false,
+    "declarationType": "FunctionDeclaration",
+    "default": false,
+    "generator": false,
+    "name": "fn",
+    "params": Array [
+      Object {
+        "defaultValue": undefined,
+        "name": "param1",
+        "properties": Array [],
+        "type": "Identifier",
+      },
+      Object {
+        "defaultValue": undefined,
+        "name": undefined,
+        "properties": Array [
+          Object {
+            "name": "deconstructed",
+            "shorthand": true,
+          },
+        ],
+        "type": "ObjectPattern",
+      },
+      Object {
+        "defaultValue": undefined,
+        "name": "rest",
+        "properties": Array [],
+        "type": "RestElement",
+      },
+    ],
+    "type": "function",
+  },
+  Object {
+    "declarationType": "ClassDeclaration",
+    "default": false,
+    "name": "undefined",
+  },
+  Object {
+    "declarationType": "VariableDeclaration",
+    "declarations": Array [
+      Object {
+        "name": "constant",
+        "value": "CONSTANT",
+      },
+    ],
+    "default": false,
+    "name": "constant",
+    "type": "const",
+    "value": "CONSTANT",
+  },
+  Object {
+    "declarationType": "ObjectExpression",
+    "default": true,
+    "name": "undefined",
+    "properties": Object {
+      "Internal": Object {
+        "declarationType": "Identifier",
+        "key": "Internal",
+        "name": "Internal",
+        "type": "class",
+      },
+      "dep": Object {
+        "declarationType": "Identifier",
+        "key": "dep",
+        "name": "dep",
+        "type": "import",
+      },
+      "fnInternal": Object {
+        "async": false,
+        "declarationType": "Identifier",
+        "generator": false,
+        "key": "fnInternal",
+        "name": "fnInternal",
+        "params": Array [
+          Object {
+            "defaultValue": undefined,
+            "name": "param1",
+            "properties": Array [],
+            "type": "Identifier",
+          },
+          Object {
+            "defaultValue": undefined,
+            "name": undefined,
+            "properties": Array [
+              Object {
+                "name": "deconstructed",
+                "shorthand": true,
+              },
+            ],
+            "type": "ObjectPattern",
+          },
+          Object {
+            "defaultValue": undefined,
+            "name": "rest",
+            "properties": Array [],
+            "type": "RestElement",
+          },
+        ],
+        "type": "function",
+      },
+      "fnstar": Object {
+        "async": false,
+        "declarationType": "Identifier",
+        "generator": true,
+        "key": "fnstar",
+        "name": "fnstar",
+        "params": Array [],
+        "type": "function",
+      },
+    },
+    "type": "object",
+  },
+]
+`;
+
+exports[`analyse should support imports 1`] = `
+Array [
+  Object {
+    "default": true,
+    "isLocal": false,
+    "name": "defaultFromExternal",
+    "source": "external",
+  },
+  Object {
+    "default": false,
+    "isLocal": false,
+    "name": "namedFromExternal",
+    "source": "external",
+  },
+  Object {
+    "default": true,
+    "isLocal": true,
+    "name": "defaultFromLocal",
+    "path": "/Users/jmfrancois/github/talend/cmf-generator/cmf-designer/src/backend/analytics/tests/imports.js/local",
+    "source": "./local",
+  },
+  Object {
+    "default": false,
+    "isLocal": true,
+    "name": "namedFromLocal",
+    "path": "/Users/jmfrancois/github/talend/cmf-generator/cmf-designer/src/backend/analytics/tests/imports.js/local",
+    "source": "./local",
+  },
+]
+`;
