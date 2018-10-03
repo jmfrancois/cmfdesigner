@@ -11,7 +11,7 @@ function getFnProperties(param) {
 	}
 	return param.properties.map(prop => ({
 		shorthand: prop.shorthand,
-		name: prop.key.name,
+		name: get(prop, 'key.name'),
 	}));
 }
 

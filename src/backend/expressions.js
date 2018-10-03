@@ -1,3 +1,5 @@
+const order = require('./order');
+
 const EXPRESSION_REGEXP = /\/expressions\/|expressions\.js/;
 
 /**
@@ -18,15 +20,23 @@ function getExpressions(req, res) {
 					if (exp.type === 'function') {
 						subacc.push({
 							...exp,
-							id: item.path,
+							id: `${item.path}#${item.name}`,
 							path: item.path,
+						});
+					} else if (exp.type === 'object') {
+						Object.keys(exp.properties).forEach(key => {
+							subacc.push({
+								id: `${item.path}#${key}`,
+								path: item.path,
+								...exp.properties[key],
+							});
 						});
 					}
 					return subacc;
 				}, acc);
 			}
 			return acc;
-		}, [])
+		}, []).sort(order)
 	);
 }
 
