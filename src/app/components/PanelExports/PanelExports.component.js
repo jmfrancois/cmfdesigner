@@ -5,10 +5,14 @@ import ViewFunctionParam from '../ViewFunctionParam';
 
 
 function Export(props) {
+	let name = props.name;
+	if (props.function) {
+		name = `${props.function}()(${props.name})`;
+	}
 	return (
 		<span className="export-container">
-			<span className="export-definition">export {props.default && 'default'} [{props.type}{props.generator && '*'}] {props.name}</span>
-			{props.params && <span className="export-function-params"><ViewFunctionParam params={props.params} /></span>}
+			<span className="export-definition">export {props.default && 'default'} [{props.type}{props.generator && '*'}] {name}</span>
+			{props.params.length > 0 && <span className="export-function-params"><ViewFunctionParam params={props.params} /></span>}
 			{props.properties && (
 				<ul className="export-object-properties">
 					{Object.keys(props.properties).map(key => (
@@ -22,12 +26,16 @@ function Export(props) {
 Export.propTypes = {
 	type: PropTypes.string.isRequired,
 	name: PropTypes.string,
+	function: PropTypes.string,
 	default: PropTypes.bool,
 	generator: PropTypes.bool,
 	params: PropTypes.array,
 	properties: PropTypes.shape({
 		type: PropTypes.string.isRequired,
 	}),
+};
+Export.defaultProps = {
+	params: [],
 };
 
 class PanelExports extends React.Component {

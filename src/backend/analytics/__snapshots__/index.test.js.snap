@@ -33,8 +33,10 @@ Array [
     "async": false,
     "declarationType": "FunctionDeclaration",
     "default": false,
+    "displayName": "function",
     "generator": false,
-    "name": "fn",
+    "isComponent": true,
+    "name": "Func",
     "params": Array [
       Object {
         "defaultValue": undefined,
@@ -60,12 +62,17 @@ Array [
         "type": "RestElement",
       },
     ],
+    "propTypes": true,
     "type": "function",
   },
   Object {
     "declarationType": "ClassDeclaration",
     "default": false,
-    "name": "undefined",
+    "displayName": "Foo",
+    "isComponent": true,
+    "name": "Foo",
+    "propTypes": true,
+    "type": "class",
   },
   Object {
     "declarationType": "VariableDeclaration",
@@ -172,37 +179,6 @@ Array [
       },
     },
     "type": "object",
-  },
-]
-`;
-
-exports[`analyse should support imports 1`] = `
-Array [
-  Object {
-    "default": true,
-    "isLocal": false,
-    "name": "defaultFromExternal",
-    "source": "external",
-  },
-  Object {
-    "default": false,
-    "isLocal": false,
-    "name": "namedFromExternal",
-    "source": "external",
-  },
-  Object {
-    "default": true,
-    "isLocal": true,
-    "name": "defaultFromLocal",
-    "path": "/Users/jmfrancois/github/talend/cmf-generator/cmf-designer/src/backend/analytics/tests/imports.js/local",
-    "source": "./local",
-  },
-  Object {
-    "default": false,
-    "isLocal": true,
-    "name": "namedFromLocal",
-    "path": "/Users/jmfrancois/github/talend/cmf-generator/cmf-designer/src/backend/analytics/tests/imports.js/local",
-    "source": "./local",
   },
 ]
 `;

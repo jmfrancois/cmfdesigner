@@ -1,5 +1,8 @@
 const get = require('lodash/get');
 const getFunctionParams = require('./getFunctionParams');
+const isComponent = require('./isComponent');
+const getClassMetadata = require('./getClassMetadata');
+const getFunctionMetadata = require('./getFunctionMetadata');
 
 function isIn(items, id) {
 	return items.find(item => item.id === id) !== undefined;
@@ -17,7 +20,7 @@ function getFunctionInfo(items, id) {
 	return {};
 }
 
-function getExportDeclarationInfo(declaration, data, filePath) {
+function getExportDeclarationInfo(declaration, data, filePath, ast) {
 	const info = {};
 	info.name = declaration.name || 'undefined';
 	info.declarationType = declaration.type;
@@ -35,9 +38,9 @@ function getExportDeclarationInfo(declaration, data, filePath) {
 			}
 			break;
 		case 'CallExpression':
-			if (get(declaration, 'callee.callee.name') === 'cmfConnect') {
-				info.type = 'cmfConnect';
-			}
+			info.type = 'function call';
+			info.function = get(declaration, 'callee.callee.name');
+			info.name = get(declaration, 'arguments[0].name');
 			break;
 		case 'FunctionDeclaration':
 			info.type = 'function';
@@ -45,6 +48,19 @@ function getExportDeclarationInfo(declaration, data, filePath) {
 			info.async = declaration.async;
 			info.params = getFunctionParams(declaration);
 			info.name = get(declaration, 'id.name', 'anonymous');
+			if (isComponent(declaration, ast)) {
+				info.isComponent = true;
+				Object.assign(info, getFunctionMetadata(ast, info.name));
+			}
+			break;
+		case 'ClassDeclaration':
+			info.type = 'class';
+			info.name = get(declaration, 'id.name', 'anonymous');
+			if (isComponent(declaration, ast)) {
+				info.isComponent = true;
+				Object.assign(info, getClassMetadata(ast, declaration));
+				// Object.assign(info, getComponentInfo(declaration, ast))
+			}
 			break;
 		case 'VariableDeclaration':
 			info.type = declaration.kind;
@@ -87,10 +103,10 @@ function getExportDeclarationInfo(declaration, data, filePath) {
 	return info;
 }
 
-function getExportInfo(exportAST, data, filePath) {
+function getExportInfo(exportAST, data, filePath, ast) {
 	const info = {};
 	if (exportAST.declaration) {
-		return getExportDeclarationInfo(exportAST.declaration, data, filePath);
+		return getExportDeclarationInfo(exportAST.declaration, data, filePath, ast);
 	} else if (exportAST.type === 'ExportNamedDeclaration') {
 		if (exportAST.source) {
 			info.path = exportAST.source.value;
@@ -99,7 +115,7 @@ function getExportInfo(exportAST, data, filePath) {
 		}
 		if (exportAST.specifiers) {
 			info.specifiers = exportAST.specifiers.map(spec =>
-				getExportDeclarationInfo(spec.exported, data, filePath)
+				getExportDeclarationInfo(spec.exported, data, filePath, ast)
 			);
 		}
 	}
@@ -126,12 +142,12 @@ module.exports = function getExport(ast, filePath) {
 	const namedExport = ast.program.body.filter(line => line.type === 'ExportNamedDeclaration');
 	const allExports = namedExport.map(exp => ({
 		default: false,
-		...getExportInfo(exp, data, filePath),
+		...getExportInfo(exp, data, filePath, ast),
 	}));
 	if (defaultExport.length === 1) {
 		allExports.push({
 			default: true,
-			...getExportInfo(defaultExport[0], data, filePath),
+			...getExportInfo(defaultExport[0], data, filePath, ast),
 		});
 	}
 	return allExports;

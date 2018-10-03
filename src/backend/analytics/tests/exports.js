@@ -3,12 +3,15 @@ import dep from 'dep';
 
 export { local } from './local';
 
-export function fn(param1, { deconstructed }, ...rest) {
+export function Func(param1, { deconstructed }, ...rest) {
 
 }
+Func.propTypes = {}
+Func.displayName = 'function';
 
-export class Foo {
-	static staticVar = 'static';
+export class Foo extends React.Component {
+	static displayName = 'Foo';
+	static propTypes = {};
 }
 
 export const constant = 'CONSTANT';
@@ -18,7 +21,6 @@ class Internal {}
 function fnInternal(param1, { deconstructed }, ...rest) {}
 
 function* fnstar() {}
-
 
 export default {
 	dep,

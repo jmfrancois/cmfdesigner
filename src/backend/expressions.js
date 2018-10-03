@@ -1,3 +1,5 @@
+const order = require('./order');
+
 const EXPRESSION_REGEXP = /\/expressions\/|expressions\.js/;
 
 /**
@@ -34,7 +36,7 @@ function getExpressions(req, res) {
 				}, acc);
 			}
 			return acc;
-		}, [])
+		}, []).sort(order)
 	);
 }
 

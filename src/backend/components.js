@@ -3,13 +3,14 @@ const rimraf = require('rimraf');
 const Adapter = require('./yoadapter');
 const pathLib = require('path');
 const fs = require('./fs');
+const order = require('./order');
 /* eslint-disable no-console */
 
 function getComponents(req, res) {
 	res.json(
 		req.app.locals.analytics.reduce((acc, item) => {
 			if (item.components.length > 0) {
-				return item.components.reduce((subacc, component) => {
+				item.components.reduce((subacc, component) => {
 					subacc.push({
 						...component,
 						id: `${item.path}#${component.name}`,
@@ -19,8 +20,19 @@ function getComponents(req, res) {
 					return subacc;
 				}, acc);
 			}
+			if (item.export) {
+				item.export.filter(exp => exp.isComponent).reduce((subacc, exp) => {
+					subacc.push({
+						...exp,
+						id: `${item.path}#${exp.name}`,
+						path: item.path,
+						analytics: item,
+					});
+					return subacc;
+				}, acc);
+			}
 			return acc;
-		}, [])
+		}, []).sort(order)
 	);
 }
 

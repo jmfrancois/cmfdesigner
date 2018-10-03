@@ -10,7 +10,7 @@ function reduceImportInfo(acc, ast, filePath) {
 		};
 		info.isLocal = info.source.startsWith('.');
 		if (info.isLocal) {
-			info.path = path.resolve(filePath, info.source);
+			info.path = path.resolve(filePath, '..', `${info.source}.js`);
 		}
 		return info;
 	}));

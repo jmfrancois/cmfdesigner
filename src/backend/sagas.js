@@ -1,3 +1,5 @@
+const order = require('./order');
+
 const SAGA_REGEXP = /\/sagas\/|sagas\.js/;
 
 /**
@@ -31,7 +33,7 @@ function getSagas(req, res) {
 				}, acc);
 			}
 			return acc;
-		}, [])
+		}, []).sort(order)
 	);
 }
 
