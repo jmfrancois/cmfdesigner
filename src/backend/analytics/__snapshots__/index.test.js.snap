@@ -139,6 +139,37 @@ Array [
         "params": Array [],
         "type": "function",
       },
+      "objectMethod": Object {
+        "async": false,
+        "generator": false,
+        "key": "objectMethod",
+        "params": Array [
+          Object {
+            "defaultValue": undefined,
+            "name": "foo",
+            "properties": Array [],
+            "type": "Identifier",
+          },
+          Object {
+            "defaultValue": undefined,
+            "name": undefined,
+            "properties": Array [
+              Object {
+                "name": "bar",
+                "shorthand": true,
+              },
+            ],
+            "type": "ObjectPattern",
+          },
+          Object {
+            "defaultValue": undefined,
+            "name": "rest",
+            "properties": Array [],
+            "type": "RestElement",
+          },
+        ],
+        "type": "function",
+      },
     },
     "type": "object",
   },

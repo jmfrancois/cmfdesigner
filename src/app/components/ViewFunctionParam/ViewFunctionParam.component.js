@@ -2,51 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function renderProperties(properties) {
-	return properties.map(prop => {
-		const buffer = '';
-		if (prop.name && prop.shorthand) {
-			return prop.name;
-		}
-		return buffer;
-	});
+	return properties.map(prop => prop.name).join(', ');
 }
 
 function ViewFunctionParam(props) {
 	if (!props.params) {
 		return 'no params';
 	}
-	return (
-		<span>(
-			{props.params.map(param => {
-				if (param.type === 'ObjectPattern') {
-					return `{ ${renderProperties(param.properties)} }, `;
-				}
-				if (param.name && param.value) {
-					return `${param.name} = ${param.value}, `;
-				}
-				if (param.type === 'Identifier') {
-					return `${param.name}, `;
-				}
-				if (param.type === 'AssignmentPattern') {
-					let defaultValue = '';
-					if (param.defaultValue.type === 'ObjectExpression') {
-						defaultValue = `{${param.defaultValue.length}}`;
-					} else if (param.defaultValue.type === 'Literal') {
-						defaultValue = `'${defaultValue.value}'`;
-					} else if (param.defaultValue.type === 'ArrayExpression') {
-						defaultValue = `[${defaultValue.length}]`;
-					} else if (param.defaultValue.value) {
-						defaultValue = param.defaultValue.value;
-					}
-					return `${param.name} = ${defaultValue},`;
-				}
-				if (param.type === 'RestElement') {
-					return `...${param.name}`;
-				}
-				return null;
-			})}
-		)</span>
-	);
+	const params = props.params.reduce((acc, param) => {
+		if (param.type === 'ObjectPattern') {
+			acc.push(`{ ${renderProperties(param.properties)} }`);
+		}
+		if (param.name && param.value) {
+			acc.push(`${param.name} = ${param.value}`);
+		}
+		if (param.type === 'Identifier') {
+			acc.push(`${param.name}`);
+		}
+		if (param.type === 'AssignmentPattern') {
+			let defaultValue = '';
+			if (param.defaultValue.type === 'ObjectExpression') {
+				defaultValue = `{${param.defaultValue.length}}`;
+			} else if (param.defaultValue.type === 'Literal') {
+				defaultValue = `'${defaultValue.value}'`;
+			} else if (param.defaultValue.type === 'ArrayExpression') {
+				defaultValue = `[${defaultValue.length}]`;
+			} else if (param.defaultValue.value) {
+				defaultValue = param.defaultValue.value;
+			}
+			acc.push(`${param.name} = ${defaultValue},`);
+		}
+		if (param.type === 'RestElement') {
+			acc.push(`...${param.name}`);
+		}
+		return acc;
+	}, []);
+	return <span>({params.join(', ')})</span>;
 }
 
 ViewFunctionParam.propTypes = {

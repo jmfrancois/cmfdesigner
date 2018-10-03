@@ -29,8 +29,6 @@ function getExpressions(req, res) {
 								...exp.properties[key],
 							});
 						});
-					} else {
-						console.log('expression not processed', exp.type);
 					}
 					return subacc;
 				}, acc);

@@ -22,7 +22,7 @@ exports[`FileAnalytics should render 1`] = `
       dependencies={Array []}
     />
     <PanelExports
-      dependencies={Array []}
+      export={Array []}
     />
   </div>
 </div>

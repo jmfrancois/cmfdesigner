@@ -3,6 +3,33 @@ import PropTypes from 'prop-types';
 import { Inject } from '@talend/react-cmf';
 import ViewFunctionParam from '../ViewFunctionParam';
 
+
+function Export(props) {
+	return (
+		<span className="export-container">
+			<span className="export-definition">export {props.default && 'default'} [{props.type}{props.generator && '*'}] {props.name}</span>
+			{props.params && <span className="export-function-params"><ViewFunctionParam params={props.params} /></span>}
+			{props.properties && (
+				<ul className="export-object-properties">
+					{Object.keys(props.properties).map(key => (
+						<li key={key}>[{props.properties[key].type}] {key} </li>
+					))}
+				</ul>
+			)}
+		</span>
+	);
+}
+Export.propTypes = {
+	type: PropTypes.string.isRequired,
+	name: PropTypes.string,
+	default: PropTypes.bool,
+	generator: PropTypes.bool,
+	params: PropTypes.array,
+	properties: PropTypes.shape({
+		type: PropTypes.string.isRequired,
+	}),
+};
+
 class PanelExports extends React.Component {
 
 	constructor(props) {
@@ -17,7 +44,7 @@ class PanelExports extends React.Component {
 	}
 
 	render() {
-		if (this.props.dependencies.length === 0) {
+		if (this.props.export.length === 0) {
 			return null;
 		}
 		return (
@@ -30,10 +57,8 @@ class PanelExports extends React.Component {
 				</h3>
 				{this.state.opened && (
 					<ul>
-						{this.props.dependencies.map((dep, index) => (
-							<li key={index}>
-								export [{dep.type}{dep.generator && '*'}] {dep.name} params: <ViewFunctionParam params={dep.params} />
-							</li>
+						{this.props.export.map((dep, index) => (
+							<li key={index}><Export {...dep} /></li>
 						))}
 					</ul>
 				)}
@@ -43,13 +68,13 @@ class PanelExports extends React.Component {
 }
 
 PanelExports.propTypes = {
-	dependencies: PropTypes.arrayOf(PropTypes.shape({
+	export: PropTypes.arrayOf(PropTypes.shape({
 		default: PropTypes.bool,
 		name: PropTypes.string,
 	})),
 };
 PanelExports.defaultProps = {
-	dependencies: [],
+	export: [],
 };
 PanelExports.displayName = 'PanelExports';
 

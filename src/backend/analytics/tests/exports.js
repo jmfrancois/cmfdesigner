@@ -1,3 +1,4 @@
+/* eslint-disable */
 import dep from 'dep';
 
 export { local } from './local';
@@ -24,4 +25,7 @@ export default {
 	fnInternal,
 	Internal,
 	fnstar,
+	objectMethod(foo, { bar }, ...rest) {
+
+	},
 };

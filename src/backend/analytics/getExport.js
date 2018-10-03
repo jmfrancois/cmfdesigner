@@ -65,11 +65,17 @@ function getExportDeclarationInfo(declaration, data, filePath) {
 						key,
 						...getExportDeclarationInfo(current.value, data, filePath),
 					};
-				// } else if (current.key{
-				// 	// TODO : add support for ObjectMethod
-				// 	console.log('not processed', filePath, current);
+				} else if (current.type === 'ObjectMethod') {
+					// eslint-disable-next-line no-param-reassign
+					acc[current.key.name] = {
+						key: current.key.name,
+						type: 'function',
+						params: getFunctionParams(current),
+						generator: current.generator,
+						async: current.async,
+					};
 				} else {
-					// TODO : add support for ObjectMethod
+					// eslint-disable-next-line no-console
 					console.log('not processed', filePath, current);
 				}
 				return acc;
@@ -86,12 +92,9 @@ function getExportInfo(exportAST, data, filePath) {
 	if (exportAST.declaration) {
 		return getExportDeclarationInfo(exportAST.declaration, data, filePath);
 	} else if (exportAST.type === 'ExportNamedDeclaration') {
-		console.log(`no declaratation`, filePath);
 		if (exportAST.source) {
-			// export { default as getApp } from './getApp';
 			info.path = exportAST.source.value;
 		} else {
-			// export { foo, var };
 			info.path = filePath;
 		}
 		if (exportAST.specifiers) {
@@ -99,8 +102,6 @@ function getExportInfo(exportAST, data, filePath) {
 				getExportDeclarationInfo(spec.exported, data, filePath)
 			);
 		}
-	} else {
-		console.error('strange export found:', filePath, exportAST);
 	}
 	return info;
 }

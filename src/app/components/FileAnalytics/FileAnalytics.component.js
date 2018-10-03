@@ -28,7 +28,7 @@ function FileAnalytics(props) {
 			</button>
 			<div className={theme.content}>
 				<PanelDependencies dependencies={props.dependencies} />
-				<PanelExports dependencies={props.export} />
+				<PanelExports export={props.export} />
 			</div>
 		</div>
 	);

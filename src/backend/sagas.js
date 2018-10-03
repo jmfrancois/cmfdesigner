@@ -26,10 +26,7 @@ function getSagas(req, res) {
 								...exp.properties[key],
 							});
 						});
-					} else {
-						console.log('saga not processed', exp.type);
 					}
-
 					return subacc;
 				}, acc);
 			}
