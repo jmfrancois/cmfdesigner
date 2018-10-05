@@ -7,7 +7,7 @@ import theme from './SelectionList.scss';
 
 function getClassName(item, activeId) {
 	return classNames('list-group-item', {
-		active: activeId === item.get('id'),
+		active: activeId === item.id,
 	});
 }
 
@@ -27,12 +27,11 @@ class SelectionList extends React.Component {
 	}
 
 	onClick(event, item) {
-		const id = item.get('id');
+		const id = item.id;
 		this.props.setState({ active: id });
-		this.props.dispatchActionCreator('onClickSelectionListItem', event, {
+		this.props.dispatchActionCreator('SelectionList#select', event, {
 			componentId: this.props.componentId,
 			id,
-			item,
 		});
 	}
 
@@ -70,7 +69,7 @@ class SelectionList extends React.Component {
 								className={getClassName(item, this.props.state.get('active'))}
 								onClick={event => this.onClick(event, item)}
 							>
-								{item.get('name')}
+								{item.name}
 							</button>
 						))}
 					</div>

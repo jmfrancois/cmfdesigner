@@ -26,8 +26,8 @@ function* onAddButtonClicked(action) {
 
 function* loadSettings() {
 	yield call(loadResource, {
-		url: '/api/settings',
-		id: 'settings',
+		url: '/api/props',
+		id: 'props',
 	});
 }
 
