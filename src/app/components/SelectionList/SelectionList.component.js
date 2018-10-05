@@ -29,12 +29,13 @@ class SelectionList extends React.Component {
 	onClick(event, item) {
 		const id = item.get('id');
 		this.props.setState({ active: id });
-		this.props.dispatch({
-			type: SelectionList.ACTION_TYPE_SELECT_ITEM,
+		this.props.dispatchActionCreator('onClickSelectionListItem', event, {
 			componentId: this.props.componentId,
 			id,
+			item,
 		});
 	}
+
 	onAddClick() {
 		this.props.dispatch({
 			type: SelectionList.ACTION_TYPE_ADD_ITEM,
@@ -78,7 +79,12 @@ class SelectionList extends React.Component {
 		);
 	}
 }
-
+SelectionList.actions = {
+	'SelectionList#select': (event, data) => ({
+		type: SelectionList.ACTION_TYPE_SELECT_ITEM,
+		...data,
+	}),
+};
 SelectionList.propTypes = {
 	title: PropTypes.string,
 	items: PropTypes.array,

@@ -5,7 +5,7 @@ const cache = {};
 export default function getProps({ context }) {
 	const state = context.store.getState();
 	const id = components.SelectionList.getState(state, 'props').get('active');
-	const props = state.cmf.collections.getIn(['props', 'data']);
+	const props = state.cmf.collections.getIn(['settings', 'data', 'props']);
 	if (id) {
 		if (!cache[id]) {
 			const found = props.find(item => item.get('id') === id);

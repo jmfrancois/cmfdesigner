@@ -1,5 +1,9 @@
 import { List } from 'immutable';
 
+
+const cache = {};
+const DEFAULT_ANALYTICS = new List();
+
 function reduceComponents(acc, item) {
 	const components = item.get('components', new List());
 	if (components.size) {
@@ -13,5 +17,13 @@ function reduceComponents(acc, item) {
 }
 
 export default function getComponents(state) {
-	return state.cmf.collections.get('analytics', new List()).reduce(reduceComponents, new List());
+	const analytics = state.cmf.collections.get('analytics', DEFAULT_ANALYTICS);
+	if (cache.key === analytics) {
+		return cache.value;
+	}
+	cache.key = analytics;
+	cache.value = analytics.reduce(reduceComponents, new List());
+	return cache.value;
 }
+
+// todo: rewrite this.

@@ -1,6 +1,7 @@
 {
   "props": {
     "SelectionList#components": {
+      "saga": "service.user.stuff",
       "title": "Components",
       "itemsExpression": {
         "id": "cmf.collections.get",

@@ -1,10 +1,12 @@
+import SelectionList from './SelectionList.component';
+
 function onClickSelectionListItem(event, data) {
-	if (event.persist) {
+	if (event && event.persist) {
 		event.persist();
 	}
 	return {
-		type: 'CLICK_SELECTION_LIST_ITEM',
-		id: data.item.get('id'),
+		type: SelectionList.ACTION_TYPE_SELECT_ITEM,
+		id: data.id || data.item.get('id'),
 		event,
 	};
 }

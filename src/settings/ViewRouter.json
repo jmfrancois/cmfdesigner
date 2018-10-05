@@ -1,0 +1,16 @@
+{
+  "props": {
+    "ViewRouter#default": {
+      "itemExpression": "getComponent",
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+            {
+                "path": "/router",
+                "isExact": true
+            }
+        ]
+      }
+    }
+  }
+}
