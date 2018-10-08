@@ -2,7 +2,7 @@ import { put, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
 import components from '../components';
 import { ROUTER_TREE_OPEN_COMPONENT, APPS_LOADED } from '../constants';
-import modules from '../modules';
+import modules from '../experimental-cmf/modules';
 
 function* onOpenComponent(action) {
 	const componentsModule = modules.get('designer.components').inSaga();

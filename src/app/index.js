@@ -18,8 +18,8 @@ import moduleExpressions from './modules/expressions';
 import moduleSagas from './modules/sagas';
 import moduleProps from './modules/props';
 import moduleRoutes from './modules/routes';
-import merge from './mergeModules';
-import selectorTo from './selectorTo';
+import merge from './experimental-cmf/mergeModules';
+import selectorTo from './experimental-cmf/selectorTo';
 
 // just cmfConnect talend components
 const onlyComponents = Object.keys(talendComponents)

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Inject, cmfConnect } from '@talend/react-cmf';
-import modules from '../../modules';
+import modules from '../../experimental-cmf/modules';
 
 function ViewComponent(props) {
 	const api = modules.get('designer.components').inComponent(props);

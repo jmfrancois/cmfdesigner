@@ -1,7 +1,7 @@
 import { put, takeEvery } from 'redux-saga/lib/effects';
 import components from '../components';
 import { APPS_LOADED } from '../constants';
-import modules from '../modules';
+import modules from '../experimental-cmf/modules';
 
 function* onSelectProps(action) {
 	if (action.componentId === 'props') {
