@@ -10,7 +10,7 @@
             }
         ]
       },
-      "itemExpression": "getProps"
+      "itemExpression": "getProp"
     }
   }
 }

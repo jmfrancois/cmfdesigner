@@ -1,6 +1,7 @@
 import { select, put, takeEvery } from 'redux-saga/lib/effects';
 import components from '../components';
-import { ROUTER_TREE_OPEN_COMPONENT } from '../constants';
+import { ROUTER_TREE_OPEN_COMPONENT, APPS_LOADED } from '../constants';
+import modules from '../modules';
 
 function* onOpenComponent(action) {
 	const collection = yield select(state => state.cmf.collections.get('components'));
@@ -22,7 +23,13 @@ function* onOpenComponent(action) {
 	}
 }
 
+function* loadRoutes() {
+	const mod = modules.get('designer.routes').inSaga();
+	yield mod.fetchAll();
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export function* handleRouter() {
+	yield takeEvery(APPS_LOADED, loadRoutes);
 	yield takeEvery(ROUTER_TREE_OPEN_COMPONENT, onOpenComponent);
 }

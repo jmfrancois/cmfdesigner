@@ -1,4 +1,4 @@
-import getRouter from './getRouter';
+import modules from '../modules';
 
 const cache = {};
 
@@ -14,7 +14,8 @@ function getInfo(route) {
 const DEFAULT_ROUTER_TREE = [];
 
 export default function getRouterTree(state) {
-	const router = getRouter(state);
+	const routes = modules.get('designer.routes').inSelector();
+	const router = routes.getRoutes(state);
 	if (caches.key === router) {
 		return caches.value;
 	}

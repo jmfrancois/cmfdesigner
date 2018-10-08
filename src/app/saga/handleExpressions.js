@@ -5,7 +5,6 @@ import modules from '../modules';
 
 function* load() {
 	const mod = modules.get('designer.expressions').inSaga();
-	console.log(mod);
 	yield mod.fetchAll();
 }
 

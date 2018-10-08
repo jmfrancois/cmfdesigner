@@ -40,18 +40,15 @@ function* onSelectComponent(action) {
 	}
 }
 
-// function* onDeleteBtn(action) {
-// 	const path = yield getPath();
-// 	if (!path) {
-// 		// debugger;
-// 	}
-// 	yield call(cmf.sagas.http.delete, `/api/components/${action.id}?path=${path}`);
-// 	yield call(loadComponents);
-// 	yield put({
-// 		type: 'EFFECT_DELETE_COMPONENT_NEXT_ROUTE',
-// 		cmf: { routerReplace: '/' },
-// 	});
-// }
+function* onDeleteBtn(action) {
+	const mod = modules.get('designer.components').inSaga();
+	yield call(mod.delete, action.id);
+	yield call(load);
+	yield put({
+		type: 'EFFECT_DELETE_COMPONENT_NEXT_ROUTE',
+		cmf: { routerReplace: '/' },
+	});
+}
 
 // eslint-disable-next-line import/prefer-default-export
 export function* handleComponents() {
@@ -59,5 +56,5 @@ export function* handleComponents() {
 	yield takeEvery(components.SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_SELECT_ITEM, onSelectComponent);
 	yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);
-	// yield takeEvery(components.ViewComponent.ACTION_TYPE_DELETE_BTN, onDeleteBtn);
+	yield takeEvery(components.ViewComponent.ACTION_TYPE_DELETE_BTN, onDeleteBtn);
 }

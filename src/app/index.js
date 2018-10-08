@@ -11,11 +11,13 @@ import { ObjectViewer } from '@talend/react-containers';
 import './index.scss';
 import actions from './actions';
 import appComponents from './components';
-import * as expressions from './expressions';
 import selectors from './selectors';
 import saga from './saga';
 import moduleComponents from './modules/components';
 import moduleExpressions from './modules/expressions';
+import moduleSagas from './modules/sagas';
+import moduleProps from './modules/props';
+import moduleRoutes from './modules/routes';
 import merge from './mergeModules';
 import selectorTo from './selectorTo';
 
@@ -50,11 +52,13 @@ cmf.bootstrap(merge(
 		components: { ObjectViewer },
 	}, {
 		components: appComponents,
-		expressions,
 		saga,
 		settingsURL: '/settings.json',
 		actionCreators: actions,
 	},
 	moduleComponents,
-	moduleExpressions
+	moduleExpressions,
+	moduleSagas,
+	moduleProps,
+	moduleRoutes,
 ));

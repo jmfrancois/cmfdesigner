@@ -4,6 +4,7 @@ const data = {
 	modules: {},
 	inComponent: {},
 	inSaga: {},
+	inSelector: {},
 };
 
 function get(id) {
@@ -39,11 +40,17 @@ function addInSaga(mod, id) {
 	};
 }
 
+function addInSelector(mod) {
+	// eslint-disable-next-line no-param-reassign
+	mod.inSelector = () => mod.selectors;
+}
+
 function register(id, value) {
 	const mod = Object.assign({}, value);
 	data.modules[id] = mod;
 	addInComponent(mod, id);
 	addInSaga(mod, id);
+	addInSelector(mod, id);
 }
 
 export default {

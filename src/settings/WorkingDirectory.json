@@ -1,8 +1,5 @@
 {
   "props": {
-    "WorkingDirectory#default": {
-      "cwdExpression": "getCWD",
-      "isWebappExpression": "isWebapp"
-    }
+    "WorkingDirectory#default": {}
   }
 }

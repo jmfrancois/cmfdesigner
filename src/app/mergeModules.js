@@ -3,7 +3,7 @@ import { assertTypeOf } from '@talend/react-cmf/lib/assert';
 
 function mergeObjects(obj1, obj2, attr) {
 	return Object.keys(obj2).reduce((acc, key) => {
-		if (obj2[key] && obj1[key] !== obj2[key]) {
+		if (obj2[key] && obj1[key] && obj1[key] !== obj2[key]) {
 			// eslint-disable-next-line no-console
 			console.warn(`override detected ${attr} ${key}`);
 		}

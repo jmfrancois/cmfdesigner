@@ -44,4 +44,9 @@ WorkingDirectory.propTypes = {
 	...cmfConnect.propTypes,
 };
 
-export default cmfConnect({})(WorkingDirectory);
+export default cmfConnect({
+	defaultProps: {
+		cwdExpression: 'getCWD',
+		isWebappExpression: 'isWebapp',
+	},
+})(WorkingDirectory);
