@@ -17,7 +17,6 @@ function* fetchAllEffect() {
 // }
 
 function* selectEffect(action) {
-	console.log('############ select effect');
 	yield put(cmf.actions.collections.addOrReplace(
 		SERVICE_CURRENT_COLLECTION_ID, action.id
 	));

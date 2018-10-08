@@ -10,7 +10,7 @@
             }
         ]
       },
-      "itemExpression": "getProp"
+      "itemExpression": "service#designer.props:getProp"
     }
   }
 }

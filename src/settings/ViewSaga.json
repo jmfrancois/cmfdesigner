@@ -1,7 +1,7 @@
 {
   "props": {
     "ViewSaga#default": {
-      "itemExpression": "getSaga",
+      "itemExpression": "service#designer.sagas:getSaga",
       "renderIfExpression": {
         "id": "cmf.router.matchPath",
         "args": [

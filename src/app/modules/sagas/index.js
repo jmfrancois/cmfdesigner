@@ -20,6 +20,4 @@ const config = {
 	saga,
 };
 
-modules.register('designer.sagas', { selectors, ...config });
-
-export default config;
+export default modules.register('designer.sagas', { selectors, ...config });

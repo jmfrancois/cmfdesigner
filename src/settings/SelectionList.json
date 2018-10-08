@@ -2,19 +2,19 @@
   "props": {
     "SelectionList#components": {
       "title": "Components",
-      "itemsExpression": "getComponents"
+      "itemsExpression": "service#designer.components:getComponents"
     },
     "SelectionList#expressions": {
       "title": "Expressions",
-      "itemsExpression": "getExpressions"
+      "itemsExpression": "service#designer.expressions:getExpressions"
     },
     "SelectionList#sagas": {
       "title": "Sagas",
-      "itemsExpression": "getSagas"
+      "itemsExpression": "service#designer.sagas:getSagas"
     },
     "SelectionList#props": {
       "title": "Props",
-      "itemsExpression": "getProps"
+      "itemsExpression": "service#designer.props:getProps"
     }
   }
 }

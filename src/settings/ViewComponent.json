@@ -1,7 +1,7 @@
 {
   "props": {
     "ViewComponent#default": {
-      "itemExpression": "getComponent",
+      "itemExpression": "service#designer.components:getComponent",
       "renderIfExpression": {
         "id": "cmf.router.matchPath",
         "args": [

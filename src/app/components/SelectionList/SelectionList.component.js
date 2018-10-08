@@ -29,7 +29,7 @@ class SelectionList extends React.Component {
 	onClick(event, item) {
 		const id = item.id;
 		this.props.setState({ active: id });
-		this.props.dispatchActionCreator('SelectionList#select', event, {
+		this.props.dispatchActionCreator(SelectionList.ACTION_TYPE_SELECT_ITEM, event, {
 			componentId: this.props.componentId,
 			id,
 		});
@@ -78,12 +78,7 @@ class SelectionList extends React.Component {
 		);
 	}
 }
-SelectionList.actions = {
-	'SelectionList#select': (event, data) => ({
-		type: SelectionList.ACTION_TYPE_SELECT_ITEM,
-		...data,
-	}),
-};
+
 SelectionList.propTypes = {
 	title: PropTypes.string,
 	items: PropTypes.array,
@@ -95,8 +90,14 @@ SelectionList.defaultProps = {
 	items: [],
 };
 SelectionList.displayName = 'SelectionList';
-SelectionList.ACTION_TYPE_SELECT_ITEM = 'SelectionList#selectItem';
+SelectionList.ACTION_TYPE_SELECT_ITEM = 'SelectionList#select';
 SelectionList.ACTION_TYPE_ADD_ITEM = 'SelectionList#addItem';
+SelectionList.actions = {
+	[SelectionList.ACTION_TYPE_SELECT_ITEM]: (event, data) => ({
+		type: SelectionList.ACTION_TYPE_SELECT_ITEM,
+		...data,
+	}),
+};
 
 export default cmfConnect({
 	defaultState: new Immutable.Map(),

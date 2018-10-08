@@ -20,6 +20,6 @@ const config = {
 	saga,
 };
 
-modules.register('designer.routes', { selectors, ...config });
+const privateConfig = modules.register('designer.routes', { selectors, ...config });
 
-export default config;
+export default privateConfig;
