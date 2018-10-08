@@ -15,7 +15,7 @@ const DEFAULT_ROUTER_TREE = [];
 
 export default function getRouterTree(state) {
 	const routes = modules.get('designer.routes').inSelector();
-	const router = routes.getRoutes(state);
+	const router = routes.getAll(state);
 	if (caches.key === router) {
 		return caches.value;
 	}
