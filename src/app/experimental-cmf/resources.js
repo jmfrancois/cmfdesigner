@@ -112,7 +112,6 @@ export default function get(config) {
 		));
 	}
 	function* saga() {
-		console.log('generated saga start', config);
 		yield takeEvery(CONSTANTS.DELETE_ONE, removeEffect);
 		yield takeEvery(CONSTANTS.FETCH_ALL, fetchAllEffect);
 		yield takeEvery(CONSTANTS.CREATE_ONE, createEffect);
