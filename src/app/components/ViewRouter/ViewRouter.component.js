@@ -12,7 +12,7 @@ function addActions(route, props) {
 			{
 				label: 'Open Component',
 				icon: 'talend-link',
-				tooltipPlacement: 'left',
+				tooltipPlacement: 'top',
 				action() {
 					props.dispatch({
 						type: ROUTER_TREE_OPEN_COMPONENT,
@@ -27,7 +27,7 @@ function addActions(route, props) {
 		actions.push({
 			label: 'Open Props',
 			icon: 'talend-cog',
-			tooltipPlacement: 'left',
+			tooltipPlacement: 'top',
 			action() {
 				props.dispatch({
 					type: ROUTER_TREE_OPEN_PROPS,
@@ -37,11 +37,11 @@ function addActions(route, props) {
 		});
 	}
 	if (route.route.view) {
-		if (props.props.find(prop => prop.name === route.view)) {
+		if (props.props.find(prop => prop.name === route.route.view)) {
 			actions.push({
-				label: 'Transform into componentId',
-				icon: 'talend-warning',
-				tooltipPlacement: 'left',
+				label: 'Open Props',
+				icon: 'talend-cog',
+				tooltipPlacement: 'top',
 				action() {
 					props.dispatch({
 						type: ROUTER_TREE_OPEN_PROPS,
@@ -51,15 +51,9 @@ function addActions(route, props) {
 			});
 		} else {
 			actions.push({
-				label: 'Delete view (unused)',
+				label: 'View not found',
 				icon: 'talend-warning',
-				tooltipPlacement: 'left',
-				action() {
-					props.dispatch({
-						type: ROUTER_TREE_OPEN_PROPS,
-						propsId: route.route.view,
-					});
-				},
+				tooltipPlacement: 'top',
 			});
 		}
 	}
