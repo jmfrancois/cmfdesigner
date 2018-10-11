@@ -3,10 +3,22 @@
     "HeaderBar#default": {
       "logo": {
         "icon": "talend-logo-square",
-        "isFull": false
+        "isFull": false,
+        "onClickDispatch": {
+          "type": "APP_HEADERBAR_LOGO_CLICKED",
+          "cmf": {
+            "routerPush": "/router"
+          }
+        }
       },
       "brand": {
-        "label": "CMF Designer"
+        "label": "CMF Designer",
+        "onClickDispatch": {
+          "type": "APP_HEADERBAR_BRAND_CLICKED",
+          "cmf": {
+            "routerPush": "/router"
+          }
+        }
       },
       "info": {
         "label": "/Users/jmfrancois/github/talend/cmf-generator/cmf-designer"

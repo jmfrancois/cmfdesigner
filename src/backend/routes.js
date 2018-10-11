@@ -1,7 +1,9 @@
-const settings = require('./settings');
+
 
 function get(req, res) {
-	res.json(settings.get(req.app).routes);
+	res.json(
+		req.app.locals.analytics.filter(analytics => analytics.type === 'routes')
+	);
 }
 
 function setup(app) {

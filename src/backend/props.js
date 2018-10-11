@@ -1,7 +1,8 @@
-const settings = require('./settings');
 
 function get(req, res) {
-	res.json(settings.get(req.app).props);
+	res.json(
+		req.app.locals.analytics.filter(analytics => analytics.type === 'props')
+	);
 }
 
 function setup(app) {

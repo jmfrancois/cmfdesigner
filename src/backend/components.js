@@ -9,6 +9,9 @@ const order = require('./order');
 function getComponents(req, res) {
 	res.json(
 		req.app.locals.analytics.reduce((acc, item) => {
+			if (item.path.endsWith('.json')) {
+				return acc;
+			}
 			if (item.components.length > 0) {
 				item.components.reduce((subacc, component) => {
 					subacc.push({

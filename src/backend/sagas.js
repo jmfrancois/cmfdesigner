@@ -8,6 +8,12 @@ const SAGA_REGEXP = /\/sagas\/|sagas\.js/;
 function getSagas(req, res) {
 	res.json(
 		req.app.locals.analytics.reduce((acc, item) => {
+			if (item.path.endsWith('.json')) {
+				return acc;
+			}
+			if (!item.export) {
+				console.error(item);
+			}
 			if (item.export.length > 0) {
 				return item.export.reduce((subacc, exp) => {
 					if (!item.path.match(SAGA_REGEXP)) {
