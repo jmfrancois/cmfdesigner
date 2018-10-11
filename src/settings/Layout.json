@@ -6,7 +6,6 @@
       "header": "HeaderBar",
       "one": [
         { "component": "ActionButton", "componentId": "refresh" },
-        { "component": "ActionButton", "componentId": "router" },
         { "component": "SelectionList", "componentId": "components" },
         { "component": "SelectionList", "componentId": "expressions" },
         { "component": "SelectionList", "componentId": "sagas" },

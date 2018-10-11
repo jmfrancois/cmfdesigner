@@ -1,12 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
+const readAllJSON = require('./readAllJSON');
 const getBootstrap = require('./getBootstrap');
 const getDependencies = require('./getDependencies');
 const getExport = require('./getExport');
 const getComponents = require('./getComponents');
 const parse = require('./parse');
-const settings = require('../settings');
 
 /* eslint-disable no-console */
 
@@ -38,6 +38,16 @@ function analyse(options) {
 	folders.forEach(folderPath => {
 		components = components.concat(analyse({ path: path.join(options.path, folderPath) }));
 	});
+	if (options.settingsPath) {
+		const settings = readAllJSON(options.settingsPath);
+		Object.keys(settings).forEach(key => {
+			if (Array.isArray(settings[key])) {
+				components.push(...settings[key]);
+			} else {
+				components.push(settings[key]);
+			}
+		});
+	}
 	return components;
 }
 
@@ -47,8 +57,10 @@ function setup(app) {
 	});
 	app.post('/api/analytics', (req, res) => {
 		// eslint-disable-next-line no-param-reassign
-		app.locals.analytics = analyse({ path: path.join(req.app.locals.apps.path, 'src/app') });
-		settings.load(req.app);
+		app.locals.analytics = analyse({
+			path: path.join(req.app.locals.apps.path, 'src/app'),
+			settingsPath: path.join(req.app.locals.apps.path, 'src/settings'),
+		});
 		res.json(app.locals.analytics);
 	});
 }

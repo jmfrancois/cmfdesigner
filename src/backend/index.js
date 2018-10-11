@@ -25,7 +25,8 @@ app.use((req, res, next) => {
 	if (!app.locals.analytics) {
 		console.log('start analytics ...');
 		app.locals.analytics = analytics.analyse({
-			path: path.join(app.locals.apps.path, 'src/app'),
+			path: path.join(req.app.locals.apps.path, 'src/app'),
+			settingsPath: path.join(req.app.locals.apps.path, 'src/settings'),
 		});
 		console.log('analytics done');
 	}

@@ -19,10 +19,10 @@ export default function getRouterTree(state) {
 	if (caches.key === router) {
 		return caches.value;
 	}
-	if (!router.path) {
+	if (router.length === 0) {
 		return DEFAULT_ROUTER_TREE;
 	}
 	cache.key = router;
-	cache.value = [getInfo(router)];
+	cache.value = router.map(r => getInfo(r.value));
 	return cache.value;
 }
