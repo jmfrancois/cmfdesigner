@@ -6,7 +6,7 @@ function getInfo(route) {
 	return {
 		children: (route.childRoutes || []).map(getInfo),
 		name: `${route.path} -> ${route.component}#${route.componentId || route.view || 'default'}`,
-		isOpened: true,
+		id: `${route.component}#${route.componentId || 'default'}:${route.path}`,
 		route,
 	};
 }

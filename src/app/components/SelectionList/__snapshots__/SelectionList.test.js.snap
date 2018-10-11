@@ -14,9 +14,12 @@ exports[`SelectionList should render 1`] = `
         componentId="selection-list-opened"
       />
       <span />
+      <span
+        className="badge"
+      />
     </a>
     <button
-      className="btn btn-primary btn-xs"
+      className="btn btn-primary btn-sm"
       onClick={[Function]}
       title="Add undefined"
     >
@@ -29,7 +32,28 @@ exports[`SelectionList should render 1`] = `
   <div
     className="list-group"
   >
-    
+    <div
+      className="list-group-item"
+    >
+      <div
+        className="btn-group"
+      >
+        <button
+          className="btn btn-default"
+          disabled={true}
+          onClick={[Function]}
+        >
+          Prev
+        </button>
+        <button
+          className="btn btn-default"
+          disabled={true}
+          onClick={[Function]}
+        >
+          Next
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 `;
