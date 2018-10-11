@@ -1,12 +1,5 @@
+import getCollection from './getCollection';
 
-const cache = {};
-
-export default function getAnalytics(state) {
-	const analytics = state.cmf.collections.get('analytics');
-	if (cache.key === analytics && cache.value) {
-		return cache.value;
-	}
-	cache.key = analytics;
-	cache.value = analytics.toJS();
-	return cache.value;
+export default function getExpressions(state) {
+	return getCollection(state, 'analytics');
 }

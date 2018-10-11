@@ -11,9 +11,17 @@ import { ObjectViewer } from '@talend/react-containers';
 import './index.scss';
 import actions from './actions';
 import appComponents from './components';
-import * as expressions from './expressions';
-import * as sagas from './sagas';
+import selectors from './selectors';
+import saga from './saga';
+import moduleComponents from './modules/components';
+import moduleExpressions from './modules/expressions';
+import moduleSagas from './modules/sagas';
+import moduleProps from './modules/props';
+import moduleRoutes from './modules/routes';
+import merge from './experimental-cmf/mergeModules';
+import selectorTo from './experimental-cmf/selectorTo';
 
+// just cmfConnect talend components
 const onlyComponents = Object.keys(talendComponents)
 	.filter(key => typeof talendComponents[key] === 'function')
 	.reduce((acc, key) => ({
@@ -21,11 +29,11 @@ const onlyComponents = Object.keys(talendComponents)
 		[key]: cmfConnect({})(talendComponents[key]),
 	}), {});
 
-const components = {
-	...onlyComponents,
-	...appComponents,
-	ObjectViewer,
-};
+
+const selectorsAsExpressions = {};
+Object.keys(selectors).forEach(key => {
+	selectorsAsExpressions[key] = selectorTo.toExpression(selectors[key]);
+});
 
 /**
  * Initialize CMF
@@ -36,11 +44,21 @@ const components = {
  * - Fetch the settings
  * - render react-dom in the dom 'app' element
  */
-cmf.bootstrap({
-	components,
-	expressions,
-	sagas,
-	saga: sagas.default,
-	settingsURL: '/settings.json',
-	actionCreators: actions,
-});
+cmf.bootstrap(merge(
+	{
+		components: onlyComponents,
+		expressions: selectorsAsExpressions,
+	}, {
+		components: { ObjectViewer },
+	}, {
+		components: appComponents,
+		saga,
+		settingsURL: '/settings.json',
+		actionCreators: actions,
+	},
+	moduleComponents,
+	moduleExpressions,
+	moduleSagas,
+	moduleProps,
+	moduleRoutes,
+));

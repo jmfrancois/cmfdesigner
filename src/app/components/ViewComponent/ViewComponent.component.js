@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Inject, cmfConnect } from '@talend/react-cmf';
+import modules from '../../experimental-cmf/modules';
 
 function ViewComponent(props) {
+	const api = modules.get('designer.components').inComponent(props);
 	return (
 		<div>
 			<button
 				className="btn btn-danger pull-right"
-				onClick={() => props.dispatch({
-					type: ViewComponent.ACTION_TYPE_DELETE_BTN,
-					id: props.item.id,
-				})}
+				onClick={event => api.delete(event, { id: props.item.id })}
 			>
 				Delete
 			</button>
@@ -46,4 +45,8 @@ ViewComponent.displayName = 'ViewComponent';
 ViewComponent.defaultProps = {
 	item: {},
 };
-export default cmfConnect({})(ViewComponent);
+export default cmfConnect({
+	defaultProps: {
+		itemExpression: 'getComponent',
+	},
+})(ViewComponent);

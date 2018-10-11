@@ -2,31 +2,19 @@
   "props": {
     "SelectionList#components": {
       "title": "Components",
-      "itemsExpression": {
-        "id": "cmf.collections.get",
-        "args": ["components", []]
-      }
+      "itemsExpression": "service#designer.components:getAll"
     },
     "SelectionList#expressions": {
       "title": "Expressions",
-      "itemsExpression": {
-        "id": "cmf.collections.get",
-        "args": ["expressions", []]
-      }
+      "itemsExpression": "service#designer.expressions:getAll"
     },
     "SelectionList#sagas": {
       "title": "Sagas",
-      "itemsExpression": {
-        "id": "cmf.collections.get",
-        "args": ["sagas", []]
-      }
+      "itemsExpression": "service#designer.sagas:getAll"
     },
     "SelectionList#props": {
       "title": "Props",
-      "itemsExpression": {
-        "id": "cmf.collections.get",
-        "args": ["props.data", []]
-      }
+      "itemsExpression": "service#designer.props:getAll"
     }
   }
 }

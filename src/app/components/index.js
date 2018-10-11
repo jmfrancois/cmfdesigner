@@ -8,6 +8,7 @@ import ViewComponent from './ViewComponent';
 import ViewProps from './ViewProps';
 import ViewExpression from './ViewExpression';
 import ViewFunctionParam from './ViewFunctionParam';
+import ViewRouter from './ViewRouter';
 import ViewSaga from './ViewSaga';
 import WorkingDirectory from './WorkingDirectory';
 
@@ -21,6 +22,7 @@ export default {
 	ViewComponent,
 	ViewExpression,
 	ViewFunctionParam,
+	ViewRouter,
 	ViewSaga,
 	ViewProps,
 	WorkingDirectory,

@@ -6,6 +6,7 @@ const getDependencies = require('./getDependencies');
 const getExport = require('./getExport');
 const getComponents = require('./getComponents');
 const parse = require('./parse');
+const settings = require('../settings');
 
 /* eslint-disable no-console */
 
@@ -47,6 +48,7 @@ function setup(app) {
 	app.post('/api/analytics', (req, res) => {
 		// eslint-disable-next-line no-param-reassign
 		app.locals.analytics = analyse({ path: path.join(req.app.locals.apps.path, 'src/app') });
+		settings.load(req.app);
 		res.json(app.locals.analytics);
 	});
 }

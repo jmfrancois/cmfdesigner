@@ -1,12 +1,12 @@
 {
   "props": {
-    "ViewExpression#default": {
-      "itemExpression": "service#designer.expressions:getCurrent",
+    "ViewRouter#default": {
+      "itemExpression": "service#designer.routes:getAll",
       "renderIfExpression": {
         "id": "cmf.router.matchPath",
         "args": [
             {
-                "path": "/expressions/view",
+                "path": "/router",
                 "isExact": true
             }
         ]

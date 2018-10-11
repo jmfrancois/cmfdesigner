@@ -5,6 +5,7 @@
       "header": "HeaderBar",
       "one": [
         { "component": "ActionButton", "componentId": "refresh" },
+        { "component": "ActionButton", "componentId": "router" },
         { "component": "SelectionList", "componentId": "components" },
         { "component": "SelectionList", "componentId": "expressions" },
         { "component": "SelectionList", "componentId": "sagas" },
@@ -18,6 +19,7 @@
         { "component": "ViewComponent" },
         { "component": "ViewExpression" },
         { "component": "ViewSaga" },
+        { "component": "ViewRouter" },
         { "component": "IconsProvider" }
       ]
     }

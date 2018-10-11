@@ -16,23 +16,29 @@ function getFolders(path) {
 }
 
 function readAllJSON(path) {
-	const result = [];
+	const result = {
+		props: [],
+	};
 	const content = fs.readdirSync(path);
 	content.forEach(name => {
 		if (name.endsWith('json')) {
 			console.log('read', name);
 			const settings = JSON.parse(fs.readFileSync(pathLib.join(path, name)));
-			if (settings.props) {
-				Object.keys(settings.props).forEach(key => {
-					result.push({
-						path: pathLib.join(path, name),
-						filename: name,
-						id: key,
-						name: key,
-						value: settings.props[key],
+			Object.keys(settings).forEach(kind => {
+				if (kind === 'props') {
+					Object.keys(settings.props).forEach(key => {
+						result.props.push({
+							path: pathLib.join(path, name),
+							filename: name,
+							id: key,
+							name: key,
+							value: settings.props[key],
+						});
 					});
-				});
-			}
+				} else {
+					result[kind] = { ...(result[kind] || {}), ...settings[kind] };
+				}
+			});
 		}
 	});
 	return result;

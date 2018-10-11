@@ -6,6 +6,7 @@ const apps = require('./apps');
 const components = require('./components');
 const expressions = require('./expressions');
 const props = require('./props');
+const routes = require('./routes');
 const sagas = require('./sagas');
 const open = require('./open');
 const update = require('./update');
@@ -38,6 +39,7 @@ components.setup(app);
 expressions.setup(app);
 props.setup(app);
 update.setup(app);
+routes.setup(app);
 sagas.setup(app);
 open.setup(app);
 

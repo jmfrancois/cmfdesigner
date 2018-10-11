@@ -1,15 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/lib/effects';
-import cmf from '@talend/react-cmf';
 import components from '../components';
-import { loadResource } from './resource';
-import getPath from './getPath';
 import { APPS_LOADED } from '../constants';
+import modules from '../experimental-cmf/modules';
 
-function* loadComponents() {
-	yield call(loadResource, {
-		url: '/api/components',
-		id: 'components',
-	});
+function* load() {
+	const mod = modules.get('designer.components').inSaga();
+	yield mod.fetchAll();
 }
 
 function* onAddButtonClicked(action) {
@@ -25,13 +21,16 @@ function* onAddButtonClicked(action) {
 }
 function* onAddFormSubmit(action) {
 	if (action.componentId === 'component') {
-		yield call(cmf.sagas.http.post, '/api/components', action.data);
-		yield call(loadComponents);
+		const mod = modules.get('designer.components').inSaga();
+		yield call(mod.create, action.event, action.data);
+		yield call(load);
 	}
 }
 
 function* onSelectComponent(action) {
 	if (action.componentId === 'components') {
+		const mod = modules.get('designer.components').inSaga();
+		yield mod.select(action.event, { id: action.id });
 		yield put({
 			type: 'SELECT_PROPS_ROUTE_EFFECT',
 			cmf: {
@@ -42,12 +41,9 @@ function* onSelectComponent(action) {
 }
 
 function* onDeleteBtn(action) {
-	const path = yield getPath();
-	if (!path) {
-		// debugger;
-	}
-	yield call(cmf.sagas.http.delete, `/api/components/${action.id}?path=${path}`);
-	yield call(loadComponents);
+	const mod = modules.get('designer.components').inSaga();
+	yield call(mod.delete, action.id);
+	yield call(load);
 	yield put({
 		type: 'EFFECT_DELETE_COMPONENT_NEXT_ROUTE',
 		cmf: { routerReplace: '/' },
@@ -56,7 +52,7 @@ function* onDeleteBtn(action) {
 
 // eslint-disable-next-line import/prefer-default-export
 export function* handleComponents() {
-	yield takeEvery(APPS_LOADED, loadComponents);
+	yield takeEvery(APPS_LOADED, load);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_ADD_ITEM, onAddButtonClicked);
 	yield takeEvery(components.SelectionList.ACTION_TYPE_SELECT_ITEM, onSelectComponent);
 	yield takeEvery(components.AddForm.ACTION_TYPE_SUBMIT, onAddFormSubmit);

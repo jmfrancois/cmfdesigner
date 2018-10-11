@@ -8,6 +8,16 @@
       },
       "initialState": {},
       "spreadCMFState": true
+    },
+    "ActionButton#router": {
+      "label": "router",
+      "icon": "talend-flow-under-plan",
+      "onClickDispatch": {
+        "type": "APP_VIEW_ROUTER_CONFIG",
+        "cmf": {
+          "routerPush": "/router"
+        }
+      }
     }
   }
 }

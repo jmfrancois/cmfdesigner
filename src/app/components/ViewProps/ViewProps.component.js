@@ -36,5 +36,5 @@ ViewProps.propTypes = {
 	...cmfConnect.propTypes,
 };
 ViewProps.displayName = 'ViewProps';
-ViewProps.ACTION_TYPE_CLICK_OPEN = 'USER_CLICK_OPEN_PROPS';
+
 export default cmfConnect({})(ViewProps);
