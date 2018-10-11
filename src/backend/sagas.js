@@ -11,9 +11,6 @@ function getSagas(req, res) {
 			if (item.path.endsWith('.json')) {
 				return acc;
 			}
-			if (!item.export) {
-				console.error(item);
-			}
 			if (item.export.length > 0) {
 				return item.export.reduce((subacc, exp) => {
 					if (!item.path.match(SAGA_REGEXP)) {
