@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const json = require('../fs');
+const readAllJSON = require('./readAllJSON');
 const getBootstrap = require('./getBootstrap');
 const getDependencies = require('./getDependencies');
 const getExport = require('./getExport');
@@ -39,7 +39,7 @@ function analyse(options) {
 		components = components.concat(analyse({ path: path.join(options.path, folderPath) }));
 	});
 	if (options.settingsPath) {
-		const settings = json.readAllJSON(options.settingsPath);
+		const settings = readAllJSON(options.settingsPath);
 		Object.keys(settings).forEach(key => {
 			if (Array.isArray(settings[key])) {
 				components.push(...settings[key]);
