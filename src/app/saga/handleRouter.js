@@ -1,12 +1,12 @@
 import { put, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
 import components from '../components';
-import { ROUTER_TREE_OPEN_COMPONENT, APPS_LOADED } from '../constants';
+import { APPS_LOADED } from '../constants';
 import modules from '../experimental-cmf/modules';
 
 function* onOpenComponent(action) {
 	const componentsModule = modules.get('designer.components').inSaga();
-	const collection = yield componentsModule.getComponents();
+	const collection = yield componentsModule.getAll();
 	const found = collection.find(component => component.name === action.component);
 	if (found) {
 		// select it
@@ -24,8 +24,29 @@ function* onOpenComponent(action) {
 				id,
 			}
 		);
-	} else {
-		console.log('component not found: ', action.component);
+	}
+}
+
+function* onOpenProps(action) {
+	const componentId = 'props';
+	const propsService = modules.get('designer.props').inSaga();
+	const collection = yield propsService.getAll();
+	const found = collection.find(item => item.name === action.propsId);
+	if (found) {
+		// select it
+		const id = found.name;
+		const setStateAction = components.SelectionList.setStateAction({
+			active: id,
+		}, componentId);
+		yield put(setStateAction);
+		yield cmf.sagas.putActionCreator(
+			components.SelectionList.ACTION_TYPE_SELECT_ITEM,
+			null,
+			{
+				componentId,
+				id,
+			}
+		);
 	}
 }
 
@@ -37,5 +58,6 @@ function* loadRoutes() {
 // eslint-disable-next-line import/prefer-default-export
 export function* handleRouter() {
 	yield takeEvery(APPS_LOADED, loadRoutes);
-	yield takeEvery(ROUTER_TREE_OPEN_COMPONENT, onOpenComponent);
+	yield takeEvery(components.ViewRouter.ROUTER_TREE_OPEN_COMPONENT, onOpenComponent);
+	yield takeEvery(components.ViewRouter.ROUTER_TREE_OPEN_PROPS, onOpenProps);
 }

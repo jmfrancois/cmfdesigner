@@ -6,7 +6,7 @@
 import '@talend/bootstrap-theme/src/theme/theme.scss';
 import cmf, { cmfConnect } from '@talend/react-cmf';
 import * as talendComponents from '@talend/react-components';
-import { ObjectViewer } from '@talend/react-containers';
+import { ObjectViewer, TreeView } from '@talend/react-containers';
 
 import './index.scss';
 import actions from './actions';
@@ -21,12 +21,21 @@ import moduleRoutes from './modules/routes';
 import merge from './experimental-cmf/mergeModules';
 import selectorTo from './experimental-cmf/selectorTo';
 
+const DEFAULT_WITH_PROPS = { withComponentRegistry: true };
+
+function getWithProps(component) {
+	if (component === 'Icon') {
+		return {};
+	}
+	return DEFAULT_WITH_PROPS;
+}
+
 // just cmfConnect talend components
 const onlyComponents = Object.keys(talendComponents)
 	.filter(key => typeof talendComponents[key] === 'function')
 	.reduce((acc, key) => ({
 		...acc,
-		[key]: cmfConnect({})(talendComponents[key]),
+		[key]: cmfConnect({ omitCMFProps: true, ...getWithProps(key) })(talendComponents[key]),
 	}), {});
 
 
@@ -49,7 +58,7 @@ cmf.bootstrap(merge(
 		components: onlyComponents,
 		expressions: selectorsAsExpressions,
 	}, {
-		components: { ObjectViewer },
+		components: { ObjectViewer, TreeView },
 	}, {
 		components: appComponents,
 		saga,

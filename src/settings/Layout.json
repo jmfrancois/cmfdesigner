@@ -1,6 +1,7 @@
 {
   "props": {
     "Layout#default": {
+      "omitRouterProps": true,
       "mode": "TwoColumns",
       "header": "HeaderBar",
       "one": [
