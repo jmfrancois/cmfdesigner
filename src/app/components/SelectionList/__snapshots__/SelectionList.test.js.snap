@@ -18,16 +18,6 @@ exports[`SelectionList should render 1`] = `
         className="badge"
       />
     </a>
-    <button
-      className="btn btn-primary btn-sm"
-      onClick={[Function]}
-      title="Add undefined"
-    >
-      <Inject
-        component="Icon"
-        componentId="selection-list-add"
-      />
-    </button>
   </h2>
   <div
     className="list-group"

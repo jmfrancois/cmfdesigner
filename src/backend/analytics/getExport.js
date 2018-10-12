@@ -28,7 +28,14 @@ function getExportDeclarationInfo(declaration, data, filePath, ast) {
 		case 'Identifier':
 			if (isIn(data.functions, declaration.name)) {
 				info.type = 'function';
-				Object.assign(info, getFunctionInfo(data.functions, declaration.name));
+				Object.assign(
+					info,
+					getFunctionInfo(data.functions, declaration.name),
+					getFunctionMetadata(ast, declaration.name)
+				);
+				if (isComponent(declaration, ast)) {
+					info.isComponent = true;
+				}
 			} else if (isIn(data.vars, declaration.name)) {
 				info.type = 'var';
 			} else if (isIn(data.classes, declaration.name)) {
@@ -79,7 +86,7 @@ function getExportDeclarationInfo(declaration, data, filePath, ast) {
 					// eslint-disable-next-line no-param-reassign
 					acc[key] = {
 						key,
-						...getExportDeclarationInfo(current.value, data, filePath),
+						...getExportDeclarationInfo(current.value, data, filePath, ast),
 					};
 				} else if (current.type === 'ObjectMethod') {
 					// eslint-disable-next-line no-param-reassign

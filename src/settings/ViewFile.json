@@ -1,0 +1,82 @@
+{
+  "props": {
+    "ViewFile#logs": {
+      "fileExpression": "service#designer.logs:getCurrent",
+      "content": [
+      ],
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+            {
+                "path": "/logs/view",
+                "isExact": true
+            }
+        ]
+      }
+    },
+    "ViewFile#component": {
+      "titleExpression": "getComponentTitle",
+      "fileExpression": "service#designer.components:getCurrent",
+      "content": [
+        { "component": "ViewComponent" }
+      ],
+      "onDeleteDispatchActionCreator": "service#designer#components:delete",
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+            {
+                "path": "/components/view",
+                "isExact": true
+            }
+        ]
+      }
+    },
+    "ViewFile#expression": {
+      "titleExpression": "getExpressionTitle",
+      "fileExpression": "service#designer.expressions:getCurrent",
+      "content": [
+        { "component": "ViewFunction", "fnExpression": "service#designer.expressions:getCurrent" }
+      ],
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+            {
+                "path": "/expressions/view",
+                "isExact": true
+            }
+        ]
+      }
+    },
+    "ViewFile#props": {
+      "fileExpression": "service#designer.props:getCurrent",
+      "content": [
+        { "component": "ObjectViewer", "componentId": "view-props", "id": "view-props", "data": {} }
+      ],
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+            {
+                "path": "/props/view",
+                "isExact": true
+            }
+        ]
+      }
+    },
+    "ViewFile#saga": {
+      "titleExpression": "getSagaTitle",
+      "fileExpression": "service#designer.sagas:getCurrent",
+      "content": [
+        { "component": "ViewFunction", "fnExpression": "service#designer.sagas:getCurrent" }
+      ],
+      "renderIfExpression": {
+        "id": "cmf.router.matchPath",
+        "args": [
+            {
+                "path": "/sagas/view",
+                "isExact": true
+            }
+        ]
+      }
+    }
+  }
+}

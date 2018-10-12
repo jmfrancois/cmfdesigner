@@ -3,7 +3,8 @@
     "ObjectViewer#view-props": {
       "initialState": {
         "opened": ["$"]
-      }
+      },
+      "dataExpression": "getPropsValue"
     }
   }
 }

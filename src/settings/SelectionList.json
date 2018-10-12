@@ -1,7 +1,12 @@
 {
   "props": {
+    "SelectionList#logs": {
+      "title": "Logs",
+      "itemsExpression": "service#designer.logs:getAll"
+    },
     "SelectionList#components": {
       "title": "Components",
+      "addButton": true,
       "itemsExpression": "service#designer.components:getAll"
     },
     "SelectionList#expressions": {

@@ -7,6 +7,8 @@ const getDependencies = require('./getDependencies');
 const getExport = require('./getExport');
 const getComponents = require('./getComponents');
 const parse = require('./parse');
+const rules = require('./rules');
+const dependents = require('./dependents');
 
 /* eslint-disable no-console */
 
@@ -22,33 +24,40 @@ function getInfo(filePath) {
 }
 
 function analyse(options) {
-	let components = [];
+	let results = [];
 	let list;
 	try {
 		list = fs.readdirSync(options.path);
 	} catch (error) {
 		console.error(error.message);
-		return components;
+		return results;
 	}
 	const jsFiles = list.filter(name => name.endsWith('.js'));
 	const folders = list.filter(name => name.indexOf('.') === -1).filter(name => name !== 'node_modules');
 	jsFiles.forEach(filePath => {
-		components.push(getInfo(path.join(options.path, filePath)));
+		results.push(getInfo(path.join(options.path, filePath)));
 	});
 	folders.forEach(folderPath => {
-		components = components.concat(analyse({ path: path.join(options.path, folderPath) }));
+		results = results.concat(analyse({ path: path.join(options.path, folderPath) }));
 	});
 	if (options.settingsPath) {
 		const settings = readAllJSON(options.settingsPath);
 		Object.keys(settings).forEach(key => {
 			if (Array.isArray(settings[key])) {
-				components.push(...settings[key]);
+				results.push(...settings[key]);
 			} else {
-				components.push(settings[key]);
+				results.push(settings[key]);
 			}
 		});
 	}
-	return components;
+	// post process we do a second pass
+	results.forEach(current => {
+		// eslint-disable-next-line no-param-reassign
+		current.dependents = dependents.get(current, results);
+		// eslint-disable-next-line no-param-reassign
+		current.logs = rules.log(current);
+	});
+	return results;
 }
 
 function setup(app) {

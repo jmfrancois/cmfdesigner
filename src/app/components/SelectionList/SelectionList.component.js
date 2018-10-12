@@ -10,6 +10,8 @@ const PER_PAGE = 10;
 function getClassName(item, activeId) {
 	return classNames('list-group-item', {
 		active: activeId === item.id,
+		[theme.error]: item.level === 'error',
+		[theme.warning]: item.level === 'warning',
 	});
 }
 
@@ -93,13 +95,15 @@ class SelectionList extends React.Component {
 						<span>{this.props.title}</span>
 						<span className="badge">{this.props.items.length}</span>
 					</a>
-					<button
-						className="btn btn-primary btn-sm"
-						title={`Add ${this.props.title}`}
-						onClick={this.onAddClick}
-					>
-						<Inject component="Icon" componentId="selection-list-add" />
-					</button>
+					{this.props.addButton && (
+						<button
+							className="btn btn-primary btn-sm"
+							title={`Add ${this.props.title}`}
+							onClick={this.onAddClick}
+						>
+							<Inject component="Icon" componentId="selection-list-add" />
+						</button>
+					)}
 				</h2>
 				{this.state.opened && (
 					<div className="list-group">
