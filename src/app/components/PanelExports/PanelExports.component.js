@@ -37,6 +37,7 @@ Export.propTypes = {
 Export.defaultProps = {
 	params: [],
 };
+Export.displayName = 'Export';
 
 class PanelExports extends React.Component {
 
