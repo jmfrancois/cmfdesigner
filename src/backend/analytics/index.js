@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 const readAllJSON = require('./readAllJSON');
-const getBootstrap = require('./getBootstrap');
 const getDependencies = require('./getDependencies');
 const getExport = require('./getExport');
 const getComponents = require('./getComponents');
@@ -19,7 +18,6 @@ function getInfo(filePath) {
 		export: getExport(parsed.ast, filePath),
 		...getDependencies(parsed.ast, filePath),
 		components: getComponents(parsed.ast),
-		bootstrap: getBootstrap(parsed.ast, filePath),
 	};
 }
 
