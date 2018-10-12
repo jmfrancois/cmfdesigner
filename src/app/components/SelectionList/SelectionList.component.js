@@ -20,7 +20,7 @@ function getItems(items, offset, perPage) {
 }
 
 function hasPrevious(offset, perPage) {
-	if (offset <= perPage) {
+	if (offset < perPage) {
 		return false;
 	}
 	return true;
@@ -116,12 +116,14 @@ class SelectionList extends React.Component {
 								{item.name}
 							</button>
 						))}
-						<div className="list-group-item">
-							<div className="btn-group">
-								<button disabled={!hasPrevious(this.state.offset, PER_PAGE)} className="btn btn-default" onClick={this.onPreviousClick}>Prev</button>
-								<button disabled={!hasNext(this.state.offset, PER_PAGE, this.props.items.length)} className="btn btn-default" onClick={this.onNextClick}>Next</button>
+						{this.props.items.length > PER_PAGE && (
+							<div className="list-group-item">
+								<div className="btn-group">
+									<button disabled={!hasPrevious(this.state.offset, PER_PAGE)} className="btn btn-default" onClick={this.onPreviousClick}>Prev</button>
+									<button disabled={!hasNext(this.state.offset, PER_PAGE, this.props.items.length)} className="btn btn-default" onClick={this.onNextClick}>Next</button>
+								</div>
 							</div>
-						</div>
+						)}
 					</div>
 				)}
 			</div>
