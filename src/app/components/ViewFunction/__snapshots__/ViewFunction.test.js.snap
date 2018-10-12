@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewFunction should render 1`] = `
+<div>
+  <span>
+    function
+     
+    <ViewFunctionParam
+      params={Array []}
+    />
+  </span>
+  { ... }
+</div>
+`;

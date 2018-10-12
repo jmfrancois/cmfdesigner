@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewLogs should render 1`] = `
+<div>
+  <div
+    className="alert alert-danger"
+  >
+    <p />
+    <p>
+      This component has no displayName.
+      When the code is minified for production,
+       the component lost its name.
+       The only way for CMF to keep track of it is to have a real uniq name
+    </p>
+  </div>
+</div>
+`;

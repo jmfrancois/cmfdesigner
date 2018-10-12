@@ -1,38 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ViewComponent should render 1`] = `
-<div>
-  <button
-    className="btn btn-danger pull-right"
-    onClick={[Function]}
-  >
-    Delete
-  </button>
-  <h1>
-    Component: 
-  </h1>
-  <ul>
-    <li>
-      Type: 
-    </li>
-  </ul>
-  <div
-    className="alert alert-danger"
-  >
-    <p>
-      No DisplayName: In the context of CMF it s a requirement to add displayName to your component
-    </p>
-  </div>
-  <div
-    className="alert alert-warning"
-  >
-    <p>
-      No PropTypes: It's always better to add propTypes
-    </p>
-  </div>
-  <Inject
-    component="FileAnalytics"
-    path={undefined}
-  />
-</div>
+<ul>
+  <li>
+    Type: 
+  </li>
+</ul>
 `;

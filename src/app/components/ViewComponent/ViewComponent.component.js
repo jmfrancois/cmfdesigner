@@ -23,7 +23,7 @@ ViewComponent.propTypes = {
 ViewComponent.ACTION_TYPE_DELETE_BTN = 'VIEW_COMPONENT_DELETE_BTN_CLICKED';
 ViewComponent.displayName = 'ViewComponent';
 ViewComponent.defaultProps = {
-	item: {},
+	component: {},
 };
 export default cmfConnect({
 	defaultProps: {

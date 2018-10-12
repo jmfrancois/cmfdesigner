@@ -2,7 +2,7 @@
   "props": {
     "SelectionList#logs": {
       "title": "Logs",
-      "itemsExpression": "getLogs"
+      "itemsExpression": "service#designer.logs:getAll"
     },
     "SelectionList#components": {
       "title": "Components",

@@ -6,7 +6,7 @@ import ViewFile from './ViewFile.component';
 describe('ViewFile', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<ViewFile />
+			<ViewFile.WrappedComponent />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

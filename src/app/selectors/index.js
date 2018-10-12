@@ -2,7 +2,6 @@ import getAnalytics from './getAnalytics';
 import getComponentTitle from './getComponentTitle';
 import getCWD from './getCWD';
 import getExpressionTitle from './getExpressionTitle';
-import getLogs from './getLogs';
 import getPropsValue from './getPropsValue';
 import getRouterTree from './getRouterTree';
 import getSagaTitle from './getSagaTitle';
@@ -13,7 +12,6 @@ export default {
 	getComponentTitle,
 	getCWD,
 	getExpressionTitle,
-	getLogs,
 	getPropsValue,
 	getRouterTree,
 	getSagaTitle,
