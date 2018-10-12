@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const readAllJSON = require('./readAllJSON');
 const getBootstrap = require('./getBootstrap');
 const getDependencies = require('./getDependencies');
 const getExport = require('./getExport');
@@ -8,7 +9,6 @@ const getComponents = require('./getComponents');
 const parse = require('./parse');
 const rules = require('./rules');
 const dependents = require('./dependents');
-const settings = require('../settings');
 
 /* eslint-disable no-console */
 
@@ -40,11 +40,20 @@ function analyse(options) {
 	folders.forEach(folderPath => {
 		results = results.concat(analyse({ path: path.join(options.path, folderPath) }));
 	});
+	if (options.settingsPath) {
+		const settings = readAllJSON(options.settingsPath);
+		Object.keys(settings).forEach(key => {
+			if (Array.isArray(settings[key])) {
+				results.push(...settings[key]);
+			} else {
+				results.push(settings[key]);
+			}
+		});
+	}
+	// post process we do a second pass
 	results.forEach(current => {
 		// eslint-disable-next-line no-param-reassign
 		current.errors = rules.getErrors(current);
-	});
-	results.forEach(current => {
 		// eslint-disable-next-line no-param-reassign
 		current.dependents = dependents.get(current, results);
 	});
@@ -57,8 +66,10 @@ function setup(app) {
 	});
 	app.post('/api/analytics', (req, res) => {
 		// eslint-disable-next-line no-param-reassign
-		app.locals.analytics = analyse({ path: path.join(req.app.locals.apps.path, 'src/app') });
-		settings.load(req.app);
+		app.locals.analytics = analyse({
+			path: path.join(req.app.locals.apps.path, 'src/app'),
+			settingsPath: path.join(req.app.locals.apps.path, 'src/settings'),
+		});
 		res.json(app.locals.analytics);
 	});
 }

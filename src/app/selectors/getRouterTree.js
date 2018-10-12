@@ -6,7 +6,7 @@ function getInfo(route) {
 	return {
 		children: (route.childRoutes || []).map(getInfo),
 		name: `${route.path} -> ${route.component}#${route.componentId || route.view || 'default'}`,
-		isOpened: true,
+		id: `${route.component}#${route.componentId || 'default'}:${route.path}`,
 		route,
 	};
 }
@@ -19,10 +19,10 @@ export default function getRouterTree(state) {
 	if (caches.key === router) {
 		return caches.value;
 	}
-	if (!router.path) {
+	if (router.length === 0) {
 		return DEFAULT_ROUTER_TREE;
 	}
 	cache.key = router;
-	cache.value = [getInfo(router)];
+	cache.value = router.map(r => getInfo(r.value));
 	return cache.value;
 }
