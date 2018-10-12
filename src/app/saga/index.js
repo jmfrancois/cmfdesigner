@@ -4,6 +4,7 @@ import { handleApps } from './handleApps';
 import { handleProps } from './handleProps';
 import { handleComponents } from './handleComponents';
 import { handleExpressions } from './handleExpressions';
+import { handleLogs } from './handleLogs';
 import { handleAnalytics } from './handleAnalytics';
 import { handleSagas } from './handleSagas';
 import components from '../components';
@@ -20,6 +21,7 @@ export default function* main() {
 	yield fork(handleProps);
 	yield fork(handleAnalytics);
 	yield fork(handleExpressions);
+	yield fork(handleLogs);
 	yield fork(handleSagas);
 	yield fork(handleRouter);
 	yield takeEvery(components.FileAnalytics.ACTION_TYPE_OPEN, onOpen);

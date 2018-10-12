@@ -10,7 +10,7 @@ function* initApps() {
 		id: 'apps',
 	});
 	const apps = yield select(state => state.cmf.collections.get('apps'));
-	yield put({ type: APPS_LOADED, path: apps.get('path'), id: 'apps' });
+	yield put({ type: APPS_LOADED, path: apps.get('path'), id: 'apps', cmf: { routerReplace: '/router' } });
 }
 
 function* onAddBtn() {

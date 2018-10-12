@@ -8,3 +8,19 @@
         float: right;
     }
 }
+
+button.error:focus,
+button.error:hover,
+button.error:global(.active),
+button.error:global(.active):focus,
+button.error {
+        color: #ba4d51;
+
+}
+button.warning:focus,
+button.warning:hover,
+button.warning:global(.active),
+button.warning:global(.active):focus,
+button.warning {
+    color: #c29d38;
+}

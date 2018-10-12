@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ViewSaga from './ViewSaga.component';
+import ViewLogs from './ViewLogs.component';
 
-describe('ViewSaga', () => {
+describe('ViewLogs', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<ViewSaga.WrappedComponent />
+			<ViewLogs />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});

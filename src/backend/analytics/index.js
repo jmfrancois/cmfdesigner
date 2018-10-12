@@ -53,9 +53,9 @@ function analyse(options) {
 	// post process we do a second pass
 	results.forEach(current => {
 		// eslint-disable-next-line no-param-reassign
-		current.errors = rules.getErrors(current);
-		// eslint-disable-next-line no-param-reassign
 		current.dependents = dependents.get(current, results);
+		// eslint-disable-next-line no-param-reassign
+		current.logs = rules.log(current);
 	});
 	return results;
 }

@@ -5,12 +5,14 @@ import Null from './Null';
 import PanelDependencies from './PanelDependencies';
 import PanelExports from './PanelExports';
 import ViewComponent from './ViewComponent';
-import ViewProps from './ViewProps';
-import ViewExpression from './ViewExpression';
+import ViewFunction from './ViewFunction';
 import ViewFunctionParam from './ViewFunctionParam';
 import ViewRouter from './ViewRouter';
-import ViewSaga from './ViewSaga';
 import WorkingDirectory from './WorkingDirectory';
+
+import ViewLogs from './ViewLogs';
+
+import ViewFile from './ViewFile';
 
 export default {
 	AddForm,
@@ -20,11 +22,11 @@ export default {
 	PanelExports,
 	SelectionList,
 	ViewComponent,
-	ViewExpression,
+	ViewFunction,
 	ViewFunctionParam,
 	ViewRouter,
-	ViewSaga,
-	ViewProps,
 	WorkingDirectory,
+	ViewLogs,
+	ViewFile,
 };
 

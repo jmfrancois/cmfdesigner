@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ViewProps from './ViewProps.component';
+import ViewFile from './ViewFile.component';
 
-describe('ViewProps', () => {
+describe('ViewFile', () => {
 	it('should render', () => {
 		const wrapper = shallow(
-			<ViewProps.WrappedComponent />
+			<ViewFile />
 		);
 		expect(wrapper.getElement()).toMatchSnapshot();
 	});
