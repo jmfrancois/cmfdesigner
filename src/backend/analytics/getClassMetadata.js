@@ -13,7 +13,7 @@ module.exports = function getClassMetadata(ast, classAST) {
 		const key = get(s, 'key.name');
 		if (key === 'propTypes') {
 			metadata.hasPropTypes = true;
-			metadata.propTypes = getPropTypes(s);
+			metadata.propTypes = getPropTypes(s.value);
 		} else if (key && s.value) {
 			// this case include displayName
 			metadata[key] = get(s, 'value.value', s.value.type);
