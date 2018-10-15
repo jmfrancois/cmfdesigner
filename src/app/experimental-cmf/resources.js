@@ -99,11 +99,11 @@ export default function get(config) {
 	}
 
 	function* createEffect(action) {
-		yield call(cmf.sagas.http.post, `${config.API}`, action.data);
+		yield call(cmf.sagas.http.post, `${config.API_URL}`, action.data);
 	}
 
 	function* removeEffect(action) {
-		yield call(cmf.sagas.http.delete, `${config.API}/${action.id}`);
+		yield call(cmf.sagas.http.delete, `${config.API_URL}/${action.id}`);
 	}
 
 	function* selectEffect(action) {

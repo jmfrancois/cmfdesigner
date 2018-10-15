@@ -14,6 +14,8 @@ import ViewLogs from './ViewLogs';
 
 import ViewFile from './ViewFile';
 
+import ViewPropTypes from './ViewPropTypes';
+
 export default {
 	AddForm,
 	FileAnalytics,
@@ -28,5 +30,6 @@ export default {
 	WorkingDirectory,
 	ViewLogs,
 	ViewFile,
+	ViewPropTypes,
 };
 

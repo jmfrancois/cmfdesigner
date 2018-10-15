@@ -15,67 +15,67 @@ Array [
     "name": "PureFnInternalComponent",
     "propTypes": Object {
       "optionalArray": Object {
-        "requried": false,
+        "required": false,
         "type": "array",
       },
       "optionalArrayOf": Object {
-        "requried": false,
+        "required": false,
         "type": "arrayOf",
       },
       "optionalBool": Object {
-        "requried": false,
+        "required": false,
         "type": "bool",
       },
       "optionalElement": Object {
-        "requried": false,
+        "required": false,
         "type": "element",
       },
       "optionalEnum": Object {
-        "requried": false,
+        "required": false,
         "type": "oneOf",
       },
       "optionalFunc": Object {
-        "requried": false,
+        "required": false,
         "type": "func",
       },
       "optionalNode": Object {
-        "requried": false,
+        "required": false,
         "type": "node",
       },
       "optionalNumber": Object {
-        "requried": false,
+        "required": false,
         "type": "number",
       },
       "optionalObject": Object {
-        "requried": false,
+        "required": false,
         "type": "object",
       },
       "optionalObjectOf": Object {
-        "requried": false,
+        "required": false,
         "type": "objectOf",
       },
       "optionalObjectWithShape": Object {
-        "requried": false,
+        "required": false,
         "type": "shape",
       },
       "optionalString": Object {
-        "requried": false,
+        "required": false,
         "type": "string",
       },
       "optionalSymbol": Object {
-        "requried": false,
+        "required": false,
         "type": "symbol",
       },
       "optionalUnion": Object {
-        "requried": false,
+        "required": false,
         "type": "oneOfType",
       },
       "requiredAny": Object {
-        "requried": true,
+        "required": true,
         "type": "any",
       },
       "requiredFunc": Object {
-        "requried": true,
+        "required": true,
         "type": "func",
       },
     },

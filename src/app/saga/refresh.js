@@ -12,7 +12,6 @@ export default function* refresh() {
 	if (refreshAnalytics.response.ok && refreshAnalytics.data) {
 		yield put(cmf.actions.collections.addOrReplace('analytics', refreshAnalytics.data));
 	}
-	yield call(cmf.sagas.http.post, '/api/props');
 	yield put({ type: APPS_LOADED });
 	yield call(delay, 600);
 	yield put(ActionButton.setStateAction(new Map({ iconTransform: undefined }), 'refresh'));

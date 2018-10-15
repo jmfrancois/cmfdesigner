@@ -48,6 +48,7 @@
       }
     },
     "ViewFile#props": {
+      "titleExpression": "getPropsTitle",
       "fileExpression": "service#designer.props:getCurrent",
       "content": [
         { "component": "ObjectViewer", "componentId": "view-props", "id": "view-props", "data": {} }

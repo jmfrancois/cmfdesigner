@@ -51,7 +51,7 @@ function getPropKey(ast) {
 
 function getPropValue(ast) {
 	return {
-		requried: isRequired(ast),
+		required: isRequired(ast),
 		type: getPropType(ast),
 	};
 }

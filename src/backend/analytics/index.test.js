@@ -70,67 +70,67 @@ describe('analyse', () => {
 			type: 'function',
 			propTypes: {
 				optionalArray: {
-					requried: false,
+					required: false,
 					type: 'array',
 				},
 				optionalArrayOf: {
-					requried: false,
+					required: false,
 					type: 'arrayOf',
 				},
 				optionalBool: {
-					requried: false,
+					required: false,
 					type: 'bool',
 				},
 				optionalElement: {
-					requried: false,
+					required: false,
 					type: 'element',
 				},
 				optionalEnum: {
-					requried: false,
+					required: false,
 					type: 'oneOf',
 				},
 				optionalFunc: {
-					requried: false,
+					required: false,
 					type: 'func',
 				},
 				optionalNode: {
-					requried: false,
+					required: false,
 					type: 'node',
 				},
 				optionalNumber: {
-					requried: false,
+					required: false,
 					type: 'number',
 				},
 				optionalObject: {
-					requried: false,
+					required: false,
 					type: 'object',
 				},
 				optionalObjectOf: {
-					requried: false,
+					required: false,
 					type: 'objectOf',
 				},
 				optionalObjectWithShape: {
-					requried: false,
+					required: false,
 					type: 'shape',
 				},
 				optionalString: {
-					requried: false,
+					required: false,
 					type: 'string',
 				},
 				optionalSymbol: {
-					requried: false,
+					required: false,
 					type: 'symbol',
 				},
 				optionalUnion: {
-					requried: false,
+					required: false,
 					type: 'oneOfType',
 				},
 				requiredAny: {
-					requried: true,
+					required: true,
 					type: 'any',
 				},
 				requiredFunc: {
-					requried: true,
+					required: true,
 					type: 'func',
 				},
 			},
