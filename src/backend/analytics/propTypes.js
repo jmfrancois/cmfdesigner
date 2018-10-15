@@ -16,16 +16,11 @@ function isPropTypes(ast) {
 	} else if (type === 'CallExpression') {
 		result = get(pointer, 'callee.object.name') === 'PropTypes';
 	}
-	if (!result) {
-		// external proptypes referenced not supported
-		console.log(`${ast.key.name} PropTypes not supported`);
-	}
 	return result;
 }
 
 function getPropType(ast) {
 	if (ast.type !== 'ObjectProperty') {
-		console.log('not supported', ast.type);
 		return undefined;
 	}
 	let pointer = ast.value;
@@ -43,13 +38,10 @@ function getPropType(ast) {
 			// prop: PropTypes.arrayOf()
 			return get(pointer, 'callee.property.name');
 		}
-		console.log('???? return', pointer.callee.object.property.name);
-		return get(pointer, 'callee.object.property.name');
 	}
 	if (subType === 'MemberExpression') {
 		return get(pointer, 'property.name');
 	}
-	console.error(`type not found ${ast.value.type}`);
 	return undefined;
 }
 
@@ -64,11 +56,9 @@ function getPropValue(ast) {
 	};
 }
 
-module.exports = function getPropTypes(ast, filePath) {
-	// ast is ObjectExpression
+module.exports = function getPropTypes(ast) {
 	if (ast.type !== 'ObjectExpression') {
 		// eslint-disable-next-line no-console
-		console.error(`PropTypes not supported ${filePath}: ${ast.type}`);
 		return {};
 	}
 	return ast.properties.reduce((acc, current) => {
