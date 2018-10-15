@@ -1,3 +1,4 @@
+const getPropTypes = require('./propTypes');
 
 module.exports = function getFunctionMetadata(ast, name) {
 	const metadata = {};
@@ -6,7 +7,8 @@ module.exports = function getFunctionMetadata(ast, name) {
 		.filter(line => line.expression.left.object.name === name);
 	assigments.forEach(assigment => {
 		if (assigment.expression.left.property.name === 'propTypes') {
-			metadata.propTypes = true;  // TODO: add more info on propTypes
+			metadata.hasPropTypes = true;
+			metadata.propTypes = getPropTypes(assigment.expression.right);
 		} else if (assigment.expression.right.type === 'StringLiteral') {
 			metadata[assigment.expression.left.property.name] = assigment.expression.right.value;
 		}

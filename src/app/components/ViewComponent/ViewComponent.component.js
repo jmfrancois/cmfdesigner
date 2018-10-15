@@ -1,14 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cmfConnect } from '@talend/react-cmf';
+import { cmfConnect, Inject } from '@talend/react-cmf';
+
+const initialState = { opened: ['$'] };
 
 function ViewComponent(props) {
 	return (
-		<ul>
-			<li>Type: {props.component.type}</li>
-			{props.component.propTypes && <li>has PropTypes</li>}
-			{props.component.displayName && <li>displayName: {props.component.displayName}</li>}
-		</ul>
+		<div>
+			<ul>
+				<li>Type: {props.component.type}</li>
+				{props.component.hasPropTypes && <li>has PropTypes</li>}
+				{props.component.displayName && <li>displayName: {props.component.displayName}</li>}
+			</ul>
+			{props.component.hasPropTypes && (
+				<div>PropTypes: <Inject component="ObjectViewer" data={props.component.propTypes} initialState={initialState} /></div>
+			)}
+		</div>
 	);
 }
 
