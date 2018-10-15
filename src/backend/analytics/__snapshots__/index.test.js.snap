@@ -4,14 +4,81 @@ exports[`analyse should support components 1`] = `
 Array [
   Object {
     "displayName": "StateFullInternalComponent",
+    "hasPropTypes": true,
     "name": "StateFullInternalComponent",
-    "propTypes": true,
+    "propTypes": Object {},
     "type": "class",
   },
   Object {
     "displayName": "PureFnInternalComponent",
+    "hasPropTypes": true,
     "name": "PureFnInternalComponent",
-    "propTypes": true,
+    "propTypes": Object {
+      "optionalArray": Object {
+        "requried": false,
+        "type": "array",
+      },
+      "optionalArrayOf": Object {
+        "requried": false,
+        "type": "arrayOf",
+      },
+      "optionalBool": Object {
+        "requried": false,
+        "type": "bool",
+      },
+      "optionalElement": Object {
+        "requried": false,
+        "type": "element",
+      },
+      "optionalEnum": Object {
+        "requried": false,
+        "type": "oneOf",
+      },
+      "optionalFunc": Object {
+        "requried": false,
+        "type": "func",
+      },
+      "optionalNode": Object {
+        "requried": false,
+        "type": "node",
+      },
+      "optionalNumber": Object {
+        "requried": false,
+        "type": "number",
+      },
+      "optionalObject": Object {
+        "requried": false,
+        "type": "object",
+      },
+      "optionalObjectOf": Object {
+        "requried": false,
+        "type": "objectOf",
+      },
+      "optionalObjectWithShape": Object {
+        "requried": false,
+        "type": "shape",
+      },
+      "optionalString": Object {
+        "requried": false,
+        "type": "string",
+      },
+      "optionalSymbol": Object {
+        "requried": false,
+        "type": "symbol",
+      },
+      "optionalUnion": Object {
+        "requried": false,
+        "type": "oneOfType",
+      },
+      "requiredAny": Object {
+        "requried": true,
+        "type": "any",
+      },
+      "requiredFunc": Object {
+        "requried": true,
+        "type": "func",
+      },
+    },
     "type": "function",
   },
 ]
@@ -35,6 +102,7 @@ Array [
     "default": false,
     "displayName": "function",
     "generator": false,
+    "hasPropTypes": true,
     "isComponent": true,
     "name": "Func",
     "params": Array [
@@ -62,16 +130,17 @@ Array [
         "type": "RestElement",
       },
     ],
-    "propTypes": true,
+    "propTypes": Object {},
     "type": "function",
   },
   Object {
     "declarationType": "ClassDeclaration",
     "default": false,
     "displayName": "Foo",
+    "hasPropTypes": true,
     "isComponent": true,
     "name": "Foo",
-    "propTypes": true,
+    "propTypes": Object {},
     "type": "class",
   },
   Object {

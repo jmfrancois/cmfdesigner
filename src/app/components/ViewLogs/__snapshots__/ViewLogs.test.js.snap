@@ -5,8 +5,10 @@ exports[`ViewLogs should render 1`] = `
   <div
     className="alert alert-danger"
   >
-    <p />
     <p>
+      ERROR
+       on 
+      : 
       This component has no displayName.
       When the code is minified for production,
        the component lost its name.

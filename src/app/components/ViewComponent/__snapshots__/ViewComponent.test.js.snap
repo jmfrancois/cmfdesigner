@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ViewComponent should render 1`] = `
-<ul>
-  <li>
-    Type: 
-  </li>
-</ul>
+<div>
+  <ul>
+    <li>
+      Type: 
+    </li>
+  </ul>
+</div>
 `;

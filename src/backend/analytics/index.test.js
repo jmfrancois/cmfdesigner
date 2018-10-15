@@ -42,8 +42,16 @@ describe('analyse', () => {
 			name: 'namedFromLocal',
 			source: './local',
 		});
-		expect(analytics.dependencies[2].path.endsWith('/src/backend/analytics/tests/local.js')).toBe(true);
-		expect(analytics.dependencies[3].path.endsWith('/src/backend/analytics/tests/local.js')).toBe(true);
+		expect(
+			analytics.dependencies[2].path.endsWith(
+				'/src/backend/analytics/tests/local.js'
+			)
+		).toBe(true);
+		expect(
+			analytics.dependencies[3].path.endsWith(
+				'/src/backend/analytics/tests/local.js'
+			)
+		).toBe(true);
 	});
 	it('should support components', () => {
 		const analytics = getAnalytics('components.js');
@@ -51,14 +59,81 @@ describe('analyse', () => {
 		expect(analytics.components[0]).toEqual({
 			displayName: 'StateFullInternalComponent',
 			name: 'StateFullInternalComponent',
-			propTypes: true,
+			hasPropTypes: true,
+			propTypes: {},
 			type: 'class',
 		});
 		expect(analytics.components[1]).toEqual({
 			displayName: 'PureFnInternalComponent',
 			name: 'PureFnInternalComponent',
-			propTypes: true,
+			hasPropTypes: true,
 			type: 'function',
+			propTypes: {
+				optionalArray: {
+					requried: false,
+					type: 'array',
+				},
+				optionalArrayOf: {
+					requried: false,
+					type: 'arrayOf',
+				},
+				optionalBool: {
+					requried: false,
+					type: 'bool',
+				},
+				optionalElement: {
+					requried: false,
+					type: 'element',
+				},
+				optionalEnum: {
+					requried: false,
+					type: 'oneOf',
+				},
+				optionalFunc: {
+					requried: false,
+					type: 'func',
+				},
+				optionalNode: {
+					requried: false,
+					type: 'node',
+				},
+				optionalNumber: {
+					requried: false,
+					type: 'number',
+				},
+				optionalObject: {
+					requried: false,
+					type: 'object',
+				},
+				optionalObjectOf: {
+					requried: false,
+					type: 'objectOf',
+				},
+				optionalObjectWithShape: {
+					requried: false,
+					type: 'shape',
+				},
+				optionalString: {
+					requried: false,
+					type: 'string',
+				},
+				optionalSymbol: {
+					requried: false,
+					type: 'symbol',
+				},
+				optionalUnion: {
+					requried: false,
+					type: 'oneOfType',
+				},
+				requiredAny: {
+					requried: true,
+					type: 'any',
+				},
+				requiredFunc: {
+					requried: true,
+					type: 'func',
+				},
+			},
 		});
 		expect(analytics.components).toMatchSnapshot();
 	});
