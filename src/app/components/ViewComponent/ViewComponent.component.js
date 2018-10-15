@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cmfConnect } from '@talend/react-cmf';
+import { cmfConnect, Inject } from '@talend/react-cmf';
 
 function ViewComponent(props) {
 	return (
-		<ul>
-			<li>Type: {props.component.type}</li>
-			{props.component.propTypes && <li>has PropTypes</li>}
-			{props.component.displayName && <li>displayName: {props.component.displayName}</li>}
-		</ul>
+		<div>
+			<ul>
+				<li>Type: {props.component.type}</li>
+				{props.component.hasPropTypes && <li>has PropTypes</li>}
+				{props.component.displayName && <li>displayName: {props.component.displayName}</li>}
+			</ul>
+			<Inject component="ViewPropTypes" data={props.component.propTypes} />
+		</div>
 	);
 }
 

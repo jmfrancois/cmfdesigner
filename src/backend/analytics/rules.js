@@ -14,7 +14,7 @@ function checkHasDisplayName(item) {
 
 function checkHasPropTypes(item) {
 	return (item.components || []).reduce((acc, component) => {
-		if (component && !component.propTypes) {
+		if (component && !component.hasPropTypes) {
 			return acc.concat({
 				code: 1,
 				target: component.name,

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewPropTypes should render 1`] = `
+<table
+  className="table table-bordered"
+>
+  <thead>
+    <tr>
+      <th>
+        Props
+      </th>
+      <th>
+        Type
+      </th>
+      <th>
+        isRequired
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        foo
+      </td>
+      <td>
+        string
+      </td>
+      <td>
+        false
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
