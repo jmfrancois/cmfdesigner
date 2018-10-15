@@ -7,5 +7,9 @@ exports[`ViewComponent should render 1`] = `
       Type: 
     </li>
   </ul>
+  <Inject
+    component="ViewPropTypes"
+    data={undefined}
+  />
 </div>
 `;

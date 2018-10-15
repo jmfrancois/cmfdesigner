@@ -7,7 +7,7 @@ exports[`ViewPropTypes should render 1`] = `
   <thead>
     <tr>
       <th>
-        Key
+        Props
       </th>
       <th>
         Type
@@ -18,7 +18,17 @@ exports[`ViewPropTypes should render 1`] = `
     </tr>
   </thead>
   <tbody>
-    
+    <tr>
+      <td>
+        foo
+      </td>
+      <td>
+        string
+      </td>
+      <td>
+        false
+      </td>
+    </tr>
   </tbody>
 </table>
 `;
