@@ -16,18 +16,21 @@ function ViewPropTypes(props) {
 	if (!props.data) {
 		return null;
 	}
-
+	const keys = Object.keys(props.data);
+	if (keys.length === 0) {
+		return null;
+	}
 	return (
 		<table className="table table-bordered">
 			<thead>
 				<tr>
-					<th>Key</th>
+					<th>Props</th>
 					<th>Type</th>
 					<th>isRequired</th>
 				</tr>
 			</thead>
 			<tbody>
-				{Object.keys(props.data).map(key => renderPropType(key, props.data))}
+				{keys.map(key => renderPropType(key, props.data))}
 			</tbody>
 		</table>
 	);

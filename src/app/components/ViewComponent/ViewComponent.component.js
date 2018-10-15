@@ -10,9 +10,7 @@ function ViewComponent(props) {
 				{props.component.hasPropTypes && <li>has PropTypes</li>}
 				{props.component.displayName && <li>displayName: {props.component.displayName}</li>}
 			</ul>
-			{props.component.hasPropTypes && (
-				<div>PropTypes: <Inject component="ViewPropTypes" data={props.component.propTypes} /></div>
-			)}
+			<Inject component="ViewPropTypes" data={props.component.propTypes} />
 		</div>
 	);
 }
