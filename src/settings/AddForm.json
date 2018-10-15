@@ -61,6 +61,9 @@
               "title": "type",
               "enum": ["es6.class", "es6.arrow", "stateless", "connect"]
             },
+            "purePath": {
+              "type": "string"
+            },
             "css": {
               "type": "boolean",
               "title": "css"
@@ -68,6 +71,14 @@
             "path": {
               "type": "string",
               "title": "Path"
+            },
+            "settings": {
+              "type": "string",
+              "title": "Settings path"
+            },
+            "parentIndex": {
+              "type": "boolean",
+              "title": "Update parent index"
             }
           }
         },
@@ -76,11 +87,13 @@
             "key": "name"
           },
           {
-            "key": "isFull"
+            "key": "isFull",
+            "description": "Full component (component + container + connect)"
           },
           {
             "key": "type",
             "widget": "datalist",
+            "condition": { "!": [{ "var": "isFull" }]},
             "titleMap": [
               {
                 "name": "ES6 class aka stateful",
@@ -99,6 +112,24 @@
                 "value": "connect"
               }
             ]
+          },
+          {
+            "key": "purePath",
+            "description": "Pure component import path",
+            "condition": { "===": [{ "var": "type" }, "connect" ]}
+          },
+          {
+            "key": "css",
+            "condition": { "!==": [{ "var": "type" }, "connect" ]}
+          },
+          {
+            "key": "path"
+          },
+          {
+            "key": "settings"
+          },
+          {
+            "key": "parentIndex"
           }
         ],
         "properties": {
@@ -106,7 +137,8 @@
           "isFull": false,
           "type": "es6.class",
           "css": false,
-          "path": "src/app/components"
+          "path": "src/app/components",
+          "settings": "src/settings"
         }
       }
     }
