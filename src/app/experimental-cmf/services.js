@@ -3,14 +3,14 @@ import cmf from '@talend/react-cmf';
 import omit from 'lodash/omit';
 
 const data = {
-	modules: {},
+	services: {},
 	inComponent: {},
 	inSaga: {},
 	inSelector: {},
 };
 
 function get(id) {
-	return data.modules[id];
+	return data.services[id];
 }
 
 function getKeyPrefix(serviceId) {
@@ -78,7 +78,7 @@ function register(serviceId, value) {
 	config.actionCreators = privatize(value.actionCreators, serviceId);
 	config.expressions = privatize(value.expressions, serviceId);
 	config.sagas = privatize(value.sagas, serviceId);
-	data.modules[serviceId] = {
+	data.services[serviceId] = {
 		...config,
 		inComponent: getInComponent(config, serviceId),
 		inSaga: getInSaga(config, serviceId),

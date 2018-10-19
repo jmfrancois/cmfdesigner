@@ -5,7 +5,7 @@ import ViewComponent from './ViewComponent.component';
 
 /* global jest */
 
-jest.mock('../../experimental-cmf/modules', () => ({
+jest.mock('../../experimental-cmf/services', () => ({
 	get: () => ({
 		inComponent: () => ({
 			delete: jest.fn(),

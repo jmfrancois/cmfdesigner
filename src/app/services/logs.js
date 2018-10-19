@@ -1,8 +1,8 @@
-import modules from '../experimental-cmf/modules';
+import services from '../experimental-cmf/services';
 import resources from '../experimental-cmf/resources';
 
 const resourceConfig = resources({
 	id: 'logs',
 	API_URL: '/api/logs',
 });
-export default modules.register('designer.logs', resourceConfig);
+export default services.register('designer.logs', resourceConfig);

@@ -1,16 +1,16 @@
 import { takeEvery, put } from 'redux-saga/lib/effects';
 import { APPS_LOADED } from '../constants';
-import modules from '../experimental-cmf/modules';
+import services from '../experimental-cmf/services';
 import components from '../components';
 
 function* load() {
-	const mod = modules.get('designer.logs').inSaga();
+	const mod = services.get('designer.logs').inSaga();
 	yield mod.fetchAll();
 }
 
 function* onSelectComponent(action) {
 	if (action.componentId === 'logs') {
-		const mod = modules.get('designer.logs').inSaga();
+		const mod = services.get('designer.logs').inSaga();
 		yield mod.select(action.event, { id: action.id });
 		yield put({
 			type: 'SELECT_LOGS_ROUTE_EFFECT',

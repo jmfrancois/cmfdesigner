@@ -9,16 +9,15 @@ import * as talendComponents from '@talend/react-components';
 import { ObjectViewer, TreeView } from '@talend/react-containers';
 
 import './index.scss';
-import actions from './actions';
 import appComponents from './components';
 import selectors from './selectors';
 import saga from './saga';
-import moduleComponents from './modules/components';
-import moduleExpressions from './modules/expressions';
-import moduleSagas from './modules/sagas';
-import moduleProps from './modules/props';
-import moduleRoutes from './modules/routes';
-import moduleLogs from './modules/logs';
+import componentsService from './services/components';
+import expressionsService from './services/expressions';
+import sagasService from './services/sagas';
+import propsService from './services/props';
+import poutesService from './services/routes';
+import logsService from './services/logs';
 import merge from './experimental-cmf/mergeModules';
 import selectorTo from './experimental-cmf/selectorTo';
 
@@ -64,12 +63,11 @@ cmf.bootstrap(merge(
 		components: appComponents,
 		saga,
 		settingsURL: '/settings.json',
-		actionCreators: actions,
 	},
-	moduleLogs,
-	moduleComponents,
-	moduleExpressions,
-	moduleSagas,
-	moduleProps,
-	moduleRoutes,
+	logsService,
+	componentsService,
+	expressionsService,
+	sagasService,
+	propsService,
+	poutesService,
 ));

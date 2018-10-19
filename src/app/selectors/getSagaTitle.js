@@ -1,7 +1,7 @@
-import modules from '../experimental-cmf/modules';
+import services from '../experimental-cmf/services';
 
 export default function getSagaTitle(state) {
-	const service = modules.get('designer.sagas').inSelector();
+	const service = services.get('designer.sagas').inSelector();
 	const saga = service.getCurrent(state);
 	if (!saga) {
 		return undefined;

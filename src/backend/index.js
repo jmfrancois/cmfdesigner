@@ -22,6 +22,7 @@ const app = express();
 app.locals.apps = {
 	path: process.cwd(),
 };
+// find package.json
 app.use((req, res, next) => {
 	if (!app.locals.analytics) {
 		console.log('start analytics ...');

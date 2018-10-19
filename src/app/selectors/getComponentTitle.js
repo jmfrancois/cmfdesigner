@@ -1,7 +1,7 @@
-import modules from '../experimental-cmf/modules';
+import services from '../experimental-cmf/services';
 
 export default function getComponentTitle(state) {
-	const service = modules.get('designer.components').inSelector();
+	const service = services.get('designer.components').inSelector();
 	const component = service.getCurrent(state);
 	return component ? component.name : null;
 }

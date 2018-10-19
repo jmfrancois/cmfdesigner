@@ -1,6 +1,6 @@
 const order = require('./order');
 
-const SAGA_REGEXP = /\/sagas\/|sagas\.js/;
+const SAGA_REGEXP = /\/saga\/|sagas\.js/;
 
 /**
  * response with all functions with 'generator' into exports of analytics

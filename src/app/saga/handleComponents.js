@@ -1,10 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/lib/effects';
 import components from '../components';
 import { APPS_LOADED } from '../constants';
-import modules from '../experimental-cmf/modules';
+import services from '../experimental-cmf/services';
 
 function* load() {
-	const mod = modules.get('designer.components').inSaga();
+	const mod = services.get('designer.components').inSaga();
 	yield mod.fetchAll();
 }
 
@@ -21,7 +21,7 @@ function* onAddButtonClicked(action) {
 }
 function* onAddFormSubmit(action) {
 	if (action.componentId === 'component') {
-		const mod = modules.get('designer.components').inSaga();
+		const mod = services.get('designer.components').inSaga();
 		yield call(mod.create, action.event, action.data);
 		yield call(load);
 	}
@@ -29,7 +29,7 @@ function* onAddFormSubmit(action) {
 
 function* onSelectComponent(action) {
 	if (action.componentId === 'components') {
-		const mod = modules.get('designer.components').inSaga();
+		const mod = services.get('designer.components').inSaga();
 		yield mod.select(action.event, { id: action.id });
 		yield put({
 			type: 'SELECT_PROPS_ROUTE_EFFECT',
@@ -41,7 +41,7 @@ function* onSelectComponent(action) {
 }
 
 function* onDeleteBtn(action) {
-	const mod = modules.get('designer.components').inSaga();
+	const mod = services.get('designer.components').inSaga();
 	yield call(mod.delete, action.id);
 	yield call(load);
 	yield put({

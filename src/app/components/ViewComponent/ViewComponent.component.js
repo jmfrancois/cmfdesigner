@@ -18,7 +18,8 @@ function ViewComponent(props) {
 ViewComponent.propTypes = {
 	component: PropTypes.shape({
 		type: PropTypes.string.isRequired,
-		propTypes: PropTypes.bool,
+		hasPropTypes: PropTypes.bool,
+		propTypes: PropTypes.object,
 		displayName: PropTypes.string,
 	}),
 	...cmfConnect.propTypes,
