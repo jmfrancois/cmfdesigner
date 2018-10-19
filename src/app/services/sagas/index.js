@@ -1,8 +1,8 @@
-import modules from '../../experimental-cmf/modules';
+import services from '../../experimental-cmf/services';
 import resources from '../../experimental-cmf/resources';
 
 const resourceConfig = resources({
 	id: 'sagas',
 	API_URL: '/api/sagas',
 });
-export default modules.register('designer.sagas', resourceConfig);
+export default services.register('designer.sagas', resourceConfig);

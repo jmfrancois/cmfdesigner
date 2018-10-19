@@ -1,4 +1,4 @@
-import modules from '../experimental-cmf/modules';
+import services from '../experimental-cmf/services';
 
 const cache = {};
 
@@ -14,7 +14,7 @@ function getInfo(route) {
 const DEFAULT_ROUTER_TREE = [];
 
 export default function getRouterTree(state) {
-	const routes = modules.get('designer.routes').inSelector();
+	const routes = services.get('designer.routes').inSelector();
 	const router = routes.getAll(state);
 	if (caches.key === router) {
 		return caches.value;

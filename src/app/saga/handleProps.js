@@ -1,11 +1,11 @@
 import { put, takeEvery } from 'redux-saga/lib/effects';
 import components from '../components';
 import { APPS_LOADED } from '../constants';
-import modules from '../experimental-cmf/modules';
+import services from '../experimental-cmf/services';
 
 function* onSelectProps(action) {
 	if (action.componentId === 'props') {
-		const mod = modules.get('designer.props').inSaga();
+		const mod = services.get('designer.props').inSaga();
 		yield mod.select(action.event, { id: action.id });
 		yield put({
 			type: 'SELECT_PROPS_ROUTE_EFFECT',
@@ -27,7 +27,7 @@ function* onAddButtonClicked(action) {
 }
 
 function* loadProps() {
-	const mod = modules.get('designer.props').inSaga();
+	const mod = services.get('designer.props').inSaga();
 	yield mod.fetchAll();
 }
 

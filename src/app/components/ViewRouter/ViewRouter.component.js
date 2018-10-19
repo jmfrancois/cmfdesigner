@@ -81,6 +81,9 @@ function ViewRouter(props) {
 	if (!props.router) {
 		return null;
 	}
+	if (props.router.length === 0) {
+		return null;
+	}
 	const router = props.router.map(route => addActions(route, props));
 	const components = [props.router[0].route].reduce(reduceRouteToComponents, []);
 	const data = new List(router);

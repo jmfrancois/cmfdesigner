@@ -1,9 +1,17 @@
 const yeoman = require('yeoman-environment');
 const path = require('path');
+const fs = require('fs');
 const Adapter = require('./yoadapter');
 
 function getApps(req, res) {
-	res.json(req.app.locals.apps || {});
+	const app = req.app.locals.apps || {};
+	if (app.path) {
+		const packagePath = path.join(app.path, 'package.json');
+		if (fs.existsSync(packagePath)) {
+			app.package = JSON.parse(fs.readFileSync(packagePath));
+		}
+	}
+	res.json(app);
 }
 
 function postApps(req, res) {

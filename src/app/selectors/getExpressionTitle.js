@@ -1,7 +1,7 @@
-import modules from '../experimental-cmf/modules';
+import services from '../experimental-cmf/services';
 
 export default function getExpressionTitle(state) {
-	const service = modules.get('designer.expressions').inSelector();
+	const service = services.get('designer.expressions').inSelector();
 	const expression = service.getCurrent(state);
 	if (!expression) {
 		return undefined;

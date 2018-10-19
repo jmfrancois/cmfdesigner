@@ -2,10 +2,10 @@ import { put, takeEvery } from 'redux-saga/lib/effects';
 import cmf from '@talend/react-cmf';
 import components from '../components';
 import { APPS_LOADED } from '../constants';
-import modules from '../experimental-cmf/modules';
+import services from '../experimental-cmf/services';
 
 function* onOpenComponent(action) {
-	const componentsModule = modules.get('designer.components').inSaga();
+	const componentsModule = services.get('designer.components').inSaga();
 	const collection = yield componentsModule.getAll();
 	const found = collection.find(component => component.name === action.component);
 	if (found) {
@@ -29,7 +29,7 @@ function* onOpenComponent(action) {
 
 function* onOpenProps(action) {
 	const componentId = 'props';
-	const propsService = modules.get('designer.props').inSaga();
+	const propsService = services.get('designer.props').inSaga();
 	const collection = yield propsService.getAll();
 	const found = collection.find(item => item.name === action.propsId);
 	if (found) {
@@ -51,7 +51,7 @@ function* onOpenProps(action) {
 }
 
 function* loadRoutes() {
-	const mod = modules.get('designer.routes').inSaga();
+	const mod = services.get('designer.routes').inSaga();
 	yield mod.fetchAll();
 }
 
