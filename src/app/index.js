@@ -18,7 +18,6 @@ import sagasService from './services/sagas';
 import propsService from './services/props';
 import poutesService from './services/routes';
 import logsService from './services/logs';
-import merge from './experimental-cmf/mergeModules';
 import selectorTo from './experimental-cmf/selectorTo';
 
 const DEFAULT_WITH_PROPS = { withComponentRegistry: true };
@@ -44,30 +43,29 @@ Object.keys(selectors).forEach(key => {
 	selectorsAsExpressions[key] = selectorTo.toExpression(selectors[key]);
 });
 
-/**
- * Initialize CMF
- * This will:
- * - Register your components in the CMF registry
- * - Register your action creators in CMF registry
- * - Setup redux store using reducer
- * - Fetch the settings
- * - render react-dom in the dom 'app' element
- */
-cmf.bootstrap(merge(
-	{
-		components: onlyComponents,
-		expressions: selectorsAsExpressions,
-	}, {
-		components: { ObjectViewer, TreeView },
-	}, {
-		components: appComponents,
-		saga,
-		settingsURL: '/settings.json',
+const talendComponentsModule = {
+	id: 'talend-components',
+	components: {
+		...onlyComponents,
+		ObjectViewer,
+		TreeView,
 	},
-	logsService,
-	componentsService,
-	expressionsService,
-	sagasService,
-	propsService,
-	poutesService,
-));
+};
+
+const cmfModule = {
+	expressions: selectorsAsExpressions,
+	components: appComponents,
+	saga,
+	settingsURL: '/settings.json',
+	modules: [
+		talendComponentsModule,
+		logsService,
+		componentsService,
+		expressionsService,
+		sagasService,
+		propsService,
+		poutesService,
+	],
+};
+console.log(cmfModule);
+cmf.bootstrap(cmfModule);

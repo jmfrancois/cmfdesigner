@@ -1,7 +1,7 @@
 import { select } from 'redux-saga/effects';
 // This should be proposed in the CMF API
 
-function toExpression(selector) {
+function toExpression(selector, name) {
 	function selectorAsExpression({ context }, ...args) {
 		return selector(context.store.getState(), ...args);
 	}

@@ -7,7 +7,6 @@ function Adapter(req, res) {
 }
 
 Adapter.prototype.prompt = function prompt(questions) {
-	console.log(this.req.body, { questions });
 	this.res.json({ questions });
 	return new Promise(resolve => {
 		resolve(this.req.body);

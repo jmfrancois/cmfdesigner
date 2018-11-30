@@ -4,5 +4,14 @@
       "src/settings"
     ],
     "destination": "src/assets/settings.json"
+  },
+  "ee": {
+    "settings": {
+      "sources": [
+        "src/settings",
+        "src/ee/settings"
+      ],
+      "destination": "src/assets/settings.json",
+    }
   }
 }

@@ -34,7 +34,7 @@ export default function get(config) {
 		FETCH_ALL: `SERVICE_${ID}_FETCH_ALL`,
 		SELECT_ONE: `SERVICE_${ID}_SELECT_ONE`,
 		COLLECTION_ID: `${config.id}.all`,
-		COLLECTION_ONE: `${config.id}.current`,
+		CURRENT: `${config.id}.current`,
 	};
 	const actionCreators = {
 		create: (event, data) => {
@@ -77,7 +77,7 @@ export default function get(config) {
 			return cacheGetAll.value;
 		},
 		getCurrent: state => {
-			const id = state.cmf.collections.get(CONSTANTS.COLLECTION_ONE);
+			const id = state.cmf.collections.get(CONSTANTS.CURRENT);
 			if (cacheGetCurrent.key !== id) {
 				cacheGetCurrent.key = id;
 				delete cacheGetCurrent.value;
@@ -93,13 +93,13 @@ export default function get(config) {
 
 	function* fetchAllEffect() {
 		yield call(loadResource, {
-			url: `${config.API_URL}`,
+			url: config.API_URL,
 			id: CONSTANTS.COLLECTION_ID,
 		});
 	}
 
 	function* createEffect(action) {
-		yield call(cmf.sagas.http.post, `${config.API_URL}`, action.data);
+		yield call(cmf.sagas.http.post, config.API_URL, action.data);
 	}
 
 	function* removeEffect(action) {
@@ -108,7 +108,7 @@ export default function get(config) {
 
 	function* selectEffect(action) {
 		yield put(cmf.actions.collections.addOrReplace(
-			CONSTANTS.COLLECTION_ONE, action.id
+			CONSTANTS.CURRENT, action.id
 		));
 	}
 	function* saga() {

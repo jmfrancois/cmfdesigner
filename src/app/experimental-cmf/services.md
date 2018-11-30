@@ -115,17 +115,17 @@ If an API can't be applied it will not be available in the corresponding context
 ```javascript
 // High level API
 export function* mySaga() {
-	const user = cmf.services.get('user').inSaga();
+	const user = cmf.services.getSagas('user');
 	const users = yield user.getAll();
 }
 
 export function MyComponent(props) {
-	const user = cmf.services.get('user').inComponent(props);
+	const user = cmf.services.get('user', { props });
     return <button onClick={user.fetchAll}>fetch all user</button>
 }
 
 export function myExpression({ context }) {
-	const user = cmf.services.get('user').inExpression(context);
+	const user = cmf.services.get('user', { context } );
 	const users = user.getAll();
 }
 ```

@@ -52,29 +52,29 @@
               "type": "string",
               "title": "Name"
             },
-            "isFull": {
+            "scss": {
               "type": "boolean",
-              "title": "isFull"
+              "title": "scss"
             },
-            "type": {
-              "type": "string",
-              "title": "type",
-              "enum": ["es6.class", "es6.arrow", "stateless", "connect"]
+            "extraTypes": {
+              "type": "array",
+              "title": "extraTypes",
+              "items": {
+                "type": "string",
+                "enum": ["container", "cmfConnect"]
+              }
             },
-            "purePath": {
-              "type": "string"
-            },
-            "css": {
-              "type": "boolean",
-              "title": "css"
+            "tools": {
+              "type": "array",
+              "title": "tools",
+              "items": {
+                "type": "string",
+                "enum": ["actions", "expressions", "sagas", "settings"]
+              }
             },
             "path": {
               "type": "string",
               "title": "Path"
-            },
-            "settings": {
-              "type": "string",
-              "title": "Settings path"
             },
             "parentIndex": {
               "type": "boolean",
@@ -87,46 +87,20 @@
             "key": "name"
           },
           {
-            "key": "isFull",
-            "description": "Full component (component + container + connect)"
+            "key": "scss",
+            "description": "add a scss file imported as theme in your component"
           },
           {
-            "key": "type",
-            "widget": "datalist",
-            "condition": { "!": [{ "var": "isFull" }]},
-            "titleMap": [
-              {
-                "name": "ES6 class aka stateful",
-                "value": "es6.class"
-              },
-              {
-                "name": "ES6 arrow aka stateless",
-                "value": "es6.arrow"
-              },
-              {
-                "name": "function aka stateless",
-                "value": "stateless"
-              },
-              {
-                "name": "CMFConnect",
-                "value": "connect"
-              }
-            ]
+            "key": "extraTypes",
+            "description": "choose extra types (function is already included)"
           },
           {
-            "key": "purePath",
-            "description": "Pure component import path",
-            "condition": { "===": [{ "var": "type" }, "connect" ]}
-          },
-          {
-            "key": "css",
-            "condition": { "!==": [{ "var": "type" }, "connect" ]}
+            "key": "tools",
+            "description": "choose tools",
+            "condition": { "in": ["cmfConnect", { "var": "extraTypes" }]}
           },
           {
             "key": "path"
-          },
-          {
-            "key": "settings"
           },
           {
             "key": "parentIndex"
@@ -134,11 +108,11 @@
         ],
         "properties": {
           "id": "default",
-          "isFull": false,
-          "type": "es6.class",
-          "css": false,
+          "scss": false,
+          "extraTypes": ["cmfConnect"],
+          "tools": [],
           "path": "src/app/components",
-          "settings": "src/settings"
+          "parentIndex": true
         }
       }
     }

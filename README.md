@@ -1,6 +1,6 @@
 # CMF designer
 
-This is a designer to create react-cmf app.
+This is a designer to work with react-cmf.
 It has to be installed on the dev session (FS access required)
 
 ## How to install
@@ -14,7 +14,7 @@ npm i -g @talend/cmf-designer
 Then you can start it
 
 ```
-PORT=3030 cmf-designer
+cmf-designer
 ```
 
 It will start an express backend server and it will open your browser.
@@ -23,7 +23,7 @@ It will start an express backend server and it will open your browser.
 
 So the designer cover the following steps:
 
-* start it from a folder
+* start it from an existing app or in a folder where you want to create an app
 * create app (name it then you will be able to start it)
 * add / view / delete a component
 * view existing props

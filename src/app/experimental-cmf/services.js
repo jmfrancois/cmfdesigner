@@ -26,7 +26,7 @@ function privatize(config = {}, serviceId) {
 	}, {});
 }
 
-function getShortKey(serviceId, key) {
+function getOriginalKey(serviceId, key) {
 	return key.replace(getKeyPrefix(serviceId), '');
 }
 
@@ -37,7 +37,7 @@ function getInComponent(mod) {
 		const extendedModule = {};
 		Object.keys(mod.actionCreators).forEach(key => {
 			// eslint-disable-next-line no-param-reassign
-			mod[key] = (...args) => props.dispacthActionCreator(key, ...args);
+			extendedModule[key] = (...args) => props.dispacthActionCreator(key, ...args);
 		});
 		return extendedModule;
 	};
@@ -49,7 +49,7 @@ function getInSaga(mod, id) {
 		if (!data.inSaga[id]) {
 			const inSagaModule = {};
 			Object.keys(mod.actionCreators || {}).forEach(key => {
-				const shortKey = getShortKey(id, key);
+				const shortKey = getOriginalKey(id, key);
 				// eslint-disable-next-line no-param-reassign
 				inSagaModule[shortKey] = function* execActionCreators(...args) {
 					yield cmf.sagas.putActionCreator(key, ...args);
@@ -58,6 +58,9 @@ function getInSaga(mod, id) {
 			Object.keys(mod.selectors || {}).forEach(key => {
 				const selector = mod.selectors[key];
 				// eslint-disable-next-line no-param-reassign
+				if (inSagaModule[key]) {
+					throw new Error(`${key} is used for selector and actioncreators`);
+				}
 				inSagaModule[key] = function* execSelector(...args) {
 					if (args.length === 0) {
 						return yield select(selector);
@@ -74,17 +77,21 @@ function getInSaga(mod, id) {
 
 function register(serviceId, value) {
 	// const mod = Object.assign({}, value);
-	const config = { ...value };
+	// const config = { id: `service-${serviceId}`, ...value };
+	// ==== create cmfModule ===
+	const config = {};
+	config.id = `service-${serviceId}`;
 	config.actionCreators = privatize(value.actionCreators, serviceId);
 	config.expressions = privatize(value.expressions, serviceId);
 	config.sagas = privatize(value.sagas, serviceId);
+
+	// register service
 	data.services[serviceId] = {
-		...config,
-		inComponent: getInComponent(config, serviceId),
-		inSaga: getInSaga(config, serviceId),
+		inComponent: getInComponent(value, serviceId),
+		inSaga: getInSaga(value, serviceId),
 		inSelector: () => value.selectors || {},
 	};
-	return omit(config, ['selectors']); // to register all the things in private way
+	return config;
 }
 
 export default {
