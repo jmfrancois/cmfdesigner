@@ -36,4 +36,4 @@ AddForm.propTypes = {
 	...cmfConnect.propTypes,
 };
 
-export default cmfConnect({})(AddForm);
+export default cmfConnect({ withDispatch: true, withComponentId: true })(AddForm);

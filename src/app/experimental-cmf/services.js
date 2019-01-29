@@ -50,7 +50,8 @@ function getInSaga(mod, id) {
 				const shortKey = getOriginalKey(id, key);
 				// eslint-disable-next-line no-param-reassign
 				inSagaModule[shortKey] = function* execActionCreators(...args) {
-					yield put(mod.actionCreators[key], ...args);
+					const action = mod.actionCreators[key](...args);
+					yield put(action);
 				};
 			});
 			Object.keys(mod.selectors || {}).forEach(key => {
@@ -82,6 +83,7 @@ function register(serviceId, value) {
 	config.actionCreators = privatize(value.actionCreators, serviceId);
 	config.expressions = privatize(value.expressions, serviceId);
 	config.sagas = privatize(value.sagas, serviceId);
+	config.saga = value.saga;
 
 	// register service
 	data.services[serviceId] = {

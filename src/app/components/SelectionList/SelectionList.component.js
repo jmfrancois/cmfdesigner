@@ -152,4 +152,7 @@ SelectionList.actions = {
 
 export default cmfConnect({
 	defaultState: new Immutable.Map(),
+	withDispatchActionCreator: true,
+	withDispatch: true,
+	withComponentId: true,
 })(SelectionList);

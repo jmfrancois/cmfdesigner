@@ -119,7 +119,7 @@ function ViewRouter(props) {
 
 ViewRouter.displayName = 'ViewRouter';
 ViewRouter.propTypes = {
-	router: PropTypes.object,
+	router: PropTypes.array,
 	...cmfConnect.propTypes,
 };
 ViewRouter.defaultProps = {
@@ -131,6 +131,7 @@ ViewRouter.ROUTER_TREE_OPEN_PROPS = ROUTER_TREE_OPEN_PROPS;
 
 export default cmfConnect({
 	defaultState: new Map(),
+	withDispatch: true,
 	defaultProps: {
 		routerExpression: 'getRouterTree',
 		componentsExpression: 'service#designer.components:getAll',

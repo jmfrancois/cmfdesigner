@@ -32,7 +32,7 @@ function ViewLogs(props) {
 	return (
 		<div>
 			{logs.map(log => (
-				<div className={ALERT_CLASSES[log.level]}>
+				<div className={ALERT_CLASSES[log.level]} key={log.code}>
 					<p>{log.level.toUpperCase()} on {log.target}: {EXTRA_INFO[log.code]}</p>
 				</div>
 			))}

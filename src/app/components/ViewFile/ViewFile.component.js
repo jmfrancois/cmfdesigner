@@ -42,4 +42,4 @@ ViewFile.propTypes = {
 	...cmfConnect.propTypes,
 };
 
-export default cmfConnect({})(ViewFile);
+export default cmfConnect({ withDispatchActionCreator: true })(ViewFile);

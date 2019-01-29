@@ -45,6 +45,8 @@ WorkingDirectory.propTypes = {
 };
 
 export default cmfConnect({
+	withDispatch: true,
+	withComponentId: true,
 	defaultProps: {
 		cwdExpression: 'getCWD',
 		isWebappExpression: 'isWebapp',

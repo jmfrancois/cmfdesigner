@@ -60,6 +60,7 @@ function mapStateToProps(state, ownProps) {
 
 export default cmfConnect({
 	mapStateToProps,
+	withDispatch: true,
 	defaultProps: {
 		cwdExpression: 'getCWD',
 	},
