@@ -6,7 +6,9 @@
 import '@talend/bootstrap-theme/src/theme/theme.scss';
 import cmf, { cmfConnect } from '@talend/react-cmf';
 import * as talendComponents from '@talend/react-components';
-import { ObjectViewer, TreeView } from '@talend/react-containers';
+import ObjectViewer from '@talend/react-containers/lib/ObjectViewer';
+import TreeView from '@talend/react-containers/lib/TreeView';
+import getRouter from '@talend/react-cmf-router';
 
 import './index.scss';
 import appComponents from './components';
@@ -21,6 +23,7 @@ import logsService from './services/logs';
 import selectorTo from './experimental-cmf/selectorTo';
 
 const DEFAULT_WITH_PROPS = { withComponentRegistry: true };
+const router = getRouter();
 
 function getWithProps(component) {
 	if (component === 'Icon') {
@@ -34,7 +37,7 @@ const onlyComponents = Object.keys(talendComponents)
 	.filter(key => typeof talendComponents[key] === 'function')
 	.reduce((acc, key) => ({
 		...acc,
-		[key]: cmfConnect({ omitCMFProps: true, ...getWithProps(key) })(talendComponents[key]),
+		[key]: cmfConnect(getWithProps(key))(talendComponents[key]),
 	}), {});
 
 
@@ -58,6 +61,7 @@ const cmfModule = {
 	saga,
 	settingsURL: '/settings.json',
 	modules: [
+		router.cmfModule,
 		talendComponentsModule,
 		logsService,
 		componentsService,
@@ -66,6 +70,7 @@ const cmfModule = {
 		propsService,
 		poutesService,
 	],
+	RootComponent: router.RootComponent,
 };
-console.log(cmfModule);
+
 cmf.bootstrap(cmfModule);

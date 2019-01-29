@@ -11,7 +11,7 @@
         "src/settings",
         "src/ee/settings"
       ],
-      "destination": "src/assets/settings.json",
+      "destination": "src/assets/settings.json"
     }
   }
 }

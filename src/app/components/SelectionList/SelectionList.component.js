@@ -42,7 +42,6 @@ function getNextOffset(offset, perPage) {
 }
 
 class SelectionList extends React.Component {
-
 	constructor(props) {
 		super(props);
 		this.state = { opened: true, offset: 0 };

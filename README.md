@@ -33,3 +33,8 @@ So the designer cover the following steps:
 ![create-app](http://www.plantuml.com/plantuml/svg/RP0x3y8m38Jt_8hRcAhk6QeYgav834mTGs8W8e-gSVlxINW8K5bzvy_dQnEhYMVlH4SBgWOT9Ni9D4aSHWgehz5JRMYfMJaAHhnrL0_p8h6tYQ6SWnh7jCRidDKtRBR65CC6fvavXZ-SFavU8YXFQyZPPdwHe891ca_UyXUYmH0bdWdbH4fpfVrP3B58_L52vo5JmL0I_V6vyT8_Ltx_MtMHuyEyHgBDvbpR7G00 "create-app")
 
 More info at https://jira.talendforge.org/browse/TUI-209
+
+
+
+npm WARN deprecated hoek@5.0.4: This version is no longer maintained. Please upgrade to the latest version.
+npm WARN deprecated nomnom@1.5.2: Package no longer supported. Contact support@npmjs.com for more info.

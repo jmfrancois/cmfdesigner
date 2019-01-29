@@ -40,7 +40,6 @@ Export.defaultProps = {
 Export.displayName = 'Export';
 
 class PanelExports extends React.Component {
-
 	constructor(props) {
 		super(props);
 		this.state = { opened: true };

@@ -1,6 +1,4 @@
-import { select } from 'redux-saga/effects';
-import cmf from '@talend/react-cmf';
-import omit from 'lodash/omit';
+import { select, put } from 'redux-saga/effects';
 
 const data = {
 	services: {},
@@ -52,7 +50,7 @@ function getInSaga(mod, id) {
 				const shortKey = getOriginalKey(id, key);
 				// eslint-disable-next-line no-param-reassign
 				inSagaModule[shortKey] = function* execActionCreators(...args) {
-					yield cmf.sagas.putActionCreator(key, ...args);
+					yield put(mod.actionCreators[key], ...args);
 				};
 			});
 			Object.keys(mod.selectors || {}).forEach(key => {
